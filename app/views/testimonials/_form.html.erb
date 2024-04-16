@@ -1,0 +1,32 @@
+<%= form_with(model: testimonial) do |form| %>
+  <% if testimonial.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(testimonial.errors.count, "error") %> prohibited this testimonial from being saved:</h2>
+
+      <ul>
+        <% testimonial.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :speech, style: "display: block" %>
+    <%= form.text_area :speech %>
+  </div>
+
+  <div>
+    <%= form.label :image, style: "display: block" %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

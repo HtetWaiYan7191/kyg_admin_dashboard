@@ -1,0 +1,51 @@
+<div id="<%= dom_id blog %>">
+  <p>
+    <strong>User:</strong>
+    <%= blog.user_id %>
+  </p>
+
+  <p>
+    <strong>Category:</strong>
+    <%= blog.category_id %>
+  </p>
+
+  <p>
+    <strong>Content:</strong>
+    <%= blog.content %>
+  </p>
+
+  <p>
+    <strong>Views count:</strong>
+    <%= blog.views_count %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <%= blog.status %>
+  </p>
+
+  <p>
+    <strong>Delete flg:</strong>
+    <%= blog.delete_flg %>
+  </p>
+
+  <p>
+    <strong>Title:</strong>
+    <%= blog.title %>
+  </p>
+
+  <p>
+    <strong>Images:</strong>
+    <% blog.images.each do |image| %>
+      <div><%= link_to image.filename, image %></div>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Videos:</strong>
+    <% blog.videos.each do |video| %>
+      <div><%= link_to video.filename, video %></div>
+    <% end %>
+  </p>
+
+</div>

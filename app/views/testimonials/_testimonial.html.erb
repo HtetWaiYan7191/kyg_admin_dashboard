@@ -1,0 +1,17 @@
+<div id="<%= dom_id testimonial %>">
+  <p>
+    <strong>Name:</strong>
+    <%= testimonial.name %>
+  </p>
+
+  <p>
+    <strong>Speech:</strong>
+    <%= testimonial.speech %>
+  </p>
+  <% if @testimonial && @testimonial&.image.attached?  %>
+    <p>
+      <strong>Image:</strong>
+      <%= image_tag @testimonial.image, alt: @testimonial.name, size: "300x200" %>
+    </p>
+  <% end %>
+</div>
