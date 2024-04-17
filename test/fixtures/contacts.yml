@@ -3,8 +3,8 @@
 one:
   student_name: MyString
   parent_name: MyString
-  email: MyString
-  phone_number: MyString
+  email: contactone@gmail.com
+  phone_number: 09786545214
   birth_date: 2024-04-16
   gender: MyString
   nationality: MyString
@@ -16,8 +16,8 @@ one:
 two:
   student_name: MyString
   parent_name: MyString
-  email: MyString
-  phone_number: MyString
+  email: contacttwo@gmail.com
+  phone_number: 09786589563
   birth_date: 2024-04-16
   gender: MyString
   nationality: MyString
