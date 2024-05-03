@@ -1,17 +1,24 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :users
-  get 'contacts/index'
+  get 'contacts/index', as: :contacts
   resources :blogs
   resources :categories
   resources :testimonials
-  resources :contacts 
   namespace :api do
     namespace :v1 do
       resources :contacts
     end
   end
-  root to: 'home#index'
-  get '/home/index', to:'home#index', as: :home_page
-  devise_for :users
+  authenticated :user do
+    root to: 'home#index', as: :authenticated_root
+    get '/home/index', to:'home#index', as: :home_page
+  end
+
+  unauthenticated do
+    devise_scope :user do
+      root to: 'devise/sessions#new'
+    end
+  end
 
 end

@@ -8,7 +8,7 @@ module ApplicationHelper
         end
     
         def account_active
-            
+            request.path == users_path ? "active fw-bolder" : ""
         end
     
         def testimonial_active
