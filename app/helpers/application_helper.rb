@@ -8,7 +8,7 @@ module ApplicationHelper
         end
     
         def account_active
-            request.path == users_path ? "active fw-bolder" : ""
+            (request.path.starts_with?(users_path) || controller_name == 'users') && action_name != 'show' ? "active fw-bolder" : ""
         end
     
         def testimonial_active

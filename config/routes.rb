@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
   resources :users
+  devise_for :users
+  # resources :users, only: [:index, :show]
   get 'contacts/index', as: :contacts
   resources :blogs
   resources :categories
