@@ -11,9 +11,11 @@
   </head>
 
   <body>
-    <%= render 'layouts/sidebar' %>
-    <%= render 'shared/noti' %>
-
-    <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js", crossorigin: 'anonymous' %>
+    <% if user_signed_in? %>
+      <%= render 'layouts/sidebar' %>
+    <% else %>
+      <%= yield %>
+    <% end %>
+    <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" %>
   </body>
 </html>
