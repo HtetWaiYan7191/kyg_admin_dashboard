@@ -35,11 +35,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to users_path, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
+    puts 'this is destroy method working'
+    if @user.destroy 
+      redirect_to users_path, notice: "User deleted successfully"
+    else 
+      redirect_to users_path, alert: 'User cannot be deleted'
     end
   end
 
