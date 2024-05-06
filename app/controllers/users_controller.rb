@@ -1,18 +1,24 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :destroy]
-  def index
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  def index  
     @users = User.all 
   end
 
   def show
-  end
+  end 
 
   def new 
-
+    @user = User.new 
   end
 
   def create
-    
+    puts 'create method is working'
+    @user = User.new(user_params_create)
+    if @user.save 
+      redirect_to users_path, notice: 'User created successfully'
+    else 
+      redirect_to new_user_path, alert: @user.errors.full_messages
+    end
   end
 
   def edit 
@@ -20,13 +26,14 @@ class UsersController < ApplicationController
   end
 
   def update 
-
+    puts 'this is update method'
+    if @user.update(user_params)
+      redirect_to users_path, notice: 'User updated successfully' 
+    else  
+      redirect_to edit_user_path(id: current_user.id), alert: @user.errors.full_messages
+    end
   end
 
-  def create
-  end
-
-  # DELETE /blogs/1 or /blogs/1.json
   def destroy
     @user.destroy!
 
@@ -39,5 +46,13 @@ class UsersController < ApplicationController
   private
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def user_params 
+    params.require(:user).permit(:name, :email, :department, :role, :position, :title )
+  end
+
+  def user_params_create
+    params.permit(:name, :email, :password, :department, :role, :position, :title)
   end
 end

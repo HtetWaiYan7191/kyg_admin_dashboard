@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  resources :users
   devise_for :users
+  resources :users, only: [:index, :show, :new, :edit, :update] do
+    collection do
+      post '/create', to: 'users#create'
+    end
+  end
   # resources :users, only: [:index, :show]
   get 'contacts/index', as: :contacts
   resources :blogs
