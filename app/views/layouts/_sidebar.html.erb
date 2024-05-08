@@ -90,7 +90,7 @@
               />
               </button>
               <ul class="dropdown-menu dropdown-menu">
-                <li><%= link_to "Account", users_path , class: 'dropdown-item' %></li>
+                <li><%= link_to current_user.name, users_path , class: 'dropdown-item bg-primary text-white' %></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                 <li><hr class="dropdown-divider"></li>

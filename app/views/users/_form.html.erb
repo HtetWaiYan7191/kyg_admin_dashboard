@@ -3,9 +3,8 @@
       <!-- Email input -->
       <div data-mdb-input-init class="form-outline mb-4">
         <%= form.label :email, "Email", class: 'form-label' %>
-            <%= form.text_field :email, placeholder: 'youremail@gmail.com', value: @user.email , required: true, class: 'form-control border border-1' %>
+            <%= form.email_field :email, placeholder: 'youremail@gmail.com', value: @user.email , required: true, class: 'form-control border border-1' %>
       </div>
-
         <!-- Name input -->
       <div data-mdb-input-init class="form-outline mb-4">
         <%= form.label :name, "Name", class: 'form-label' %>

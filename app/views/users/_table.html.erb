@@ -37,7 +37,7 @@
       <td class="">
       <% if current_user.admin? %>
             <%= link_to user_path(user) do  %>
-              <i class="bi bi-eye-fill"></i>           
+              <i class="bi bi-eye-fill" style="font-size: 1.2rem"></i>           
             <% end %>
             <%= link_to 'Edit', edit_user_path(id: user.id), class: 'btn btn-link btn-sm btn-rounded' %>
             <%#= link_to 'Create', new_user_path, class: ' btn btn-link btn-sm btn-rouned' %>

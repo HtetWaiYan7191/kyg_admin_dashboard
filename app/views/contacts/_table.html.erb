@@ -1,0 +1,41 @@
+<% if @contacts.present? %>
+<table class="table align-middle mb-0 bg-white mt-4">
+  <thead class="bg-light">
+    <tr>
+      <th>Student Name</th>
+      <th>Parent Name</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @contacts&.each do |contact| %>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="fw-bold mb-1"><%= contact.student_name %></p>
+                <p class="text-muted mb-0"><%= (Date.today - contact.birth_date).to_i / 365 %> years old</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <p class="fw-normal mb-1"><%= contact.parent_name %></p>
+          </td>
+          <td>
+            <span class=" d-inline"><%= contact.email %></span>
+          </td>
+          <td><%= contact.phone_number %></td>
+          <td>
+            <%= link_to contact_path(contact) do  %>
+                <i class="bi bi-eye-fill h-3" style="font-size: 1.2rem"></i>           
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
+<% else %>
+  <%= render 'shared/no_data' %>
+<% end %>
