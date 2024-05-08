@@ -22,6 +22,16 @@
   </div>
 
   <div>
+    <%= form.label :batch_year, style: "display: block" %>
+    <%= form.select :batch_year, (2010..Date.today.year), prompt: "Select Year" %>
+  </div>
+
+  <div>
+    <%= form.label :current_year_group, style: "display: block" %>
+    <%= form.text_field :current_year_group %>
+  </div>
+
+  <div>
     <%= form.label :image, style: "display: block" %>
     <%= form.file_field :image %>
   </div>

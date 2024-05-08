@@ -1,13 +1,4 @@
+<%= render 'shared/back_button' %>
+<%= render 'shared/create_button', locals: {link: new_testimonial_path } %>
+<%= render 'table' %>
 
-<h1>Testimonials</h1>
-
-<div id="testimonials">
-  <% @testimonials.each do |testimonial| %>
-    <%= render testimonial %>
-    <p>
-      <%= link_to "Show this testimonial", testimonial %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New testimonial", new_testimonial_path %>

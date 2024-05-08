@@ -69,6 +69,6 @@ class TestimonialsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def testimonial_params
-      params.require(:testimonial).permit(:name, :speech, :image)
+      params.require(:testimonial).permit(:name, :speech, :image, :batch_year, :current_year_group)
     end
 end
