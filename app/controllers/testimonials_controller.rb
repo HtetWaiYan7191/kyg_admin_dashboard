@@ -4,6 +4,10 @@ class TestimonialsController < ApplicationController
   # GET /testimonials or /testimonials.json
   def index
     @testimonials = Testimonial.all
+    respond_to do |format|
+      format.html 
+      format.json {render json: {data: @testimonials} }
+    end
   end
 
   # GET /testimonials/1 or /testimonials/1.json

@@ -7,14 +7,17 @@ Rails.application.routes.draw do
   end
   # resources :users, only: [:index, :show]
   get 'contacts/index', as: :contacts
+  get 'contacts/:id', to: 'contacts#show', as: :contact
   resources :blogs
   resources :categories
   resources :testimonials
+
   namespace :api do
     namespace :v1 do
       resources :contacts
     end
   end
+
   authenticated :user do
     root to: 'home#index', as: :authenticated_root
     get '/home/index', to:'home#index', as: :home_page

@@ -1,9 +1,5 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+### seed data 
+
+
+conact1 = Contact.create(student_name: 'kyw kyw', parent_name: 'U Ba', email: 'kywkyw@gmail.com', phone_number: '0989652451', birth_date: '2002-01-17', gender: 'male', nationality: 'myanmar', address: 'yangon', current_school: 'Bo 6', current_year_group: 'IGCSE', message: 'interested')
+conact2 = Contact.create(student_name: 'su su ', parent_name: 'U Aung', email: 'susu@gmail.com', phone_number: '0989652423', birth_date: '2002-05-17', gender: 'female', nationality: 'myanmar', address: 'yangon', current_school: 'Bo 5', current_year_group: 'IGCSE', message: 'interested')
