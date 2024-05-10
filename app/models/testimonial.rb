@@ -11,8 +11,5 @@ class Testimonial < ApplicationRecord
       errors.add(:batch_year, ' cannot be two years into the future')
     end
   end
-
-  def graduate? 
-    batch_year.nil? || batch_year.year < Date.current.year
-  end
+  
 end

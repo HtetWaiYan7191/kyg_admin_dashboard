@@ -27,10 +27,10 @@
             </td>
             <td><%= testimonial.current_year_group || '' %></td>
             <td class="">
-            <% if current_user.admin? %>
-                    <%= link_to testimonial_path(testimonial) do  %>
+                <%= link_to testimonial_path(testimonial) do  %>
                     <i class="bi bi-eye-fill" style="font-size: 1.2rem"></i>           
-                    <% end %>
+                <% end %>
+            <% if current_user.admin? %>
                     <%= link_to 'Edit', edit_testimonial_path(id: testimonial.id), class: 'btn btn-link btn-sm btn-rounded' %>
                     <%#= link_to 'Create', new_user_path, class: ' btn btn-link btn-sm btn-rouned' %>
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" id="testimonialModelLabel<%= testimonial.id %>" data-bs-target="#testimonialModel<%= testimonial.id %>">

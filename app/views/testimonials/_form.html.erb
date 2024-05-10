@@ -1,42 +1,50 @@
-<%= form_with(model: testimonial) do |form| %>
-  <% if testimonial.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(testimonial.errors.count, "error") %> prohibited this testimonial from being saved:</h2>
+<%= render 'shared/back_button' %>
+<%= render 'layouts/auth_layout' do %>
+    <%= form_with(model: testimonial) do |form| %>
+      <% if testimonial.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(testimonial.errors.count, "error") %> prohibited this testimonial from being saved:</h2>
 
-      <ul>
-        <% testimonial.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <ul>
+            <% testimonial.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="mb-3">
+        <%= form.label :name, style: "display: block", class: 'form-label' %>
+        <%= form.text_field :name, class: 'form-control' %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :speech, style: "display: block", class: 'form-label' %>
+        <%= form.text_area :speech, class: 'form-control' %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :batch_year, style: "display: block", class: 'form-label' %>
+        <%= form.select :batch_year, (2010..Date.current.year), prompt: "Select Year", class: 'form-select' %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :current_year_group, style: "display: block", class: 'form-label' %>
+        <%= form.text_field :current_year_group, class: 'form-control' %>
+      </div>
+
+      <div class="mb-4">
+        <%= form.label :image, style: "display: block", class: 'form-label' %>
+        <%= form.file_field :image %>
+      </div>
+
+      <div class="mt-3">
+        <% unless @testimonial.persisted?%>
+            <%= form.submit "Create", class: 'btn btn-primary w-100 text-center fw-semibold ' %>
+        <% else %>
+            <%= form.submit "Update", class: 'btn btn-primary w-100 text-center fw-semibold ' %>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :speech, style: "display: block" %>
-    <%= form.text_area :speech %>
-  </div>
-
-  <div>
-    <%= form.label :batch_year, style: "display: block" %>
-    <%= form.select :batch_year, (2010..Date.today.year), prompt: "Select Year" %>
-  </div>
-
-  <div>
-    <%= form.label :current_year_group, style: "display: block" %>
-    <%= form.text_field :current_year_group %>
-  </div>
-
-  <div>
-    <%= form.label :image, style: "display: block" %>
-    <%= form.file_field :image %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+      </div>
+    <% end %>
 <% end %>
+

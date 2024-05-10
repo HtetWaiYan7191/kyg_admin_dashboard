@@ -29,7 +29,7 @@ class TestimonialsController < ApplicationController
 
     respond_to do |format|
       if @testimonial.save
-        format.html { redirect_to testimonial_url(@testimonial), notice: "Testimonial was successfully created." }
+        format.html { redirect_to testimonials_path, notice: "Testimonial was successfully created." }
         format.json { render :show, status: :created, location: @testimonial }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class TestimonialsController < ApplicationController
   def update
     respond_to do |format|
       if @testimonial.update(testimonial_params)
-        format.html { redirect_to testimonial_url(@testimonial), notice: "Testimonial was successfully updated." }
+        format.html { redirect_to testimonials_path, notice: "Testimonial was successfully updated." }
         format.json { render :show, status: :ok, location: @testimonial }
       else
         format.html { render :edit, status: :unprocessable_entity }

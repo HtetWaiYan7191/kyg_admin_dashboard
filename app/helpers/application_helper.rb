@@ -12,7 +12,8 @@ module ApplicationHelper
         end
     
         def testimonial_active
-            request.path == testimonials_path ? "active fw-bolder" : ""
+            (request.path.starts_with?(testimonials_path) || controller_name == 'testimonials') && action_name != 'show' ? 'active fw-bolder' : ''
+            #request.path == testimonials_path ? "active fw-bolder" : ""
         end
     
         def contact_active
