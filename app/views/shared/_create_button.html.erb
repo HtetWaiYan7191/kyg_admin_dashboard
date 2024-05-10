@@ -1,3 +1,6 @@
 <div class=" container justify-content-end d-flex pe-5 ">
-    <%= link_to "Create", locals[:link], class:'btn btn-primary' %>
+    <%= link_to  locals[:link], class:'btn btn-primary' do  %>
+        <span class="me-1">Add</span>
+         <i class="bi bi-plus-lg"></i>
+    <% end %>
 </div>
