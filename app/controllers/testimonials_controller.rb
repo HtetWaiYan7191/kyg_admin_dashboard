@@ -3,7 +3,7 @@ class TestimonialsController < ApplicationController
 
   # GET /testimonials or /testimonials.json
   def index
-    @testimonials = Testimonial.all
+    @testimonials = Testimonial.all.order(:name).page(params[:page]).per(4)
     respond_to do |format|
       format.html 
       format.json {render json: {data: @testimonials} }

@@ -13,7 +13,9 @@
         <tr>
             <td>
                 <div class="d-flex align-items-center">
-                <%= image_tag testimonial.image, alt: 'testimonial', width: 45, height: 45, class: 'rounded-circle'%>
+                <% if testimonial.image.present? %>
+                    <%= image_tag testimonial.image, alt: 'testimonial', width: 45, height: 45, class: 'rounded-circle'%>
+                <% end %>
                 <div class="ms-3">
                     <p class="fw-bold mb-1"><%= testimonial.name %></p>
                 </div>
@@ -65,3 +67,6 @@
 
   </tbody>
 </table>
+<div class="paginate-box mt-4">
+    <%= paginate @testimonials %>
+</div>

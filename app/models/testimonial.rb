@@ -1,6 +1,8 @@
 class Testimonial < ApplicationRecord
   has_one_attached :image
 
+  paginates_per 4 
+
   validates :name, presence: true, length: { maximum: 50 }
   validates :speech, presence: true, length: { maximum: 500 }
   validate :batch_year_cannot_be_two_year_future 
