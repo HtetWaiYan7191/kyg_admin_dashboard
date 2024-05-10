@@ -3,10 +3,17 @@ class TestimonialsController < ApplicationController
 
   # GET /testimonials or /testimonials.json
   def index
-    @testimonials = Testimonial.all.order(:name).page(params[:page]).per(4)
-    respond_to do |format|
-      format.html 
-      format.json {render json: {data: @testimonials} }
+    unless params[:query]
+        @testimonials = Testimonial.all.order(:name).page(params[:page]).per(4)
+        respond_to do |format|
+          format.html 
+          format.json {render json: {data: @testimonials} }
+        end
+    else 
+      @testimonials = Testimonial.where("name LIKE ?", "%#{params[:query]}%").order(:name).page(params[:page]).per(4)
+      respond_to do |format| 
+        format.html 
+      end
     end
   end
 

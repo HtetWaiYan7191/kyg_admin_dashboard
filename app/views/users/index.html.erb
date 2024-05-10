@@ -1,3 +1,4 @@
 <%= render 'shared/back_button' %>
 <%= render 'shared/create_button', locals: {link: new_user_path }%>
+<%= render 'shared/search_form', locals: {link: users_path, title: 'Accounts', current_data: @users } %>
 <%= render 'table', locals: { users: @users } %>

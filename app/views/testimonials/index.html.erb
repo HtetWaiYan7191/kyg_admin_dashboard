@@ -1,4 +1,5 @@
 <%= render 'shared/back_button' %>
 <%= render 'shared/create_button', locals: {link: new_testimonial_path } %>
+<%= render 'shared/search_form', locals: {link: testimonials_path, title: 'Testimonials', current_data: @testimonials } %>
 <%= render 'table' %>
 

@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   def index  
-    @users = User.all 
+    unless params[:query]
+      @users = User.all.order(:name).page(params[:page]).per(4)
+    else  
+      @users = User.where("name LIKE ?", "%#{params[:query]}%").order(:name).page(params[:page]).per(4)
+    end
   end
 
   def show
