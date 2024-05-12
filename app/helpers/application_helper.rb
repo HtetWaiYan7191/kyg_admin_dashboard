@@ -4,7 +4,7 @@ module ApplicationHelper
         end
     
         def blog_active
-            request.path == blogs_path ? "active fw-bolder" : ""
+            (request.path.starts_with?(blogs_path) || controller_name == 'blogs') && action_name != 'show' ? "active fw-bolder" : ""
         end
     
         def account_active

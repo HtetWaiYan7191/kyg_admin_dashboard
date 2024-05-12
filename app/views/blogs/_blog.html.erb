@@ -1,8 +1,5 @@
 <div id="<%= dom_id blog %>">
-  <p>
-    <strong>User:</strong>
-    <%= blog.user_id %>
-  </p>
+
 
   <p>
     <strong>Category:</strong>
@@ -21,7 +18,7 @@
 
   <p>
     <strong>Status:</strong>
-    <%= blog.status %>
+    <%= blog.blog_status %>
   </p>
 
   <p>
@@ -37,14 +34,14 @@
   <p>
     <strong>Images:</strong>
     <% blog.images.each do |image| %>
-      <div><%= link_to image.filename, image %></div>
+      <div ><%= image_tag url_for(image), size: "300x200", class:'' %></div>
     <% end %>
   </p>
 
   <p>
     <strong>Videos:</strong>
     <% blog.videos.each do |video| %>
-      <div><%= link_to video.filename, video %></div>
+      <div><%= video_tag url_for(video), size: "300x200", controls: true %></div>
     <% end %>
   </p>
 

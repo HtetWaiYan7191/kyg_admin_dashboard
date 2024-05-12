@@ -6,7 +6,7 @@ class Blog < ApplicationRecord
   validates :content, presence: true
   validates :category_id, presence: true
   validates :views_count, numericality: { integer: true}
-  validates :blog_status, presence: true, inclusion: { in: %w(pending approve reject) }
+  validates :blog_status, presence: true, inclusion: { in: %w(pending approve deny) }
   validates :delete_flg, inclusion: { in: [true, false] }
   validates :title, presence: true, length: { maximum: 255 }
 
