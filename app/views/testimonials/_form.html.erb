@@ -31,7 +31,7 @@
 
         <div class="mb-3">
           <%= form.label :batch_year, style: "display: block", class: 'form-label' %>
-          <%= form.select :batch_year, (2010..Date.current.year), prompt: "Select Year", class: 'form-select' %>
+          <%= form.select :batch_year, (2010..Date.current.year), {prompt: "Select Batch Year"},  {class: 'form-select'} %>
         </div>
 
         <div class="mb-3">
