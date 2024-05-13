@@ -12,12 +12,14 @@
   <tbody>
       <% locals[:blogs].each do |blog| %>
         <tr>
-          <td >
+          <td class="">
             <div class="d-flex align-items-center">
+            <div>
               <%= image_tag url_for(blog.images.first), size: '45x45', class:'rounded-circle'%>
+            </div>
               <div class="ms-3">
                 <p class="fw-bold mb-1"><%= blog.category.name %> </p>
-
+                <p class=" text-muted "><%= blog.category.icon %></p>
               </div>
             </div>
           </td>

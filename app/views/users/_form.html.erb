@@ -32,7 +32,7 @@
           <!-- Role input -->
       <div class="form-outline mb-4">
         <%= form.label :role, "Role", class: 'form-label' %>
-        <%= form.select :role, [["Admin", 'admin'], ["User", 'user']], value: @user.persisted?, class: 'form-select mdb-select' %>
+        <%= form.select :role, User.roles.keys.map { |role| [role.capitalize, role] }, { selected: @user.role, prompt: "Select User Role" }, { class: 'form-select' } %>
       </div>
 
         <% if @user.new_record? %>

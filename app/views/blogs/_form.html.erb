@@ -1,43 +1,46 @@
-<%= form_with(model: blog) do |form| %>
-  <% if blog.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
+<%= render 'layouts/auth_layout' do %>
+  <%= form_with(model: blog) do |form| %>
+    <% if blog.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
 
-      <ul>
-        <% blog.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% blog.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-4">
+      <%= form.label :category_id, style: "display: block", class:'form-label' %>
+      <%= form.collection_select :category_id, Category.order(:name), :id, :name, {prompt: "Select a category"}, {class: 'form-select'} %>
+    </div>
+
+    <div class=" mb-4">
+      <%= form.label :content, style: "display: block", class:'form-label' %>
+      <%= form.text_area :content, class: 'form-control' %>
+    </div>
+
+
+    <div class="mb-4">
+      <%= form.label :title, style: "display: block", class:'form-label' %>
+      <%= form.text_field :title, class: 'form-control' %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :images, style: "display: block", class: 'form-label' %>
+      <%= form.file_field :images, multiple: true, class: 'form-control' %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :videos, style: "display: block", class: 'form-label' %>
+      <%= form.file_field :videos, multiple: true, class: 'form-control' %>
+    </div>
+
+    <div class="">
+      <%= form.submit "CREATE", class: 'btn btn-primary w-100 text-center fw-semibold' %>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :category_id, style: "display: block" %>
-    <%= form.collection_select :category_id, Category.order(:name), :id, :name %>
-  </div>
-
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
-  </div>
-
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :images, style: "display: block" %>
-    <%= form.file_field :images, multiple: true %>
-  </div>
-
-  <div>
-    <%= form.label :videos, style: "display: block" %>
-    <%= form.file_field :videos, multiple: true %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>
+
