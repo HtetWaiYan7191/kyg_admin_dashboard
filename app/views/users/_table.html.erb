@@ -72,6 +72,5 @@
       <% end %>
   </tbody>
 </table>
-<div class="paginate-box mt-4">
-    <%= paginate @users %>
-</div>
+<%= render 'shared/paginate_footer', locals: {items: @users} %>
+

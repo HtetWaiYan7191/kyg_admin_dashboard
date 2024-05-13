@@ -67,6 +67,5 @@
 
   </tbody>
 </table>
-<div class="paginate-box mt-4">
-    <%= paginate @testimonials %>
-</div>
+<%= render 'shared/paginate_footer', locals: {items: @testimonials} %>
+

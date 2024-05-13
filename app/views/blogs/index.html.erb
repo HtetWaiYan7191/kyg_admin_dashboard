@@ -1,3 +1,5 @@
 <%= render 'shared/back_button'%>
 <%= render 'shared/create_button', locals: {link: new_blog_path } %>
+<%= render 'shared/total_number', locals: {title: 'Blogs', current_data: @blogs}  %>
+<%= render 'shared/filter_date' %>
 <%= render 'table', locals: { blogs: @blogs } %>

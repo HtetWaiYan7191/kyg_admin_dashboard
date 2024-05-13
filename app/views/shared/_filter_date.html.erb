@@ -1,0 +1,20 @@
+<div class="my-4">
+    <%= form_with url: filter_by_date_blogs_path, method: :get do |f|  %>
+        <div class="d-flex align-items-center flex-wrap column-gap-2">
+            <div class="d-flex  column-gap-2">
+                <%= f.label :from_date , 'From', class: 'form-label'%>
+                <%= f.date_field :from_date, class:' form-control'   %>
+            </div>
+
+            <div class="d-flex  column-gap-2">
+                <%= f.label :to_date, 'To', class: 'form-label'%>
+                <%= f.date_field :to_date, class:' form-control'     %>
+            </div>
+        </div>
+   
+            <div class="search-btn-box  my-2">
+                 <%= f.submit 'Search', class:'btn btn-primary' %>
+            </div>
+
+    <% end %>
+</div>
