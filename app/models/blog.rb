@@ -3,6 +3,8 @@ class Blog < ApplicationRecord
   has_many_attached :images
   has_many_attached :videos  
 
+  paginates_per 4 
+
   validates :content, presence: true
   validates :category_id, presence: true
   validates :views_count, numericality: { integer: true}

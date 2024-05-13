@@ -8,7 +8,13 @@ Rails.application.routes.draw do
   # resources :users, only: [:index, :show]
   get 'contacts/index', as: :contacts
   get 'contacts/:id', to: 'contacts#show', as: :contact
-  resources :blogs
+
+  resources :blogs do 
+    collection do 
+      get '/filter_by_date', to: "blogs#filter_by_date"
+    end
+  end
+
   resources :categories
   resources :testimonials
 

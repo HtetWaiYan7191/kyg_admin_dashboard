@@ -3,9 +3,20 @@ class BlogsController < ApplicationController
 
   # GET /blogs or /blogs.json
   def index
-    @blogs = Blog.all
+    @blogs = Blog.all.page(params[:page]).per(4)
   end
 
+  def filter_by_date
+    if params[:from_date].present? && params[:to_date].present?
+      from_date = Date.parse(params[:from_date])
+      to_date = Date.parse(params[:to_date])
+      @blogs = Blog.all.where(delete_flg: false, created_at: from_date.beginning_of_day..to_date.beginning_of_day ).page(params[:page]).per(4)
+      render :index
+    else  
+      @blogs = Blog.all.where(delete_flg: false).page(params[:page]).per(4)
+      render :index
+    end
+  end
   # GET /blogs/1 or /blogs/1.json
   def show
   end
