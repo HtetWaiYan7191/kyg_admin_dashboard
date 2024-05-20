@@ -30,7 +30,6 @@ class UsersController < ApplicationController
   end
 
   def update 
-    puts 'this is update method'
     if @user.update(user_params)
       redirect_to users_path, notice: 'User updated successfully' 
     else  

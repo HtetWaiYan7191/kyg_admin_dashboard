@@ -35,10 +35,10 @@
           </td>
           <td><%= user.position %></td>
           <td class="">
-          <% if current_user.admin? %>
                 <%= link_to user_path(user) do  %>
                   <i class="bi bi-eye-fill" style="font-size: 1.2rem"></i>           
                 <% end %>
+          <% if current_user.admin? %>
                 <%= link_to 'Edit', edit_user_path(id: user.id), class: 'btn btn-link btn-sm btn-rounded' %>
                 <%#= link_to 'Create', new_user_path, class: ' btn btn-link btn-sm btn-rouned' %>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" id="deleteUserModalLabel<%= user.id %>" data-bs-target="#deleteUserModal<%= user.id %>">
@@ -60,11 +60,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
-            <% else %>
-                <%= link_to user_path(user) do  %>
-                    <i class="bi bi-eye-fill h-3"></i>           
-                <% end %>
+                </div>  
           <% end %>
 
           </td>

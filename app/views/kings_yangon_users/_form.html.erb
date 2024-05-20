@@ -1,0 +1,28 @@
+<%= render 'layouts/auth_layout' do %>
+<%=render 'shared/noti' %>
+
+      <%= render 'shared/form_title', locals:{title: 'Sign In User' }%>
+    <div class="p-3">
+        <%= form_with url: sign_in_kings_yangon_users_path, method: :post do |form| %>
+        <!-- Email input -->
+        <div data-mdb-input-init class="form-outline mb-4">
+          <%= form.label :school_id, "School Id", class: 'form-label' %>
+              <%= form.text_field :school_id, required: true, class: 'form-control border border-1' %>
+        </div>
+
+  
+              <!-- Password input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                  <%= form.label :password, "Password", class: 'form-label' %>
+                  <%= form.password_field :password, class: 'form-control border border-1'%>
+              </div>
+    
+
+          <!-- Submit button -->
+            <div class="actions mb-3">
+              <%= form.submit "Sign In", class: 'btn btn-primary w-100 text-center fw-semibold ' %>
+            </div>
+
+      <% end %>
+    </div>
+<% end %>

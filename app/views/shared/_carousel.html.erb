@@ -1,0 +1,28 @@
+
+<!-- Slideshow container -->
+<div class="slideshow-container" style="height: 300px; width: 500px">
+  <!-- Full-width images with number and caption text -->
+  <% (blog.images + blog.videos).each_with_index do |media, index| %>
+        <div class="mySlides ">  
+            <div class="numbertext"><%= index + 1 %> / <%= blog.images.size + blog.videos.size %></div>
+            <% if media.blob.content_type.start_with?('image') %>
+                <%= image_tag url_for(media), width: '500', height: '300', alt: 'blog photos' %>
+            <% elsif media.blob.content_type.start_with?('video') %>
+                <%= video_tag media, width: '500', height: '300', alt: 'blog videos' %>
+            <% end %>
+        </div>
+  <% end %>
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<!-- The dots/circles -->
+<div style="text-align:center" class="mt-5">
+    <% (blog.images + blog.videos).each_with_index do |media, index|%>
+        <span class="dot" onclick="currentSlide(<%= index + 1 %>)"></span>
+    <% end %>
+</div>
+
+<%= javascript_include_tag "carousel" %>

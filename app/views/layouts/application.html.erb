@@ -16,6 +16,9 @@
   <body>
     <% if user_signed_in? %>
       <%= render 'layouts/sidebar' %>
+    <% elsif user_signed_in_as_kyg? %>
+      <%= render 'shared/noti' %>
+      <%= yield %>
     <% else %>
       <%= yield %>
     <% end %>

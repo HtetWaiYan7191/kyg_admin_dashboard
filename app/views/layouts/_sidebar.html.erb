@@ -37,9 +37,9 @@
   <!-- Sidebar -->
 
   <!-- Navbar -->
-  <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+  <nav id="main-navbar"  style="background-color: #416294;" class="navbar navbar-expand-lg navbar-light  fixed-top">
     <!-- Container wrapper -->
-    <div class="d-flex flex-row justify-content-between w-full container">
+    <div class="d-flex flex-row justify-content-between w-full bg-gray container">
       <!-- Toggle button -->
       <button
         class="navbar-toggler"
@@ -55,12 +55,7 @@
 
       <!-- Brand -->
       <a class="navbar-brand" href="#">
-        <img
-          src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-          height="25"
-          alt="MDB Logo"
-          loading="lazy"
-        />
+        <%= image_tag "logo", height: 50,  alt: 'kings logo' %>
       </a>
       <!-- Right links -->
       <% if user_signed_in? %>
@@ -68,7 +63,7 @@
         <!-- Avatar -->
         <li class="">
             <div class="dropdown  d-flex align-items-center">
-              <button class=" px-4 py-2 rounded btn btn-secondary  mx-5 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <button class=" px-4 py-2 rounded btn  mx-5 dropdown-toggle" type="button" style="background-color: #80a6de;"  data-bs-toggle="dropdown" aria-expanded="false">
                                <img
                 src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp"
                 class="rounded-circle"

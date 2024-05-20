@@ -1,5 +1,21 @@
-<div id="<%= dom_id blog %>">
+<div>
+  <%=render 'shared/carousel', blog: @blog  %>
+</div>
 
+<div id="<%= dom_id blog %>">
+  <p>
+    <strong>Images:</strong>
+    <% blog.images.each do |image| %>
+      <div ><%= image_tag url_for(image), size: "300x200", class:'' %></div>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Videos:</strong>
+    <% blog.videos.each do |video| %>
+      <div><%= video_tag url_for(video), size: "300x200", controls: true %></div>
+    <% end %>
+  </p>
 
   <p>
     <strong>Category:</strong>
@@ -31,18 +47,6 @@
     <%= blog.title %>
   </p>
 
-  <p>
-    <strong>Images:</strong>
-    <% blog.images.each do |image| %>
-      <div ><%= image_tag url_for(image), size: "300x200", class:'' %></div>
-    <% end %>
-  </p>
 
-  <p>
-    <strong>Videos:</strong>
-    <% blog.videos.each do |video| %>
-      <div><%= video_tag url_for(video), size: "300x200", controls: true %></div>
-    <% end %>
-  </p>
 
 </div>

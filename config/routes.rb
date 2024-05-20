@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  resources :kings_yangon_users, only: [:create] do 
+    collection do 
+      get 'sign_up', to: "kings_yangon_users#sign_up"
+      post 'sign_in', to: "kings_yangon_users#sign_in"
+      get 'sign_in_page', to: "kings_yangon_users#sign_in_page"
+      delete 'log_out', to: "kings_yangon_users#log_out"
+    end
+  end
+
+  resources :page, only: [] do 
+    collection do 
+      get 'landing', to: 'page#landing'
+    end
+  end
+
+
   devise_for :users
   resources :users, only: [:index, :show, :new, :edit, :update, :destroy] do
     collection do
@@ -31,7 +47,7 @@ Rails.application.routes.draw do
 
   unauthenticated do
     devise_scope :user do
-      root to: 'devise/sessions#new'
+      root to: 'page#welcome'
     end
   end
 
