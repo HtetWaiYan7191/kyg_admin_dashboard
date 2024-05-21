@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe BrandCategory, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'should create a valid brand category' do 
+    brand_category = build(:brand_category)
+    expect(brand_category).to be_valid
+  end
 end
