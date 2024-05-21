@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :items
+  resources :brand_partners
+  resources :brand_categories
   resources :kings_yangon_users, only: [:create] do 
     collection do 
       get 'sign_up', to: "kings_yangon_users#sign_up"
@@ -47,7 +50,7 @@ Rails.application.routes.draw do
 
   unauthenticated do
     devise_scope :user do
-      root to: 'page#welcome'
+      root to: 'page#welcome', as: :unauthenticated_root
     end
   end
 

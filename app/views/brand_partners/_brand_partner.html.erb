@@ -1,0 +1,17 @@
+<div id="<%= dom_id brand_partner %>">
+  <p>
+    <strong>Name:</strong>
+    <%= brand_partner.name %>
+  </p>
+
+  <p>
+    <strong>Brand category:</strong>
+    <%= brand_partner.brand_category_id %>
+  </p>
+
+  <p>
+    <strong>Image:</strong>
+    <%= link_to brand_partner.image.filename, brand_partner.image if brand_partner.image.attached? %>
+  </p>
+
+</div>

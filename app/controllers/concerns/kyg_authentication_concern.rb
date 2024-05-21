@@ -10,7 +10,9 @@ module KygAuthenticationConcern
       end
   
       def authenticate_kyg_user! 
-        unless current_kyg_user
+        if user_signed_in_as_kyg?
+          return 
+        else  
           redirect_to sign_in_page_kings_yangon_users_path, alert: 'You need to sign in first'
         end
       end
@@ -20,7 +22,7 @@ module KygAuthenticationConcern
       end
   
       def redirect_if_authenticated
-        if user_signed_in_as_kyg?
+        if user_signed_in_as_kyg? 
           redirect_to landing_page_index_path, notice: 'You are already signed in.'
         end
       end

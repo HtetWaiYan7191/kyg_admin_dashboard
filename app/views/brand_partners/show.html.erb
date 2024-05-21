@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @brand_partner %>
+
+<div>
+  <%= link_to "Edit this brand partner", edit_brand_partner_path(@brand_partner) %> |
+  <%= link_to "Back to brand partners", brand_partners_path %>
+
+  <%= button_to "Destroy this brand partner", @brand_partner, method: :delete %>
+</div>

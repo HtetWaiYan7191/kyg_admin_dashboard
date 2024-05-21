@@ -1,0 +1,32 @@
+<%= form_with(model: brand_partner) do |form| %>
+  <% if brand_partner.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(brand_partner.errors.count, "error") %> prohibited this brand_partner from being saved:</h2>
+
+      <ul>
+        <% brand_partner.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :brand_category_id, style: "display: block" %>
+    <%= form.text_field :brand_category_id %>
+  </div>
+
+  <div>
+    <%= form.label :image, style: "display: block" %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

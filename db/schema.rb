@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_20_070021) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_21_054920) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,6 +54,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_20_070021) do
     t.index ["category_id"], name: "index_blogs_on_category_id"
   end
 
+  create_table "brand_categories", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "brand_partners", force: :cascade do |t|
+    t.string "name"
+    t.bigint "brand_category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_category_id"], name: "index_brand_partners_on_brand_category_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -76,6 +91,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_20_070021) do
     t.string "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.text "content"
+    t.decimal "price"
+    t.decimal "discount_percentage"
+    t.bigint "brand_partner_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_partner_id"], name: "index_items_on_brand_partner_id"
   end
 
   create_table "kings_yangon_users", force: :cascade do |t|
@@ -121,4 +147,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_20_070021) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "blogs", "categories"
+  add_foreign_key "brand_partners", "brand_categories"
+  add_foreign_key "items", "brand_partners"
 end

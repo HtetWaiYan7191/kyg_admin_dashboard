@@ -23,4 +23,16 @@ module ApplicationHelper
         def category_active
             request.path == categories_path ? "active fw-bolder " : ""
         end
+
+        def brand_category_active
+            request.path == brand_categories_path ? "active fw-bolder " : ""
+        end
+
+        def brand_partner_active
+            request.path == brand_partners_path ? "active fw-bolder " : ""
+        end
+
+        def item_active
+            request.path == items_path ? "active fw-bolder " : ""
+        end
 end

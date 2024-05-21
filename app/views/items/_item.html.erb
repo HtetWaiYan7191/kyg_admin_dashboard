@@ -1,0 +1,34 @@
+<div id="<%= dom_id item %>">
+  <p>
+    <strong>Name:</strong>
+    <%= item.name %>
+  </p>
+
+  <p>
+    <strong>Content:</strong>
+    <%= item.content %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= item.price %>
+  </p>
+
+  <p>
+    <strong>Discount percentage:</strong>
+    <%= item.discount_percentage %>
+  </p>
+
+  <p>
+    <strong>Brand partner:</strong>
+    <%= item.brand_partner_id %>
+  </p>
+
+  <p>
+    <strong>Images:</strong>
+    <% item.images.each do |image| %>
+      <div><%= link_to image.filename, image %></div>
+    <% end %>
+  </p>
+
+</div>
