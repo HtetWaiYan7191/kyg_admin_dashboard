@@ -48,9 +48,13 @@ Rails.application.routes.draw do
     get '/home/index', to:'home#index', as: :home_page
   end
 
+  authenticated :kings_yangon_user do 
+    root to: 'page#welcome', as: :welcome_page
+  end
+
   unauthenticated do
     devise_scope :user do
-      root to: 'page#welcome', as: :unauthenticated_root
+      root to: 'page#welcome'
     end
   end
 
