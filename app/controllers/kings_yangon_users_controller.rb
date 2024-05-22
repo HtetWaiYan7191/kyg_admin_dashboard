@@ -1,5 +1,7 @@
 class KingsYangonUsersController < ApplicationController
   before_action :redirect_if_authenticated, only: [:sign_in_page]
+  before_action :authenticate_user!, except: [:sign_in_page, :sign_in, :log_out]
+  
   def sign_up
   end
 

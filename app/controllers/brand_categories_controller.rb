@@ -1,6 +1,6 @@
 class BrandCategoriesController < ApplicationController
   before_action :set_brand_category, only: %i[ show edit update destroy ]
-
+  before_action :check_management_access
   # GET /brand_categories or /brand_categories.json
   def index
     @brand_categories = BrandCategory.all

@@ -1,6 +1,6 @@
 class TestimonialsController < ApplicationController
   before_action :set_testimonial, only: %i[ show edit update destroy ]
-
+  before_action :check_admin_access
   # GET /testimonials or /testimonials.json
   def index
     unless params[:query]

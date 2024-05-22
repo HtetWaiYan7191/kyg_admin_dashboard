@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin_access
+
   def index  
     unless params[:query]
       @users = User.all.order(:name).page(params[:page]).per(4)

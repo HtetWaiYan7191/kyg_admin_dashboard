@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy ]
+  before_action :check_admin_access
 
   # GET /blogs or /blogs.json
   def index
