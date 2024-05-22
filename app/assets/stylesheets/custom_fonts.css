@@ -1,0 +1,36 @@
+ @font-face {
+    font-family: "BwDarius";
+    src: url("/assets/BwDarius-Black.otf");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "BwDarius";
+    src: url("/assets/BwDarius-Regular.otf");
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "BwDarius";
+    src: url("/assets/BwDarius-Light.otf");
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "BwDarius";
+    src: url("/assets/BwDarius-Bold.otf");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  .custom-font {
+    font-family: "BwDarius";
+    src: url("/assets/BwDarius-Black.otf") format("otf");
+  }
+  
+  .light-font {
+    font-family: "BwDarius";
+    src: url('/assets/BW\ Darius/BwDarius-Light.otf') format('otf');
+    /* src: url("/assets/BwDarius-Light.otf"); */
+  }
