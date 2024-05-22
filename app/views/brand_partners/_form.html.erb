@@ -18,7 +18,7 @@
 
   <div>
     <%= form.label :brand_category_id, style: "display: block" %>
-    <%= form.text_field :brand_category_id %>
+    <%= form.select :brand_category_id, BrandCategory.order(:name).map { |brand_category| [brand_category.name, brand_category.id] }, {prompt: "Select Category"}, {class: 'form-select'} %>
   </div>
 
   <div>
