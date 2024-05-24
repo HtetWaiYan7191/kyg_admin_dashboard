@@ -7,20 +7,9 @@
     <% end %>
     <div class="p-3">
         <%= form_with(model: testimonial) do |form| %>
-            <% if testimonial.errors.any? %>
-              <div style="color: red">
-                <h2><%= pluralize(testimonial.errors.count, "error") %> prohibited this testimonial from being saved:</h2>
-
-                <ul>
-                  <% testimonial.errors.each do |error| %>
-                    <li><%= error.full_message %></li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
 
         <div class="mb-3">
-          <%= form.label :name, style: "display: block", class: 'form-label' %>
+          <%= render partial: 'shared/label_with_errors', locals: {form: form, field_name: :name, record: testimonial} %>
           <%= form.text_field :name, class: 'form-control' %>
         </div>
 

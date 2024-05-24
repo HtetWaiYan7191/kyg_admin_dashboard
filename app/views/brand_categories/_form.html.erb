@@ -1,27 +1,31 @@
-<%= form_with(model: brand_category) do |form| %>
-  <% if brand_category.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(brand_category.errors.count, "error") %> prohibited this brand_category from being saved:</h2>
+<%= render 'shared/back_button' %>
+<%= render 'layouts/auth_layout' do %>
+    <% if @brand_category.persisted?%>
+      <%= render 'shared/form_title', locals:{title: 'UPDATE BRAND CATEGORY' }%>
+    <% else %>
+        <%= render 'shared/form_title', locals:{title: 'CREATE BRAND CATEGORY' }%>
+    <% end %>
+      <div class="p-3">
+        <%= form_with(model: brand_category) do |form| %>
+          <div>
+            <%= render partial: 'shared/label_with_errors', locals: {form: form, field_name: :name, record: brand_category} %>
+            <%= form.text_field :name, class: 'form-control' %>
+          </div>
 
-      <ul>
-        <% brand_category.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <div>
+            <%= render partial: 'shared/label_with_errors', locals: {form: form, field_name: :description, record: brand_category} %>
+            <%= form.text_field :description, class: 'form-control' %>
+          </div>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+          <div class="mt-4">
+            <% unless @brand_category.persisted? %>
+              <%= form.submit "Create", class: 'btn btn-primary w-100 text-center fw-semibold' %>
+            <% else %>
+              <%= form.submit "Update", class: 'btn btn-primary w-100 text-center fw-semibold' %>
+            <% end %>
+          </div>
+        <% end %> 
+      </div>
+   
 <% end %>
+

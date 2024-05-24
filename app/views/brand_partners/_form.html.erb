@@ -1,32 +1,35 @@
-<%= form_with(model: brand_partner) do |form| %>
-  <% if brand_partner.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(brand_partner.errors.count, "error") %> prohibited this brand_partner from being saved:</h2>
+<%= render 'shared/back_button' %>
+<%= render 'layouts/auth_layout' do %>
+    <% if @brand_partner.persisted?%>
+      <%= render 'shared/form_title', locals:{title: 'UPDATE BRAND PARTNER' }%>
+    <% else %>
+        <%= render 'shared/form_title', locals:{title: 'CREATE BRAND PARTNER' }%>
+    <% end %>
+  <div class="p-3">
+      <%= form_with(model: brand_partner) do |form| %>
+      <div class="mb-4">
+        <%= render partial: 'shared/label_with_errors', locals: {form: form, field_name: :name, record: brand_partner} %>
+        <%= form.text_field :name, class: 'form-control' %>
+      </div>
 
-      <ul>
-        <% brand_partner.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <div class="mb-4">
+        <%= render partial: 'shared/label_with_errors', locals: {form: form, field_name: :brand_category, record: brand_partner} %>
+        <%= form.select :brand_category_id, BrandCategory.order(:name).map { |brand_category| [brand_category.name, brand_category.id] }, {prompt: "Select Category"}, {class: 'form-select'} %>
+      </div>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
+      <div class="mb-4">
+        <%= render partial: 'shared/label_with_errors', locals: {form: form, field_name: :image, record: brand_partner} %>
+        <%= form.file_field :image, class: 'form-control' %>
+      </div>
 
-  <div>
-    <%= form.label :brand_category_id, style: "display: block" %>
-    <%= form.select :brand_category_id, BrandCategory.order(:name).map { |brand_category| [brand_category.name, brand_category.id] }, {prompt: "Select Category"}, {class: 'form-select'} %>
-  </div>
-
-  <div>
-    <%= form.label :image, style: "display: block" %>
-    <%= form.file_field :image %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+      <div class="mt-3">
+          <% unless @brand_partner.persisted?%>
+              <%= form.submit "Create", class: 'btn btn-primary w-100 text-center fw-semibold ' %>
+          <% else %>
+              <%= form.submit "Update", class: 'btn btn-primary w-100 text-center fw-semibold ' %>
+          <% end %>      
+      </div>
+    <% end %>
   </div>
 <% end %>
+

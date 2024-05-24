@@ -1,0 +1,7 @@
+<% if record.errors[field_name].any? %>
+  <%= form.label field_name, class: 'form-label text-danger' do %>
+    <%= record.errors.full_messages_for(field_name).join(", ") %>
+  <% end %>
+<% else %>
+  <%= form.label field_name, class: 'form-label' %>
+<% end %>
