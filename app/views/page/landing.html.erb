@@ -2,65 +2,21 @@
 
 <section class="partner-section row gap-x-10 my-5 w-75 mx-auto">
     <h2 class="text-center">Our Partners</h2>
-    <div class="partner-name mt-3">
-        <h4 class="text-center">IT Mobile and Electronic</h4>
-        <div class=' row gx-5  brand-card-container mt-4'>
-            <div class=" col-4 brand-card  p-3 mb-3 ">
-                <img src="https://images.unsplash.com/photo-1715073145727-393bbded41d9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="brand-photo" class="brand-image">
-                <p>brand title name</p>
-            </div>
-
-             <div class=" col-4 brand-card  p-3 mb-3 ">
-                <img src="https://images.unsplash.com/photo-1715073145727-393bbded41d9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="brand-photo" class="brand-image">
-                <p>brand title name</p>
-            </div>
-
-            <div class=" col-4 brand-card p-3 mb-3 ">
-                <img src="https://images.unsplash.com/photo-1715073145727-393bbded41d9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="brand-photo" class="brand-image">
-                <p>brand title name</p>
+    <% @brand_categories&.each do |brand_category| %>
+    <% unless brand_category.brand_partners.empty? %>
+            <div class="partner-name mt-3">
+            <h4 class="text-center"><%= brand_category.name %></h4>
+            <div class=' row gx-5  brand-card-container mt-4'>
+                <% brand_category.brand_partners.each do |brand_partner| %>
+                    <div class=" col-4 brand-card  p-3 mb-3 ">
+                            <%= image_tag brand_partner.image, class: 'brand-image' if brand_partner.image.attached? %>
+                            <p><%= brand_partner.name %></p>
+                    </div>
+                <% end %>
             </div>
         </div>
-    </div>
-
-    <div class="partner-name mt-3">
-        <h4 class="text-center">IT Mobile and Electronic</h4>
-        <div class=' row gx-5  brand-card-container mt-4'>
-            <div class=" col-4 brand-card  p-3 mb-3 ">
-                <img src="https://images.unsplash.com/photo-1715073145727-393bbded41d9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="brand-photo" class="brand-image">
-                <p>brand title name</p>
-            </div>
-
-             <div class=" col-4 brand-card  p-3 mb-3 ">
-                <img src="https://images.unsplash.com/photo-1715073145727-393bbded41d9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="brand-photo" class="brand-image">
-                <p>brand title name</p>
-            </div>
-
-            <div class=" col-4 brand-card p-3 mb-3 ">
-                <img src="https://images.unsplash.com/photo-1715073145727-393bbded41d9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="brand-photo" class="brand-image">
-                <p>brand title name</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="partner-name mt-3">
-        <h4 class="text-center">IT Mobile and Electronic</h4>
-        <div class=' row gx-5  brand-card-container mt-4'>
-            <div class=" col-4 brand-card  p-3 mb-3 ">
-                <img src="https://images.unsplash.com/photo-1715073145727-393bbded41d9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="brand-photo" class="brand-image">
-                <p>brand title name</p>
-            </div>
-
-             <div class=" col-4 brand-card  p-3 mb-3 ">
-                <img src="https://images.unsplash.com/photo-1715073145727-393bbded41d9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="brand-photo" class="brand-image">
-                <p>brand title name</p>
-            </div>
-
-            <div class=" col-4 brand-card p-3 mb-3 ">
-                <img src="https://images.unsplash.com/photo-1715073145727-393bbded41d9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="brand-photo" class="brand-image">
-                <p>brand title name</p>
-            </div>
-        </div>
-    </div>
+    <% end %>
+    <% end %>
 </section>
 
 
