@@ -4,13 +4,15 @@
 
 body {
     background-color: #fbfbfb;
-    font-family: 'BwDarius' !important;
-    font-weight: 700; /* Use the bold variant */
   }
   @media (min-width: 991.98px) {
     main {
       padding-left: 240px;
     }
+  }
+
+  .custom-font {
+    font-family: 'BmDarius' !important;
   }
 
   /* Sidebar */

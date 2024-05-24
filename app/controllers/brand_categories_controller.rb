@@ -3,7 +3,7 @@ class BrandCategoriesController < ApplicationController
   before_action :check_management_access
   # GET /brand_categories or /brand_categories.json
   def index
-    @brand_categories = BrandCategory.all
+    @brand_categories = BrandCategory.all.order(:name).page(params[:page]).per(4)
   end
 
   # GET /brand_categories/1 or /brand_categories/1.json

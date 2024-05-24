@@ -4,7 +4,6 @@ FactoryBot.define do
     factory :user do
         email { Faker::Internet.unique.email }
         password { Faker::Internet.password(min_length: 8)}
-        encrypted_password { Faker::Internet.password(min_length: 8) }
         name { Faker::Name.name }
         department { Faker::Company.industry }
         title { Faker::Job.title }

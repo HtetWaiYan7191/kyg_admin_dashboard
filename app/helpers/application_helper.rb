@@ -17,7 +17,7 @@ module ApplicationHelper
         end
     
         def contact_active
-            request.path == contacts_path ? "active fw-bolder" : ""
+            (request.path.starts_with?(contacts_path) || controller_name == 'contacts') && action_name != 'show' ? 'active fw-bolder' : ''
         end
     
         def category_active
@@ -25,14 +25,14 @@ module ApplicationHelper
         end
 
         def brand_category_active
-            request.path == brand_categories_path ? "active fw-bolder " : ""
+            (request.path.starts_with?(brand_categories_path) || controller_name == 'brand_categories') && action_name != 'show' ? 'active fw-bolder' : ''
         end
 
         def brand_partner_active
-            request.path == brand_partners_path ? "active fw-bolder " : ""
+            (request.path.starts_with?(brand_partners_path) || controller_name == 'brand_partners') && action_name != 'show' ? 'active fw-bolder' : ''
         end
 
         def item_active
-            request.path == items_path ? "active fw-bolder " : ""
+            (request.path.starts_with?(items_path) || controller_name == 'items') && action_name != 'show' ? 'active fw-bolder' : ''
         end
 end

@@ -3,7 +3,7 @@ class BrandPartnersController < ApplicationController
   before_action :check_management_access
   # GET /brand_partners or /brand_partners.json
   def index
-    @brand_partners = BrandPartner.all
+    @brand_partners = BrandPartner.includes(:brand_category).all.order(:name).page(params[:page]).per(4)
   end
 
   # GET /brand_partners/1 or /brand_partners/1.json

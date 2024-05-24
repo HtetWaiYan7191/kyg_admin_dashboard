@@ -18,12 +18,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    puts 'create method is working'
     @user = User.new(user_params_create)
     if @user.save 
       redirect_to users_path, notice: 'User created successfully'
-    else 
-      redirect_to new_user_path, alert: @user.errors.full_messages
+    else
+       flash.now[:alert] = 'User cannot be created'
+       render :new, status: :unprocessable_entity
     end
   end
 
@@ -58,6 +58,6 @@ class UsersController < ApplicationController
   end
 
   def user_params_create
-    params.permit(:name, :email, :password, :department, :role, :position, :title)
+    params.require(:user).permit(:name, :email, :password, :department, :title, :position, :role)
   end
 end
