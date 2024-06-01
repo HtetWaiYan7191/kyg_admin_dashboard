@@ -5,7 +5,7 @@
         <%= render 'shared/form_title', locals:{title: 'CREATE USER' }%>
     <% end %>
 
-    <div class="p-3">
+    <div class="p-5">
         <%= form_with model: @user.persisted? ? @user : nil, url: @user.persisted? ? user_path(@user) : create_users_path, method: @user.persisted? ? :patch : :post do |form| %>
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4">

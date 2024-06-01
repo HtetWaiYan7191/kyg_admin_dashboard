@@ -1,13 +1,11 @@
-<section class="  w-50 mx-auto min-vh-75 vh-100 d-flex  flex-column justify-content-center">
-    <%=render 'shared/noti' %>
-
-    <%= render 'shared/form_title', locals:{title: 'Sign In User' }%>
-    <div class="p-3 border border-1">
+<%= render 'layouts/auth_layout' do %>
+    <%= render 'shared/form_title', locals: {title: 'Sign In Kings Yangon User'} %>
+    <div class="p-5 shadow">
         <%= form_with url: sign_in_kings_yangon_users_path, method: :post do |form| %>
         <!-- Email input -->
         <div data-mdb-input-init class="form-outline mb-4">
           <%= form.label :school_id, "School Id", class: 'form-label' %>
-              <%= form.text_field :school_id, required: true, class: 'form-control border border-1' %>
+          <%= form.text_field :school_id, required: true, class: 'form-control border border-1' %>
         </div>
 
   
@@ -25,4 +23,4 @@
 
       <% end %>
     </div>
-</section>
+<% end %>

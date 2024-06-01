@@ -1,5 +1,11 @@
-<h1>Page#welcome</h1>
-<p>Find me in app/views/page/welcome.html.erb</p>
-<%= link_to "Sign in Admin", new_user_session_path %>
-<br>
-<%= link_to "Sign in Parent", sign_in_page_kings_yangon_users_path  %>
+<section class="welcome-section">
+    <div class="container-fluid welcome-container w-100 vh-100 d-flex flex-column align-items-center justify-content-center">
+        <h2 class="text-white custom-font">Welcome To Kings Yangon Website</h2>
+        <span class="text-white custom-font">Kings Education For Life </span>
+        <div class="sign-in-link-container mt-4">
+            <%= link_to "Sign in Admin", new_user_session_path, class:'btn btn-primary ' %>
+            <%= link_to "Sign in Parent", sign_in_page_kings_yangon_users_path, class:'btn btn-primary' %>
+        </div>
+    </div>
+</section>
+

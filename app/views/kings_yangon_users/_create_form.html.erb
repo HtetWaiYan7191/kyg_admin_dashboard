@@ -1,0 +1,32 @@
+<%= render 'layouts/auth_layout' do %>
+    <% if kings_yangon_user.persisted? %>
+      <%= render 'shared/form_title', locals: {title: 'Sign In Kings Yangon User'} %>
+    <% else %>
+      <%= render 'shared/form_title', locals: {title: 'Create Kings Yangon User'} %>
+    <% end %>
+
+    <div class="p-5">
+        <%= form_with model: @kings_yangon_user do |form| %>
+            <div data-mdb-input-init class="form-outline mb-4">
+                <%= render partial: 'shared/label_with_errors', locals: {field_name: :school_id , record: kings_yangon_user , form: form} %>
+                <%= form.text_field :school_id, required: true, class: 'form-control border border-1' %>
+            </div>
+
+    
+                <!-- Password input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                <%= render partial: 'shared/label_with_errors', locals: {field_name: :password , record: kings_yangon_user , form: form} %>
+                    <%= form.password_field :password, class: 'form-control border border-1'%>
+                </div>
+
+            <!-- Submit button -->
+                <div class="actions mb-3">
+                    <% unless kings_yangon_user.persisted? %>
+                        <%= form.submit "CREATE", class: 'btn btn-primary w-100 text-center fw-semibold ' %>
+                    <% else %>
+                        <%= form.submit "UPDATE", class: 'btn btn-primary w-100 text-center fw-semibold ' %>
+                    <% end %>
+                </div>
+        <% end %>
+    </div>
+<% end %>
