@@ -1,0 +1,69 @@
+<table class="table align-middle mb-0 bg-white">
+  <thead class="bg-light">
+    <tr>
+      <th class="fw-bold">school_id</th>
+       <th class="fw-bold">Created Date</th>
+       <th class="fw-bold">Updated Date</th>
+        <th class="fw-bold">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% kings_yangon_users&.each do |kings_yangon_user| %>
+        <tr>
+            <td>
+                <div class="d-flex align-items-center">
+                    <div class="ms-3">
+                        <p class="fw-bold mb-1"><%= kings_yangon_user.school_id %></p>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="ms-3">
+                    <p class="fw-bold mb-1"><%= kings_yangon_user.created_at.strftime("%Y-%m-%d") %></p>
+                </div>
+            </td>
+
+            <td>
+                <div class="ms-3">
+                    <p class="fw-bold mb-1"><%= kings_yangon_user.updated_at.strftime("%Y-%m-%d") %></p>
+                </div>
+            </td>
+            <td class="">
+                <%= link_to kings_yangon_user_path(kings_yangon_user) do  %>
+                    <i class="bi bi-eye-fill" style="font-size: 1.2rem"></i>           
+                <% end %>
+            <% if current_user.management? %>
+                    <%= link_to 'Edit', edit_kings_yangon_user_path(id: kings_yangon_user.id), class: 'btn btn-link btn-sm btn-rounded' %>
+                    <%#= link_to 'Create', new_user_path, class: ' btn btn-link btn-sm btn-rouned' %>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" id="brandCategoryModalLabel<%= kings_yangon_user.id %>" data-bs-target="#brandCategoryModal<%= kings_yangon_user.id %>">
+                        Delete
+                    </button>
+                    <!-- Modal -->
+                <div class="modal fade" id="brandCategoryModal<%= kings_yangon_user.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="brandCategoryModalLabel<%= kings_yangon_user.id %>" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center fw-semibold">
+                            Are you sure you want to delete this kings_yangon_user ? <%= kings_yangon_user.id %>
+                        </div>
+                        <div class="modal-footer">
+                            <%= button_to "Delete", kings_yangon_user_path(kings_yangon_user), { class: 'btn btn-danger', method: :delete } %>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+
+            </td>
+        </tr>
+  <% end %>
+
+  </tbody>
+</table>
+<%= render 'shared/paginate_footer', locals: {items: kings_yangon_users} %>
+
+
+

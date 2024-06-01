@@ -32,7 +32,15 @@ module ApplicationHelper
             (request.path.starts_with?(brand_partners_path) || controller_name == 'brand_partners') && action_name != 'show' ? 'active fw-bolder' : ''
         end
 
+        def kings_yangon_users_active
+            (request.path.starts_with?(kings_yangon_users_path) || controller_name == 'kings_yangon_users') && action_name != 'show' ? 'active fw-bolder' : ''
+        end
+
         def item_active
             (request.path.starts_with?(items_path) || controller_name == 'items') && action_name != 'show' ? 'active fw-bolder' : ''
+        end
+
+        def sign_in_page?
+           ( request.path == '/users/sign_in' || request.path == '/kings_yangon_users/sign_in_page') ? 'vh-100' : 'vh-75'
         end
 end

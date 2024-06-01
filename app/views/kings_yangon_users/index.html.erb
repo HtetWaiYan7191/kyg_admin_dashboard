@@ -2,5 +2,5 @@
 <%= render 'shared/create_button', locals: {link: new_kings_yangon_user_path, }%>
 
 <div id="kings_yangon_user">
-    <%= render partial: 'table'%>
+    <%= render partial: 'table', locals: {kings_yangon_users: @kings_yangon_users } %>
 </div>

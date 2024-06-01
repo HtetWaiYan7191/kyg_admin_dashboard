@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :items
   resources :brand_partners
   resources :brand_categories
-  resources :kings_yangon_users, only: [:create] do 
+  resources :kings_yangon_users do 
     collection do 
       get 'sign_up', to: "kings_yangon_users#sign_up"
       post 'sign_in', to: "kings_yangon_users#sign_in"
