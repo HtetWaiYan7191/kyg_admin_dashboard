@@ -1,34 +1,53 @@
-<div id="<%= dom_id item %>">
-  <p>
-    <strong>Name:</strong>
-    <%= item.name %>
-  </p>
+<div class="item-card col-lg-3 rounded  overflow-hidden shadow px-0">
+  <div class="card-carousel-images w-100 " style="height: 200px" >
+      <div id="carouselExample" class="carousel slide w-100 h-100">
+      <div class="carousel-inner h-100">
+            <% if item.images.attached?%>
+              <% item.images.each do |image| %>
+                <div class="carousel-item active h-100 position-relative ">
+                  <%= image_tag(image, alt: "item", class: "d-block w-100 img-fluid h-100 object-fit-cover ") %> 
+                <span class="position-absolute top-0 z-3 end-0  badge text-bg-danger">-<%= number_with_precision(item.discount_percentage, precision: 0) %>% </span>
+                </div>
+              <% end %>
+            <% end %>
+            <div class="carousel-item active h-100 position-relative ">
+                <img src="https://images.unsplash.com/photo-1715073145727-393bbded41d9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100 img-fluid h-100 object-fit-cover "  alt="...">
+                <span class="position-absolute top-0 z-3 end-0  badge text-bg-danger">-<%= number_with_precision(item.discount_percentage, precision: 0) %>% </span>
+            </div>
 
-  <p>
-    <strong>Content:</strong>
-    <%= item.content %>
-  </p>
+             <div class="carousel-item active h-100 ">
+                <img src="https://images.unsplash.com/photo-1715144536848-39f77ae1a53d?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100 img-fluid h-100 object-fit-cover" alt="...">
+            </div>
 
-  <p>
-    <strong>Price:</strong>
-    <%= item.price %>
-  </p>
+            <div class="carousel-item active h-100 ">
+                <img src="https://images.unsplash.com/photo-1716125614302-c26b12135270?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100 img-fluid h-100 object-fit-cover" alt="...">
+            </div>
+      </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class=" bi bi-arrow-left  carousel-card-arrow " aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class=" bi bi-arrow-right  carousel-card-arrow " aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+  </div>
+  <div class="item-card-body mt-2 p-3">
+    <h4 class="text-capitalize fw-semibold"> <%= item.name %></h6>
+    <p class="d-block">
+      <%= item.content %>
+    </p>
+    <p class="d-block">
+      <span><%= item.price unless item.discount_percentage%></span>
+      <span><%= calculate_percentage(item.price, item.discount_percentage) if item.discount_percentage %></span>
+      <span class="text-secondary"><del><%= item.price %></del></span>
+    </p>
+  </div>
 
-  <p>
-    <strong>Discount percentage:</strong>
-    <%= item.discount_percentage %>
-  </p>
-
-  <p>
-    <strong>Brand partner:</strong>
-    <%= item.brand_partner_id %>
-  </p>
-
-  <p>
-    <strong>Images:</strong>
-    <% item.images.each do |image| %>
-      <div><%= link_to image.filename, image %></div>
-    <% end %>
-  </p>
-
+  <div class="item-footer p-3 d-flex justify-content-between">
+    <%= link_to 'Edit', edit_brand_partner_item_path(brand_partner, item), class: ' btn btn-secondary' %>
+    <%= button_to 'Delete', brand_partner_item_path(brand_partner, item), method: :destroy, class: 'btn btn-danger' %>
+  </div>
 </div>
+

@@ -39,4 +39,12 @@ module ApplicationHelper
         def sign_in_page?
            ( request.path == '/users/sign_in' || request.path == '/kings_yangon_users/sign_in_page') ? 'vh-100' : 'vh-75'
         end
+
+        # view file logic helpers 
+
+        def calculate_percentage(value, percent) 
+            percentage_price = (value/100) * percent
+            result = value - percentage_price
+            number_to_currency(result, precision: 2)
+        end
 end

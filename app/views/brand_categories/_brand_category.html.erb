@@ -1,12 +1,28 @@
-<div id="<%= dom_id brand_category %>">
-  <p>
-    <strong>Name:</strong>
-    <%= brand_category.name %>
-  </p>
+<div class="detail-container px-5">
+  <%= render partial: 'shared/detail/header', locals: {title: 'Brand Categories'} %>
+  <%= render 'shared/detail/content_container' do %>
+    <%= render 'shared/detail/content_body_container' do %>
+        <p class="row">
+          <small class="col-lg-4">Name</small>
+          <small class="col-lg-8 fw-bold"><%= @brand_category.name %></small>
+        </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= brand_category.description %>
-  </p>
+        <p class="row">
+          <small class="col-lg-4">Description</small>
+          <small class="col-lg-8 fw-bold"><%= @brand_category.description %></small>
+        </p>
 
+        <p class="row">
+          <small class="col-lg-4">Created At </small>
+          <small class="col-lg-8 fw-bold"><%= @brand_category.created_at.strftime('%Y-%m-%d') %></small>
+        </p>
+
+        <p class="row">
+          <small class="col-lg-4">Updated At</small>
+          <small class="col-lg-8 fw-bold"><%= @brand_category.updated_at.strftime('%Y-%m-%d') %></small>
+        </p>
+    <% end %>
+    <%= render partial: 'shared/detail/footer', locals: {return_path: brand_categories_path , edit_path: edit_brand_category_path(@brand_category) ,
+     destroy_path: brand_category_path(@brand_category), record: @brand_category} %>
+    <% end %>
 </div>

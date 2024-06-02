@@ -1,0 +1,26 @@
+      <div class="detail-footer border-top border-1 px-5 py-3 d-flex justify-content-between">
+        <%= link_to 'return', return_path, class:'btn btn-secondary' %>
+        <div>
+            <%= link_to 'edit', edit_path, class: 'btn btn-success'%>
+            <!-- Button trigger modal -->
+            <%= link_to 'delete', '#', class: 'btn btn-danger', data: { bs_toggle: 'modal', bs_target: '#deleteModal' } %>
+
+          <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Delete <%= record.name %></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <%= render partial: 'shared/modal/modal_body', locals: {record: record}%>
+                </div>
+                <div class="modal-footer">
+                  <%=  link_to 'Close', '#', class:'btn btn-secondary', data: {bs_dismiss: 'modal'}%>
+                  <%= button_to 'Delete', destroy_path, method: :delete, class: 'btn btn-danger'%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

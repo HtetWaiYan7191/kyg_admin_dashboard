@@ -8,6 +8,7 @@ class BrandPartnersController < ApplicationController
 
   # GET /brand_partners/1 or /brand_partners/1.json
   def show
+    @items = @brand_partner.items
   end
 
   # GET /brand_partners/new
@@ -60,7 +61,7 @@ class BrandPartnersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_brand_partner
-      @brand_partner = BrandPartner.find(params[:id])
+      @brand_partner = BrandPartner.includes(:items).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

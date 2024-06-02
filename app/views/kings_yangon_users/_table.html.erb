@@ -40,10 +40,14 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                         <div class="modal-header">
+                            <h5 class="modal-title" id="brandCategoryModal">Delete <%= kings_yangon_user.school_id %></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body text-center fw-semibold">
-                            Are you sure you want to delete this kings_yangon_user ? <%= kings_yangon_user.id %>
+                            <small class="border border-warning rounded p-4 d-flex align-items-center" style="background-color: #FFF8DD">
+                                <i class="bi bi-exclamation-circle me-2 text-warning fs-5"></i>
+                                <p class="mb-0">Are you sure you want to delete <%= kings_yangon_user.school_id %> ?</p>
+                            </small>
                         </div>
                         <div class="modal-footer">
                             <%= button_to "Delete", kings_yangon_user_path(kings_yangon_user), { class: 'btn btn-danger', method: :delete } %>

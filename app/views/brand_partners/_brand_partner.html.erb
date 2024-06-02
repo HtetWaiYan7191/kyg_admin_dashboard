@@ -1,9 +1,7 @@
 <div class="detail-container px-5">
-  <div class="detail-header border-bottom border-1">
-    <h5>Brand Partners</h5>
-  </div>
-  <div class="detail-content border border-1 rounded mt-4">
-      <div class="detail-body px-5 pt-5 pb-3">
+  <%= render partial: 'shared/detail/header', locals: {title: 'Brand Partners'} %>
+  <%= render  'shared/detail/content_container' do %>
+      <%= render 'shared/detail/content_body_container' do %>
         <p class="row">
           <small class="col-lg-4">Name</small>
           <small class="col-lg-8 fw-bold"><%= @brand_partner.name %></small>
@@ -23,35 +21,10 @@
           <small class="col-lg-4">Updated At</small>
           <small class="col-lg-8 fw-bold"><%= @brand_partner.updated_at.strftime('%Y-%m-%d') %></small>
         </p>
-    </div>
-      <div class="detail-footer border-top border-1 px-5 py-3 d-flex justify-content-between">
-        <%= link_to 'return', brand_partners_path, class:'btn btn-secondary' %>
-        <div>
-          <%= link_to 'edit', edit_brand_partner_path(@brand_partner), class: 'btn btn-success'%>
-          <!-- Button trigger modal -->
-          <%= link_to 'delete', '#', class: 'btn btn-danger', data: { bs_toggle: 'modal', bs_target: '#deleteModal' } %>
-
-  <!-- Modal -->
-  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Delete <%= @brand_partner.name %></h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body p-4">
-          <small class="border border-warning p-4 d-block" style="background-color: #FFF8DD">Are you sure you want to delete <%= @brand_partner.name %> ? </small>
-        </div>
-        <div class="modal-footer">
-          <%=  link_to 'Close', '#', class:'btn btn-secondary', data: {bs_dismiss: 'modal'}%>
-          <%= button_to 'Delete', brand_partner_path(@brand_partner), method: :delete, class: 'btn btn-danger'%>
-        </div>
-      </div>
-    </div>
-  </div>
-        </div>
-      </div>
-  </div>
+      <% end %>
+    <%= render partial: 'shared/detail/footer', locals: {return_path: brand_partners_path , edit_path: edit_brand_partner_path(@brand_partner) ,
+     destroy_path: brand_partner_path(@brand_partner), record: @brand_partner} %>
+  <% end %>
 </div>
 
 

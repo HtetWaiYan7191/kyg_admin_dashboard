@@ -3,13 +3,14 @@
     <tr>
       <th class="fw-bold">Name</th>
       <th class="fw-bold">Category</th>
+      <th class="fw-bold">Items</th>
       <th class="fw-bold">Actions</th>
     </tr>
   </thead>
   <tbody>
   <% @brand_partners&.each do |brand_partner| %>
         <tr>
- <td>
+            <td>
                 <div class="d-flex align-items-center">
                 <% if brand_partner.image.present? %>
                     <%= image_tag brand_partner.image, alt: 'brand_partner', width: 45, height: 45, class: 'rounded-circle'%>
@@ -21,6 +22,9 @@
             </td>
             <td>
                 <p class="fw-normal mb-1"><%= brand_partner.brand_category.name %></p>
+            </td>
+            <td>
+                <p class="fw-normal mb-1"><%= brand_partner.items.count %></p>
             </td>
             <td class="">
                 <%= link_to brand_partner_path(brand_partner) do  %>
@@ -37,10 +41,14 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                         <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete <%= brand_partner.name %></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body text-center fw-semibold">
-                            Are you sure you want to delete this brand_partner ? <%= brand_partner.id %>
+                            <small class="border border-warning rounded p-4 d-flex align-items-center" style="background-color: #FFF8DD">
+                                <i class="bi bi-exclamation-circle me-2 text-warning fs-5"></i>
+                                <p class="mb-0">Are you sure you want to delete <%= brand_partner.name %> ?</p>
+                            </small>
                         </div>
                         <div class="modal-footer">
                             <%= button_to "Delete", brand_partner_path(brand_partner), { class: 'btn btn-danger', method: :delete } %>
