@@ -29,9 +29,6 @@
                 </div>
             </td>
             <td class="">
-                <%= link_to kings_yangon_user_path(kings_yangon_user) do  %>
-                    <i class="bi bi-eye-fill" style="font-size: 1.2rem"></i>           
-                <% end %>
             <% if current_user.management? %>
                     <%= link_to 'Edit', edit_kings_yangon_user_path(id: kings_yangon_user.id), class: 'btn btn-link btn-sm btn-rounded' %>
                     <%#= link_to 'Create', new_user_path, class: ' btn btn-link btn-sm btn-rouned' %>
