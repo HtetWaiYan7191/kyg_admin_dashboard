@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :items
-  resources :brand_partners
-  resources :brand_categories
+  resources :brand_partners do 
+    resources :items
+  end
+  resources :brand_categories 
   resources :kings_yangon_users do 
     collection do 
       get 'sign_up', to: "kings_yangon_users#sign_up"
