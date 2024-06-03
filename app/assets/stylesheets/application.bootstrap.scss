@@ -138,6 +138,7 @@ body {
 }
 
 .carousel-arrow {
+  color: black!important;
   font-size: 3rem;
   opacity: 80%;
 }
@@ -195,5 +196,10 @@ body {
 .welcome-container {
   position: relative;
   z-index: 2;
+}
+
+.item-card-body {
+  height: fit-content;
+  min-height: 120px;
 }
 

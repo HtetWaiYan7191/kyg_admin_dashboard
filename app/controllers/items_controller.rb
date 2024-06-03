@@ -1,70 +1,63 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: %i[ show edit update destroy ]
-  before_action :check_management_access
-  # GET /items or /items.json
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+
   def index
-    @items = Item.all
+    # Retrieve all items for a specific brand partner
+    @brand_partner = BrandPartner.find(params[:brand_partner_id])
+    @items = @brand_partner.items
   end
 
-  # GET /items/1 or /items/1.json
   def show
+    # Retrieve a specific item for a specific brand partner
   end
 
-  # GET /items/new
   def new
-    @item = Item.new
+    # Create a new item for a specific brand partner
+    @brand_partner = BrandPartner.find(params[:brand_partner_id])
+    @item = @brand_partner.items.new
   end
 
-  # GET /items/1/edit
-  def edit
-  end
-
-  # POST /items or /items.json
   def create
-    @item = Item.new(item_params)
+    # Create a new item for a specific brand partner
+    @brand_partner = BrandPartner.find(params[:brand_partner_id])
+    @item = @brand_partner.items.new(item_params)
 
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to item_url(@item), notice: "Item was successfully created." }
-        format.json { render :show, status: :created, location: @item }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
+    if @item.save
+      redirect_to brand_partner_path(@brand_partner), notice: 'Item was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /items/1 or /items/1.json
+  def edit
+    # Edit an existing item for a specific brand partner
+  end
+
   def update
-    respond_to do |format|
-      if @item.update(item_params)
-        format.html { redirect_to item_url(@item), notice: "Item was successfully updated." }
-        format.json { render :show, status: :ok, location: @item }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
+    # Update an existing item for a specific brand partner
+
+    if @item.update(item_params)
+      redirect_to brand_partner_path(@brand_partner), notice: 'Item was successfully updated.'
+    else
+      render :edit
     end
   end
 
-  # DELETE /items/1 or /items/1.json
   def destroy
-    @item.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to items_url, notice: "Item was successfully destroyed." }
-      format.json { head :no_content }
+    # Delete an existing item for a specific brand partner
+    if @item.destroy
+      redirect_to brand_partner_path(@brand_partner), notice: 'Item was successfully destroyed.'
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_item
-      @item = Item.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def item_params
-      params.require(:item).permit(:name, :content, :price, :discount_percentage, :brand_partner_id, images: [])
-    end
+  def set_item
+    @brand_partner = BrandPartner.find(params[:brand_partner_id])
+    @item = @brand_partner.items.find(params[:id])
+  end
+
+  def item_params
+    params.require(:item).permit(:name, :description, :price, :content, :discount_percentage, :brand_partner_id, images: [])
+  end
 end
