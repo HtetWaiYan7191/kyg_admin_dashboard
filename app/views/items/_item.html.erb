@@ -1,53 +1,65 @@
-<div class="item-card col-lg-3 rounded  overflow-hidden shadow px-0">
+<div class="item-card col me-3 rounded  overflow-hidden  shadow ">
   <div class="card-carousel-images w-100 " style="height: 200px" >
-      <div id="carouselExample" class="carousel slide w-100 h-100">
+      <div id="carouselExample<%=item.id%>" class="carousel slide w-100 h-100">
       <div class="carousel-inner h-100">
-            <% if item.images.attached?%>
+            <% if item.images.attached? %>
               <% item.images.each do |image| %>
                 <div class="carousel-item active h-100 position-relative ">
                   <%= image_tag(image, alt: "item", class: "d-block w-100 img-fluid h-100 object-fit-cover ") %> 
-                <span class="position-absolute top-0 z-3 end-0  badge text-bg-danger">-<%= number_with_precision(item.discount_percentage, precision: 0) %>% </span>
+                  <% if item.discount_percentage %>
+                    <span class="position-absolute top-0 z-3 end-0  badge text-bg-danger">-<%= number_with_precision(item.discount_percentage, precision: 0) %>% </span>
+                  <% end %>
                 </div>
               <% end %>
             <% end %>
-            <div class="carousel-item active h-100 position-relative ">
-                <img src="https://images.unsplash.com/photo-1715073145727-393bbded41d9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100 img-fluid h-100 object-fit-cover "  alt="...">
-                <span class="position-absolute top-0 z-3 end-0  badge text-bg-danger">-<%= number_with_precision(item.discount_percentage, precision: 0) %>% </span>
-            </div>
-
-             <div class="carousel-item active h-100 ">
-                <img src="https://images.unsplash.com/photo-1715144536848-39f77ae1a53d?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100 img-fluid h-100 object-fit-cover" alt="...">
-            </div>
-
-            <div class="carousel-item active h-100 ">
-                <img src="https://images.unsplash.com/photo-1716125614302-c26b12135270?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100 img-fluid h-100 object-fit-cover" alt="...">
-            </div>
       </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span class=" bi bi-arrow-left  carousel-card-arrow " aria-hidden="true"></span>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample<%=item.id%>" data-bs-slide="prev">
+            <span class=" bi bi-arrow-left  carousel-card-arrow text-white bg-danger px-2 " aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span class=" bi bi-arrow-right  carousel-card-arrow " aria-hidden="true"></span>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample<%=item.id%>" data-bs-slide="next">
+            <span class=" bi bi-arrow-right  carousel-card-arrow  text-white bg-danger px-2" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
   </div>
   <div class="item-card-body mt-2 p-3">
     <h4 class="text-capitalize fw-semibold"> <%= item.name %></h6>
-    <p class="d-block">
+    <p class="d-block mb-0">
       <%= item.content %>
     </p>
-    <p class="d-block">
+    <p class="d-block mb-0">
       <span><%= item.price unless item.discount_percentage%></span>
       <span><%= calculate_percentage(item.price, item.discount_percentage) if item.discount_percentage %></span>
-      <span class="text-secondary"><del><%= item.price %></del></span>
+      <% if item.discount_percentage %>
+        <span class="text-secondary"><del><%= item.price %></del></span>
+      <% end %>
     </p>
   </div>
 
   <div class="item-footer p-3 d-flex justify-content-between">
-    <%= link_to 'Edit', edit_brand_partner_item_path(brand_partner, item), class: ' btn btn-secondary' %>
-    <%= button_to 'Delete', brand_partner_item_path(brand_partner, item), method: :destroy, class: 'btn btn-danger' %>
+    <%= link_to 'Edit', edit_brand_partner_item_path(@brand_partner, item), class: ' btn btn-secondary' %>
+    <%= link_to 'delete', '#', class: 'btn btn-danger', data: { bs_toggle: 'modal', bs_target: "#deleteItemModal#{item.id}" } %>
+
+    <%# delete modal  %>
+            <div class="modal fade" id="deleteItemModal<%= item.id %>" tabindex="-1" aria-labelledby="deleteItemModal<%= item.id %>" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="deleteItemModal<%= item.id %>">Delete <%= item.name %></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <%= render partial: 'shared/modal/modal_body', locals: {record: item}%>
+                </div>
+                <div class="modal-footer">
+                  <%=  link_to 'Close', '#', class:'btn btn-secondary', data: {bs_dismiss: 'modal'}%>
+                  <%= button_to 'Delete', brand_partner_item_path(@brand_partner, item), method: :delete, class: 'btn btn-danger'%>
+                </div>
+              </div>
+            </div>
+          </div>
+    <%#= button_to 'Delete', brand_partner_item_path(@brand_partner, item), method: :destroy, class: 'btn btn-danger' %>
   </div>
 </div>
 
