@@ -47,4 +47,5 @@ module ApplicationHelper
             result = value - percentage_price
             number_to_currency(result, precision: 2)
         end
+
 end
