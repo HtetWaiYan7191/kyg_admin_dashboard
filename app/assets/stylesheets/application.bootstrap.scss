@@ -23,7 +23,6 @@ $theme_colors: (
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  overflow: hidden;
   text-decoration: none;
   list-style: none;
 }
@@ -192,7 +191,6 @@ $theme_colors: (
 
 .welcome-section {
   position: relative;
-  overflow: hidden;
 }
 
 .welcome-section::before {

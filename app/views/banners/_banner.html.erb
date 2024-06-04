@@ -1,0 +1,14 @@
+<div id="<%= dom_id banner %>">
+  <p>
+    <strong>Caption:</strong>
+    <%= banner.caption %>
+  </p>
+
+  <% if banner.image.attached? %>
+    <p>banner image present</p>
+    
+      <%= image_tag banner.image, class: '', size: '40x40'%>
+
+  <% end %>
+
+</div>

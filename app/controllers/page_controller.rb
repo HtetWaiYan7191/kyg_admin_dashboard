@@ -6,6 +6,7 @@ class PageController < ApplicationController
   end
 
   def landing
+    @banners = Banner.all
     @brand_categories = BrandCategory.includes(:brand_partners).all
   end
 end

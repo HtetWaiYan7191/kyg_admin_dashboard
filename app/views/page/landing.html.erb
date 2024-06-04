@@ -1,4 +1,4 @@
-<%= render 'page/landing/banner_carousel' %>
+<%= render partial: 'page/landing/banner_carousel', locals: {banners: @banners} %>
 <section class="partner-section " >
     <div class="partner-container row gap-x-10 ">
         <%# <h2 class="text-center text-pink fw-semibold custom-font">Our Partners</h2> %>
@@ -38,6 +38,4 @@
     </div>
 </section>
 <%= render 'page/landing/footer' %>
-
-
 <%= button_to "Logout", log_out_kings_yangon_users_path, method: :delete %>

@@ -22,11 +22,14 @@
           </div>
         <% end %> 
 
-        <div class="d-flex justify-content-end">
-          <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+        <div class="d-flex justify-content-between">
+          <%= link_to  root_path do %>
+            <i class="bi bi-arrow-left text-primary"></i>   
+            <span>Back</span>
+          <% end %>
+          <%= link_to "Forgot your password?", new_password_path(resource_name) %>
         </div>
     </div>
-
 
 <% end %>
 
