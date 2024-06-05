@@ -5,11 +5,16 @@
     <div class="my-3">
         <%= render 'shared/create_button', locals: {link: new_brand_partner_item_path(@brand_partner)} %>
     </div>
-    <ul class=" mt-4 row ">
-        <% @items&.each do |item| %>
-            <%= render partial: 'items/item', locals: {item: item, brand_partner: @brand_partner}%>
-        <% end %>
-    </ul>
+    <%  unless @items.empty? %>
+        <ul class=" mt-4 row ">
+            <% @items&.each do |item| %>
+                <%= render partial: 'items/item', locals: {item: item, brand_partner: @brand_partner}%>
+            <% end %>
+        </ul>
+    <% else %>
+        <%= render 'shared/no_data' %>
+    <% end %>
+
 </div>
 
 
