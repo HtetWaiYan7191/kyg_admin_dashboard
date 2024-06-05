@@ -52,4 +52,8 @@ module ApplicationHelper
             number_to_currency(result, precision: 2)
         end
 
+        def format_date(date)
+            date.strftime('%Y-%m-%d')
+        end
+
 end

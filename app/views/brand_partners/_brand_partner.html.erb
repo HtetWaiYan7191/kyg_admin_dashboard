@@ -23,7 +23,7 @@
         </p>
       <% end %>
     <%= render partial: 'shared/detail/footer', locals: {return_path: brand_partners_path , edit_path: edit_brand_partner_path(@brand_partner) ,
-     destroy_path: brand_partner_path(@brand_partner), record: @brand_partner} %>
+     destroy_path: brand_partner_path(@brand_partner), record: @brand_partner.name} %>
   <% end %>
 </div>
 

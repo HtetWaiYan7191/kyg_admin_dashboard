@@ -1,14 +1,32 @@
-<div id="<%= dom_id banner %>">
-  <p>
-    <strong>Caption:</strong>
-    <%= banner.caption %>
-  </p>
+<div class="detail-container px-5">
+<%= render partial: 'shared/detail/header', locals: {title: 'Banner'} %>
+  <%= render 'shared/detail/content_container' do %>
+    <%= render 'shared/detail/content_body_container' do %>
+    <% if @banner.image.attached? %>
+      <p class="row">
+        <small class="col-lg-3">Banner Image</small>
+        <small class="col-lg-9 fw-bold">
+            <%= image_tag @banner.image, style: 'width: 100px; height: 100px; object-fit: cover;', alt: 'banner' %>
+        </small>
+      </p>
+    <% end %>
 
-  <% if banner.image.attached? %>
-    <p>banner image present</p>
-    
-      <%= image_tag banner.image, class: '', size: '40x40'%>
+      <p class="row">
+        <small class="col-lg-3">Caption</small>
+        <small class="col-lg-9 fw-bold"><%= @banner.caption %></small>
+      </p>
 
+      <p class="row">
+        <small class="col-lg-3">Created At</small>
+        <small class="col-lg-9 fw-bold"><%= format_date(@banner.created_at) %></small>
+      </p>
+
+      <p class="row">
+        <small class="col-lg-3">Updated At</small>
+        <small class="col-lg-9 fw-bold"><%= format_date(@banner.updated_at) %></small>
+      </p>
+    <% end %>
+    <%= render partial: 'shared/detail/footer', locals: {return_path: banners_path, edit_path: edit_banner_path(@banner),
+    destroy_path: banner_path(@banner), record: @banner.caption }%>
   <% end %>
-
 </div>
