@@ -1,3 +1,4 @@
+<%= render 'shared/navbar' %>
 <%= render partial: 'page/landing/banner_carousel', locals: {banners: @banners} %>
 <section class="partner-section " >
     <div class="partner-container row gap-x-10 ">
@@ -38,4 +39,3 @@
     </div>
 </section>
 <%= render 'page/landing/footer' %>
-<%= button_to "Logout", log_out_kings_yangon_users_path, method: :delete %>
