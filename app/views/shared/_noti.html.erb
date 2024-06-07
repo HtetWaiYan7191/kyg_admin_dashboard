@@ -1,14 +1,41 @@
-<% if flash[:notice] %>
-       <div data-controller = "notice" class="alert alert-success alert-dismissible fade show  " role="alert">
-            <strong><%= flash[:notice] %> </strong> 
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+<% if flash[:notice]%>
+    <div 
+        class="alert alert-success d-flex align-items-center fade show  "
+        data-controller="notification"
+        data-notification-delay-value="2000"
+        class="transition transform duration-1000 hidden"
+        data-transition-enter-from="opacity-0 translate-x-6"
+        data-transition-enter-to="opacity-100 translate-x-0"
+        data-transition-leave-from="opacity-100 translate-x-0"
+        data-transition-leave-to="opacity-0 translate-x-6"
+       
+    >              
+        <i class="bi bi-check-circle-fill me-3 text-light-green"></i>
+        <strong class="text-black"><%= flash[:notice] %></strong> 
+    <button data-action="notification#hide" class="ms-auto">
+        <i class="bi bi-x-circle border-none"></i>
+    </button>
+    </div>
 <% end %>
 
 
+
 <% if flash[:alert] %>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong><%= flash[:alert] %></strong> 
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div 
+        class="alert alert-danger d-flex align-items-center fade show  "
+        data-controller="notification"
+        data-notification-delay-value="2000"
+        class="transition transform duration-1000 hidden"
+        data-transition-enter-from="opacity-0 translate-x-6"
+        data-transition-enter-to="opacity-100 translate-x-0"
+        data-transition-leave-from="opacity-100 translate-x-0"
+        data-transition-leave-to="opacity-0 translate-x-6"
+       
+    >              
+        <i class="bi bi-check-circle-fill me-3 text-light-green"></i>
+        <strong class="text-black"><%= flash[:alert] %></strong> 
+    <button data-action="notification#hide" class="ms-auto">
+        <i class="bi bi-x-circle border-none"></i>
+    </button>
     </div>
 <% end %>
