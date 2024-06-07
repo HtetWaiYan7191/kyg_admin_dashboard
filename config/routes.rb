@@ -51,7 +51,7 @@ Rails.application.routes.draw do
   end
 
   authenticated :kings_yangon_user do 
-    root to: 'page#welcome', as: :welcome_page
+    root to: 'page#landing', as: :landing_page
   end
 
   unauthenticated do

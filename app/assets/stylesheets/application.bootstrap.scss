@@ -17,7 +17,7 @@ $theme_colors: (
 );
  
 @import 'bootstrap/scss/bootstrap';
-
+@import url('https://cdn.jsdelivr.net/gh/alumuko/vanilla-datetimerange-picker@latest/dist/vanilla-datetimerange-picker.css');
 
 * {
   box-sizing: border-box;
@@ -38,6 +38,10 @@ $theme_colors: (
   .bg-warning-yellow{
      background-color: #FFC700 !important;
   }
+
+  .hidden {
+    display: none;
+  } 
 
   .custom-font {
     font-family: 'BmDarius' !important;

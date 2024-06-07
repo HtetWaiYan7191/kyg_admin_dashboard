@@ -49,7 +49,7 @@ class KingsYangonUsersController < ApplicationController
     @user = KingsYangonUser.find_by(school_id: params[:school_id])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id 
-      redirect_to landing_page_index_path, notice: ' Welcome to our page'
+      redirect_to landing_page_index_path
     else  
       redirect_to sign_in_page_kings_yangon_users_path, alert: 'Invalid School ID or password'
     end
@@ -57,7 +57,7 @@ class KingsYangonUsersController < ApplicationController
 
   def log_out
     session[:user_id] = nil
-    redirect_to sign_in_page_kings_yangon_users_path, notice: 'Signed out successfully'
+    redirect_to root_path, notice: 'Signed out successfully'
   end
 
   private 
