@@ -7,4 +7,7 @@ class BrandPartner < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 200 }
   validates :brand_category, presence: true
-end
+  validates :image, attached: true, content_type: { 
+    in: ['image/png', 'image/jpg', 'image/jpeg'],
+    message: 'must be a PNG or JPG image'
+  }end
