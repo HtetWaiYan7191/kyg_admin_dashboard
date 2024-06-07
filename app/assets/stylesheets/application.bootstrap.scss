@@ -15,6 +15,10 @@ $theme_colors: (
   "light-blue": $blue,
   "purple": $purple,
 );
+
+button {
+  all: unset;
+}
  
 @import 'bootstrap/scss/bootstrap';
 @import url('https://cdn.jsdelivr.net/gh/alumuko/vanilla-datetimerange-picker@latest/dist/vanilla-datetimerange-picker.css');

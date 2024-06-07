@@ -7,6 +7,9 @@ import { application } from "./application";
 import PasswordVisibility from "stimulus-password-visibility";
 application.register("password-visibility", PasswordVisibility);
 
+import Notification from '@stimulus-components/notification'
+application.register('notification', Notification)
+
 import HelloController from "./hello_controller";
 application.register("hello", HelloController);
 

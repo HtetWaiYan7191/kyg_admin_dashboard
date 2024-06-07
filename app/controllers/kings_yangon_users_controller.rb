@@ -36,7 +36,9 @@ class KingsYangonUsersController < ApplicationController
   end
 
   def destroy
-
+    if @kings_yangon_user.destroy 
+      redirect_to kings_yangon_users_path, notice: 'User deleted successfully'
+    end
   end
 
   def sign_up
