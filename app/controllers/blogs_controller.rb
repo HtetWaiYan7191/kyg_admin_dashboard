@@ -4,7 +4,14 @@ class BlogsController < ApplicationController
 
   # GET /blogs or /blogs.json
   def index
-    @blogs = Blog.all.page(params[:page]).per(4)
+    if params[:daterange]
+      daterange = params[:daterange]
+      start_date = Date.strptime(daterange.split(" - ").first, '%m/%d/%Y')
+      end_date = Date.strptime(daterange.split(" - ").second, '%m/%d/%Y')
+      @blogs = Blog.all.where(delete_flg: false, created_at: start_date.beginning_of_day..end_date.beginning_of_day ).page(params[:page]).per(4)
+    else  
+      @blogs = Blog.all.page(params[:page]).per(4)
+    end
   end
 
   def filter_by_date

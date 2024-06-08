@@ -10,6 +10,7 @@
     "autoprefixer": "^10.4.19",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "css-loader": "^7.1.2",
     "daterangepicker": "^3.1.0",
     "esbuild": "^0.20.2",
     "flatpickr": "^4.6.13",
@@ -20,6 +21,7 @@
     "postcss-cli": "^11.0.0",
     "sass": "^1.75.0",
     "stimulus-password-visibility": "^2.1.1",
+    "style-loader": "^4.0.0",
     "toastr": "^2.1.4",
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4"

@@ -1,5 +1,5 @@
 
-<div class="my-4" >
+<div class="my-4 d-none" >
     <%= form_with url: filter_by_date_blogs_path, method: :get do |f|  %>
         <div class="d-flex align-items-center flex-wrap column-gap-2">
             <div class="d-flex  column-gap-2">
@@ -16,6 +16,21 @@
             <div class="search-btn-box  my-2">
                  <%= f.submit 'Search', class:'btn btn-primary' %>
             </div>
+
+    <% end %>
+</div>
+
+<div class="my-4">
+    <%= form_with url: blogs_path,  method: :get do |f| %>
+        <div class="d-flex align-items-center gap-3">
+            <div>
+                <%= f.text_field :daterange, value: params[:daterange], name: 'daterange', data: { controller: 'daterangepicker' }, size: 24, style: 'text-align:center', class: 'pe-auto' %>
+            </div>
+            <div>
+                <%= f.submit 'Search', class:'btn btn-primary' %>
+            </div>
+        </div>
+
 
     <% end %>
 </div>

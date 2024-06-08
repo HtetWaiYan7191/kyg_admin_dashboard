@@ -1,12 +1,7 @@
 @import 'bootstrap-icons/font/bootstrap-icons';
 @import 'custom_fonts';
 @import 'variables';
-
-$pink: #C2356F;
-$green: #2EBCA0;
-$darkGrey: #252F38;
-$blue: #58C6E6;
-$purple: #65306D;
+@import url('https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css');
 
 $theme_colors: (
   "pink": $pink,

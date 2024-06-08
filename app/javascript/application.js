@@ -3,4 +3,12 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 import * as bootstrap from "bootstrap"
 
+// Import jQuery and Moment.js
+import $ from 'jquery'
+import moment from 'moment'
+window.$ = $
+window.jQuery = $
 
+// Import Date Range Picker and its CSS
+import 'daterangepicker'
+import 'daterangepicker/daterangepicker.css'

@@ -2,22 +2,16 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application";
+import { application } from "./application"
 
-import PasswordVisibility from "stimulus-password-visibility";
-application.register("password-visibility", PasswordVisibility);
+import DaterangepickerController from "./daterangepicker_controller"
+application.register("daterangepicker", DaterangepickerController)
 
-import Notification from '@stimulus-components/notification'
-application.register('notification', Notification)
+import HelloController from "./hello_controller"
+application.register("hello", HelloController)
 
-import HelloController from "./hello_controller";
-application.register("hello", HelloController);
+import NotiController from "./noti_controller"
+application.register("noti", NotiController)
 
-import NotiController from "./noti_controller";
-application.register("noti", NotiController);
-
-import TestController from './test_controller';
-application.register("test", TestController);
-
-
-
+import TestController from "./test_controller"
+application.register("test", TestController)
