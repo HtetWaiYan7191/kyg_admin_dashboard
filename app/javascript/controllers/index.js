@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import Notification from '@stimulus-components/notification'
+application.register('notification', Notification)
+
 import DaterangepickerController from "./daterangepicker_controller"
 application.register("daterangepicker", DaterangepickerController)
 
