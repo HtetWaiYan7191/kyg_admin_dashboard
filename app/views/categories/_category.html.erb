@@ -1,17 +1,33 @@
-<div id="<%= dom_id category %>">
-  <p>
-    <strong>Name:</strong>
-    <%= category.name %>
-  </p>
+<div class="detail-container px-5">
+  <%= render partial: 'shared/detail/header', locals: {title: 'Category'} %>
+  <%= render  'shared/detail/content_container' do %>
+      <%= render 'shared/detail/content_body_container' do %>
+        <p class="row" >
+          <small class="col-lg-4">Name</small>
+          <small class="col-lg-8 fw-bold"><%= @category.name %></small>
+        </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= category.description %>
-  </p>
+        <p class="row" >
+          <small class="col-lg-4">Icon</small>
+          <small class="col-lg-8 fw-bold"><%= @category.icon %></small>
+        </p>
 
-  <p>
-    <strong>Icon:</strong>
-    <%= category.icon %>
-  </p>
+        <p class="row">
+          <small class="col-lg-4">Description</small>
+          <small class="col-lg-8 fw-bold"><%= @category.description %></small>
+        </p>
 
+        <p class="row">
+          <small class="col-lg-4">Created At</small>
+          <small class="col-lg-8 fw-bold"><%= format_date(@category.created_at) %></small>
+        </p>
+
+        <p class="row">
+          <small class="col-lg-4">Updated At</small>
+          <small class="col-lg-8 fw-bold"><%= format_date(@category.updated_at) %></small>
+        </p>
+      <% end %>
+    <%= render partial: 'shared/detail/footer', locals: {return_path: categories_path , edit_path: edit_category_path(@category) ,
+     destroy_path: category_path(@category), record: @category.name} %>
+  <% end %>
 </div>
