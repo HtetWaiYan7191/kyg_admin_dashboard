@@ -4,11 +4,11 @@
 
 import { application } from "./application"
 
-import PasswordVisibility from "stimulus-password-visibility";
-application.register("password-visibility", PasswordVisibility);
-
 import Notification from '@stimulus-components/notification'
 application.register('notification', Notification)
+
+import PasswordVisibility from "stimulus-password-visibility";
+application.register("password-visibility", PasswordVisibility);
 
 import DaterangepickerController from "./daterangepicker_controller"
 application.register("daterangepicker", DaterangepickerController)
@@ -18,6 +18,9 @@ application.register("hello", HelloController)
 
 import NotiController from "./noti_controller"
 application.register("noti", NotiController)
+
+// import SwiperController from "./swiper_controller"
+// application.register("swiper", SwiperController)
 
 import TestController from "./test_controller"
 application.register("test", TestController)

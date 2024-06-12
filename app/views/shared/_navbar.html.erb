@@ -11,9 +11,11 @@
         <a class="nav-link active text-pink fw-semibold" aria-current="page" href="#">Home</a>
         <a class="nav-link text-pink fw-semibold" href="#">Features</a>
         <a class="nav-link text-pink fw-semibold" href="#">Pricing</a>
+        <%= button_to 'Log Out', log_out_kings_yangon_users_path, method: :delete , class: 'nav-link text-pink fw-semibold'%>
+
       </div>
     </div>
-      <div class="logout-btn-container ms-auto">
+      <div class="logout-btn-container ms-auto d-none d-md-block">
         <%= button_to 'Log Out', log_out_kings_yangon_users_path, method: :delete , class: '  btn btn-danger px-3 fw-semibold text-white py-1 '%>
       </div>
   </div>

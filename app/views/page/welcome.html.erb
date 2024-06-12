@@ -1,10 +1,16 @@
 <section class="welcome-section">
-    <div class="container-fluid welcome-container w-100 vh-100 d-flex flex-column align-items-center justify-content-center">
-        <h2 class="text-white custom-font">Welcome To Kings Yangon Website</h2>
-        <span class="text-white custom-font">Kings Education For Life </span>
-        <div class="sign-in-link-container mt-4">
-            <%= link_to "Sign in Admin", new_user_session_path, class:'btn btn-primary ' %>
-            <%= link_to "Sign in Parent", sign_in_page_kings_yangon_users_path, class:'btn btn-primary' %>
+    <div class="container-fluid welcome-container w-100 vh-100 d-flex flex-column  ">
+        <div class="welcome-text-container flex-fill d-flex justify-content-center flex-column align-items-center ">
+            <h2 class="text-white custom-font text-center fs-3 fs-md-4 fs-lg-3">Welcome To Kings Yangon</h2>
+            <span class="text-white custom-font text-center d-block fs-lg-4">Kings Education For Life </span>
+            <div class="sign-in-link-container d-none d-md-flex justify-content-center gap-4 mt-5">
+                <%= link_to "Admin", new_user_session_path, class:'welcome-sign-in-btn bg-pink-opacity custom-font' %>
+                <%= link_to "Parent", sign_in_page_kings_yangon_users_path, class:'welcome-sign-in-btn border border-white custom-font' %>
+            </div>
+        </div>
+        <div class="sign-in-link-container d-flex d-md-none justify-content-center gap-4 pb-5">
+            <%= link_to "Admin", new_user_session_path, class:'welcome-sign-in-btn bg-pink-opacity custom-font' %>
+            <%= link_to "Parent", sign_in_page_kings_yangon_users_path, class:'welcome-sign-in-btn border border-white custom-font' %>
         </div>
     </div>
 </section>
