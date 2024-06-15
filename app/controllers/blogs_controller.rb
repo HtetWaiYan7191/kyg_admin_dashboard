@@ -14,17 +14,17 @@ class BlogsController < ApplicationController
     end
   end
 
-  def filter_by_date
-    if params[:from_date].present? && params[:to_date].present?
-      from_date = Date.parse(params[:from_date])
-      to_date = Date.parse(params[:to_date])
-      @blogs = Blog.all.where(delete_flg: false, created_at: from_date.beginning_of_day..to_date.beginning_of_day ).page(params[:page]).per(4)
-      render :index
-    else  
-      @blogs = Blog.all.where(delete_flg: false).page(params[:page]).per(4)
-      render :index
-    end
-  end
+  # def filter_by_date
+  #   if params[:from_date].present? && params[:to_date].present?
+  #     from_date = Date.parse(params[:from_date])
+  #     to_date = Date.parse(params[:to_date])
+  #     @blogs = Blog.all.where(delete_flg: false, created_at: from_date.beginning_of_day..to_date.beginning_of_day ).page(params[:page]).per(4)
+  #     render :index
+  #   else  
+  #     @blogs = Blog.all.where(delete_flg: false).page(params[:page]).per(4)
+  #     render :index
+  #   end
+  # end
   # GET /blogs/1 or /blogs/1.json
   def show
   end
@@ -58,6 +58,19 @@ class BlogsController < ApplicationController
   # PATCH/PUT /blogs/1 or /blogs/1.json
   def update
     respond_to do |format|
+      if params[:remove_images].present?
+        params[:remove_images].each do |image_id|
+          @blog.images.find(image_id).purge
+        end
+      end
+  
+      if params[:remove_videos].present?
+        params[:remove_videos].each do |video_id|
+          @blog.videos.find(video_id).purge
+        end
+      end
+  
+  
       if @blog.update(blog_params)
         format.html { redirect_to blog_url(@blog), notice: "Blog was successfully updated." }
         format.json { render :show, status: :ok, location: @blog }

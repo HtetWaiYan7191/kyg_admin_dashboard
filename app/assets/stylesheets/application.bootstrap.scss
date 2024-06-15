@@ -28,6 +28,8 @@ $theme_colors: (
   height: 300px;
 }
 
+
+
 button {
   all: unset;
 }
@@ -156,6 +158,10 @@ button {
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.6s ease;
+}
+
+.paginate-active {
+  background-color: #3b71ca;
 }
 
 .active, .dot:hover {
