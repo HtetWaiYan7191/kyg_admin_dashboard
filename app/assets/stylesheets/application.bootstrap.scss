@@ -231,11 +231,68 @@ button {
   border-radius: 3.5rem;
   font-size: 16px;
   padding: 0.75rem 3.4rem;
+  transition: all 0.4s ease;
+}
+
+.welcome-sign-in-btn:hover {
+  background: rgba($pink, 1);
+  transition: all 0.4s ease;
 }
 
 .bg-pink-opacity {
-  background: rgba($pink, 0.5)
+  background: rgba($pink, 0.5);
+  transition: all 0.4s ease;
 }
+
+.bg-pink-opacity:hover {
+  transition: all 0.4s ease;
+  background: rgba($pink, 1);
+}
+
+.login-input {
+  padding: 0.75rem 1.4rem;
+  border-radius: 3.5rem;
+  border: 1px solid whitesmoke;
+  background-color: transparent;
+  outline: none;
+  color: whitesmoke;
+}
+
+.kyg-auth-section {
+  position: relative;
+}
+
+.kyg-auth-container {
+  z-index: 3;
+  position: relative;
+}
+
+.kyg-auth-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/assets/hero-igcse.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(5px); /* Adjust the blur level here */
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 0px 50vw inset;
+  z-index: 1;
+}
+
+// Remove auto background color for input
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+    box-shadow: 0 0 0 1000px transparent inset !important;
+    -webkit-text-fill-color: black !important;
+    caret-color: black !important;
+}
+
 
 @media screen and (min-width: 768px) {
   .brand-image {
