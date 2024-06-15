@@ -33,13 +33,25 @@
         <%= form.text_field :title, class: 'form-control' %>
       </div>
 
+  <div class="mb-4">
+    <div>
+      <%= render partial: 'shared/stimulus_carousel', locals: {images: (blog.images + blog.videos)}%>
+      <% blog.images.each do |image| %>
+        <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
+      <% end %>
+      <% blog.videos.each do |video| %>
+        <%= form.hidden_field :videos, multiple: true, value: video.signed_id %>
+      <% end %>
+    </div>
+  </div>
+
       <div class="mb-4">
-        <%= form.label :images, style: "display: block", class: 'form-label' %>
+        <%= form.label :images, "New Images", class: 'form-label' %>
         <%= form.file_field :images, multiple: true, class: 'form-control' %>
       </div>
 
       <div class="mb-4">
-        <%= form.label :videos, style: "display: block", class: 'form-label' %>
+        <%= form.label :videos, "New Videos", class: 'form-label' %>
         <%= form.file_field :videos, multiple: true, class: 'form-control' %>
       </div>
 

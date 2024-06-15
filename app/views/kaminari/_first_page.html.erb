@@ -11,7 +11,7 @@
   <%= link_to_unless current_page.first?, t('views.pagination.first').html_safe, url, remote: remote %>
  <%# </span>  %>
 
-  <li class="page-item border border-1">
+  <li class="page-item border">
     <%= link_to url, class: 'page-link' do %>
       <i class="bi bi-chevron-double-left  fw-bold"></i>
     <% end %>

@@ -10,11 +10,11 @@
 
 
   <% if page.current? %>
-    <li class="page-item active border border-1">
+    <li class="page-item paginate-active border">
       <%= content_tag :a, page, data: { remote: remote }, rel: page.rel, class: 'page-link' %>
     </li>
     <% else %>
-    <li class="page-item border border-1">
+    <li class="page-item border">
       <%= link_to page, url, remote: remote, rel: page.rel, class: 'page-link' %>
     </li>
   <% end %>
