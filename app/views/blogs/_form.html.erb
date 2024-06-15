@@ -35,7 +35,7 @@
 
   <div class="mb-4">
     <div>
-      <%= render partial: 'shared/stimulus_carousel', locals: {images: (blog.images + blog.videos)}%>
+      <%#= render partial: 'shared/stimulus_carousel', locals: {images: (blog.images + blog.videos)}%>
       <% blog.images.each do |image| %>
         <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
       <% end %>

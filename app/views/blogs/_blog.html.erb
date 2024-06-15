@@ -32,7 +32,7 @@
           <small class="col-lg-8 fw-bold"><%= format_date(blog.updated_at) %></small>
       </p>
   <% end %>
-    <%= render partial: 'shared/detail/footer', locals: {return_path: categories_path , edit_path: edit_blog_path(blog),
+    <%= render partial: 'shared/detail/footer', locals: {return_path: blogs_path , edit_path: edit_blog_path(blog),
        destroy_path: blog_path(blog), record: blog.title} %>
 <% end %>
 </div>
