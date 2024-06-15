@@ -1,11 +1,15 @@
 <!-- Slider main container -->
-<div class="swiper w-100" style="height: 70vh">
+<div class="swiper w-100">
   <!-- Additional required wrapper -->
   <div class="swiper-wrapper">
     <!-- Slides -->
-    <% banners&.each do |banner| %>
+    <% images&.each do |media| %>
         <div class="swiper-slide ">
-            <%= image_tag banner.image, class: 'd-block w-100 img-fluid h-100 object-fit-cover', alt: "banner #{banner.caption}"%>
+            <% if media.blob.content_type.start_with?('image') %>
+              <%= image_tag media, class: 'd-block w-100 img-fluid h-100 object-fit-cover', alt: "carousel image"%>
+            <% elsif media.blob.content_type.start_with?('video')%>
+                <%= video_tag url_for(media), controls: true, class: 'd-block w-100 img-fluid h-100 object-fit-cover', alt: 'blog videos' %>
+            <% end %>
         </div> 
     <% end %>
   </div>
