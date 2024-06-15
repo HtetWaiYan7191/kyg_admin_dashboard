@@ -34,7 +34,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body text-center fw-semibold">
-                            <%= render partial: 'shared/modal/modal_body', locals: {record: brand_category} %>
+                            <%= render partial: 'shared/modal/modal_body', locals: {record: brand_category.name} %>
                         </div>
                         <div class="modal-footer">
                             <%= button_to "Delete", brand_category_path(brand_category), { class: 'btn btn-danger', method: :delete } %>

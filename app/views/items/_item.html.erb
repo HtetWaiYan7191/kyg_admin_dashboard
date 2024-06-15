@@ -1,38 +1,23 @@
 <div class="item-card col me-3 rounded  overflow-hidden  shadow ">
-  <div class="card-carousel-images w-100 " style="height: 200px" >
-      <div id="carouselExample<%=item.id%>" class="carousel slide w-100 h-100">
-      <div class="carousel-inner h-100">
-            <% if item.images.attached? %>
-              <% item.images.each do |image| %>
-                <div class="carousel-item active h-100 position-relative ">
-                  <%= image_tag(image, alt: "item", class: "d-block w-100 img-fluid h-100 object-fit-cover ") %> 
-                  <% if item.discount_percentage %>
-                    <span class="position-absolute top-0 z-3 end-0  badge text-bg-danger">-<%= number_with_precision(item.discount_percentage, precision: 0) %>% </span>
-                  <% end %>
-                </div>
-              <% end %>
-            <% end %>
-      </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample<%=item.id%>" data-bs-slide="prev">
-            <span class=" bi bi-arrow-left  carousel-card-arrow text-white bg-danger px-2 " aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample<%=item.id%>" data-bs-slide="next">
-            <span class=" bi bi-arrow-right  carousel-card-arrow  text-white bg-danger px-2" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
+  <div class='item-carousel-container' >
+    <%= render partial: 'shared/stimulus_carousel', locals: {images: item.images} %>
   </div>
+  
+
+  <%# for default carousel  %>
+
+
+  <%# for default carousel %>
   <div class="item-card-body mt-2 p-3">
     <h4 class="text-capitalize fw-semibold"> <%= item.name %></h6>
-    <p class="d-block mb-0">
+    <p class="d-block mb-0 overflow-auto text-break" style="height: 50px">
       <%= item.content %>
     </p>
-    <p class="d-block mb-0">
+    <p class="d-block mb-0 mt-3">
       <span><%= item.price unless item.discount_percentage%></span>
       <span><%= calculate_percentage(item.price, item.discount_percentage) if item.discount_percentage %></span>
       <% if item.discount_percentage %>
-        <span class="text-secondary"><del><%= item.price %></del></span>
+        <span class="text-secondary"><del class="text-decoration-line-through"><%= item.price %></del></span>
       <% end %>
     </p>
   </div>

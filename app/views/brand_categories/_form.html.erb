@@ -7,12 +7,12 @@
     <% end %>
       <div class="p-3">
         <%= form_with(model: brand_category) do |form| %>
-          <div>
+          <div class="mt-3">
             <%= render partial: 'shared/label_with_errors', locals: {form: form, field_name: :name, record: brand_category} %>
             <%= form.text_field :name, class: 'form-control' %>
           </div>
 
-          <div>
+          <div  class="mt-3">
             <%= render partial: 'shared/label_with_errors', locals: {form: form, field_name: :description, record: brand_category} %>
             <%= form.text_field :description, class: 'form-control' %>
           </div>

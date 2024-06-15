@@ -1,5 +1,7 @@
 <%= render 'shared/navbar' %>
-<%= render partial: 'shared/stimulus_carousel', locals: {banners: @banners} %>
+<div id='home-section' style="height: 70vh;">
+    <%= render partial: 'page/landing/carousel', locals: {banners: @banners} %>
+</div>
 <%#= render partial: 'page/landing/banner_carousel', locals: {banners: @banners} %>
 <section class="partner-section " >
     <div class="partner-container row gap-x-10 ">
@@ -63,4 +65,6 @@
         <% end %>
     </div>
 </section>
-<%= render 'page/landing/footer' %>
+<div id="footer-section">
+    <%= render 'page/landing/footer' %>
+</div>

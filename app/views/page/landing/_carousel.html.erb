@@ -1,0 +1,21 @@
+<!-- Slider main container -->
+<div class="swiper w-100 h-100">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <% banners&.each do |banner| %>
+        <div class="swiper-slide ">
+            <%= image_tag banner.image, class: 'd-block w-100 img-fluid h-100 object-fit-cover', alt: "#{banner.caption}"%>
+        </div> 
+    <% end %>
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+  <!-- If we need scrollbar -->
+  <div class="swiper-scrollbar"></div>
+</div>

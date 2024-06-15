@@ -1,52 +1,39 @@
-<div>
-  <%=render 'shared/carousel', blog: @blog  %>
+<div class="detail-container px-5">
+<%= render partial: 'shared/detail/header', locals: {title: 'Blog'} %>
+<%= render  'shared/detail/content_container' do %>
+  <h5 class="border p-4">Blog detail</h5>
+  <%= render 'shared/detail/content_body_container' do %>
+      <div class='blog-carousel mb-4'>
+        <%= render partial: 'shared/stimulus_carousel', locals: {images: (blog.images + blog.videos)}%>
+      </div>
+      <p class="row" >
+          <small class="col-lg-4">Title</small>
+          <small class="col-lg-8 fw-bold"><%= blog.title %></small>
+      </p>
+      <p class="row" >
+          <small class="col-lg-4">Category</small>
+          <small class="col-lg-8 fw-bold"><%= blog.category.name %></small>
+      </p>
+      <p class="row" >
+          <small class="col-lg-4">Content</small>
+          <small class="col-lg-8 fw-bold"><%= blog.content %></small>
+      </p>
+      <p class="row" >
+          <small class="col-lg-4">Status</small>
+          <small class="col-lg-8 fw-bold"><%= blog.blog_status %></small>
+      </p>
+      <p class="row" >
+          <small class="col-lg-4">Created At </small>
+          <small class="col-lg-8 fw-bold"><%= format_date(blog.created_at) %></small>
+      </p>
+      </p>
+      <p class="row" >
+          <small class="col-lg-4">Updated At </small>
+          <small class="col-lg-8 fw-bold"><%= format_date(blog.updated_at) %></small>
+      </p>
+  <% end %>
+    <%= render partial: 'shared/detail/footer', locals: {return_path: categories_path , edit_path: edit_blog_path(blog),
+       destroy_path: blog_path(blog), record: blog.title} %>
+<% end %>
 </div>
 
-<div id="<%= dom_id blog %>">
-  <p>
-    <strong>Images:</strong>
-    <% blog.images.each do |image| %>
-      <div ><%= image_tag url_for(image), size: "300x200", class:'' %></div>
-    <% end %>
-  </p>
-
-  <p>
-    <strong>Videos:</strong>
-    <% blog.videos.each do |video| %>
-      <div><%= video_tag url_for(video), size: "300x200", controls: true %></div>
-    <% end %>
-  </p>
-
-  <p>
-    <strong>Category:</strong>
-    <%= blog.category_id %>
-  </p>
-
-  <p>
-    <strong>Content:</strong>
-    <%= blog.content %>
-  </p>
-
-  <p>
-    <strong>Views count:</strong>
-    <%= blog.views_count %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= blog.blog_status %>
-  </p>
-
-  <p>
-    <strong>Delete flg:</strong>
-    <%= blog.delete_flg %>
-  </p>
-
-  <p>
-    <strong>Title:</strong>
-    <%= blog.title %>
-  </p>
-
-
-
-</div>
