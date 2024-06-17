@@ -16,8 +16,6 @@ application.register("daterangepicker", DaterangepickerController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import NotiController from "./noti_controller"
-application.register("noti", NotiController)
 
 // import SwiperController from "./swiper_controller"
 // application.register("swiper", SwiperController)

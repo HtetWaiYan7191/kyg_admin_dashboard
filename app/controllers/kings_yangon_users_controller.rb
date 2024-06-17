@@ -61,7 +61,7 @@ class KingsYangonUsersController < ApplicationController
 
   def log_out
     session[:user_id] = nil
-    redirect_to root_path, notice: 'Signed out successfully'
+    redirect_to root_path
   end
 
   private 
