@@ -11,8 +11,8 @@ class Ability
       can :manage, [BrandPartner, BrandCategory, Item, KingsYangonUser, Banner]
     else  
       can :read, :all 
+      can [:sign_in_page, :sign_in, :log_out], KingsYangonUser unless user.admin?
     end 
-
 
     # Define abilities for the user here. For example:
     #
