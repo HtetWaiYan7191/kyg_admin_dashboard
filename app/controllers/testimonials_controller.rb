@@ -1,4 +1,5 @@
 class TestimonialsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_testimonial, only: %i[ show edit update destroy ]
   before_action :check_admin_access
   # GET /testimonials or /testimonials.json

@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
     include KygAuthenticationConcern
     before_action :configure_permitted_parameters, if: :devise_controller?
-    load_and_authorize_resource
     protected
 
     def configure_permitted_parameters
@@ -10,9 +9,9 @@ class ApplicationController < ActionController::Base
 
     def after_sign_in_path_for(resource)
       if resource.admin?
-        home_page_path
+        authenticated_root_path
       elsif resource.management?
-        brand_categories_path
+        management_root_path
       end
     end
 

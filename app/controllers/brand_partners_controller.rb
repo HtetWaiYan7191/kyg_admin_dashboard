@@ -1,4 +1,5 @@
 class BrandPartnersController < ApplicationController
+  load_and_authorize_resource
   before_action :set_brand_partner, only: %i[ show edit update destroy ]
   before_action :check_management_access
   # GET /brand_partners or /brand_partners.json

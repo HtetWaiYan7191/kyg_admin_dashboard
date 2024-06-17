@@ -2,6 +2,8 @@ class KingsYangonUsersController < ApplicationController
   before_action :redirect_if_authenticated, only: [:sign_in_page]
   before_action :authenticate_user!, except: [:sign_in_page, :sign_in, :log_out]
   before_action :set_kings_yangon_user, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+
   def index 
     @kings_yangon_users = KingsYangonUser.all.page(params[:page]).per(4)
   end
