@@ -45,9 +45,12 @@ Rails.application.routes.draw do
     end
   end
 
+  authenticated :user, ->(user) {user.management?} do
+    root to: 'brand_categories#index', as: :management_root
+  end
+
   authenticated :user do
     root to: 'home#index', as: :authenticated_root
-    get '/home/index', to:'home#index', as: :home_page
   end
 
   authenticated :kings_yangon_user do 
