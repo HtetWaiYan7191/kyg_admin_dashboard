@@ -27,7 +27,7 @@ class BrandPartnersController < ApplicationController
 
     respond_to do |format|
       if @brand_partner.save
-        format.html { redirect_to brand_partner_url(@brand_partner), notice: "Brand partner was successfully created." }
+        format.html { redirect_to brand_partners_path, notice: "Brand partner was successfully created." }
         format.json { render :show, status: :created, location: @brand_partner }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class BrandPartnersController < ApplicationController
   def update
     respond_to do |format|
       if @brand_partner.update(brand_partner_params)
-        format.html { redirect_to brand_partner_url(@brand_partner), notice: "Brand partner was successfully updated." }
+        format.html { redirect_to  brand_partners_path, notice: "Brand partner was successfully updated." }
         format.json { render :show, status: :ok, location: @brand_partner }
       else
         format.html { render :edit, status: :unprocessable_entity }
