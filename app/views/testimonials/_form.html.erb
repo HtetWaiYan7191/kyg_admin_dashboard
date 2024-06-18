@@ -29,6 +29,9 @@
         </div>
 
         <div class="mb-4">
+          <% if testimonial.image.attached? %>
+            <%= form.hidden_field :image, value: testimonial.image.signed_id %>
+          <% end %>
           <%= form.label :image, style: "display: block", class: 'form-label' %>
           <%= form.file_field :image %>
         </div>

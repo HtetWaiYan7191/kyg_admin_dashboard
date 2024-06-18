@@ -19,6 +19,9 @@
 
       <div class="mb-4">
         <%= render partial: 'shared/label_with_errors', locals: {form: form, field_name: :image, record: brand_partner} %>
+        <% if brand_partner.image.attached? %>
+          <%= form.hidden_field :image, value: brand_partner.image.signed_id %>
+        <% end %>
         <%= form.file_field :image, class: 'form-control' %>
       </div>
 

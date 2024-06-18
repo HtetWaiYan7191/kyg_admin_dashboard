@@ -7,6 +7,10 @@
     </tr>
   </thead>
   <tbody>
+  <% if @brand_categories.empty? %>
+    <%= render 'shared/no_data_table' %>
+  <% else %>
+  
   <% @brand_categories&.each do |brand_category| %>
         <tr>
             <td>
@@ -47,6 +51,7 @@
 
             </td>
         </tr>
+  <% end %>
   <% end %>
 
   </tbody>

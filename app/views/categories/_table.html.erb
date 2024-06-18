@@ -9,6 +9,9 @@
     </tr>
   </thead>
   <tbody>
+  <% if locals[:categories].empty? %>
+    <%= render 'shared/no_data_table' %>
+  <% else %>
       <% locals[:categories].each do |category| %>
         <tr>
           <td class="">
@@ -56,6 +59,7 @@
           </td>
         </tr>
       <% end %>
+  <% end %>
   </tbody>
 </table>
 <%= render 'shared/paginate_footer', locals: {items: @categories} %>

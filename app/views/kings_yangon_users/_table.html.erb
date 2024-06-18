@@ -8,6 +8,9 @@
     </tr>
   </thead>
   <tbody>
+  <% if kings_yangon_users.empty? %>
+    <%= render 'shared/no_data_table' %>
+  <% else %>
   <% kings_yangon_users&.each do |kings_yangon_user| %>
         <tr>
             <td>
@@ -60,6 +63,7 @@
 
             </td>
         </tr>
+  <% end %>
   <% end %>
 
   </tbody>

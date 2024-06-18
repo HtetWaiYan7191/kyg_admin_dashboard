@@ -8,6 +8,9 @@
     </tr>
   </thead>
   <tbody>
+  <% if @brand_partners.empty? %>
+    <%= render 'shared/no_data_table' %>
+  <% else %>
   <% @brand_partners&.each do |brand_partner| %>
         <tr>
             <td>
@@ -61,6 +64,7 @@
 
             </td>
         </tr>
+  <% end %>
   <% end %>
 
   </tbody>
