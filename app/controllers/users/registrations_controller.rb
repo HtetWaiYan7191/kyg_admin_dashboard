@@ -3,7 +3,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  before_action :authenticated_user!, except: [:new]
   # GET /resource/sign_up
   def new
     if current_user && current_user.admin?
@@ -52,8 +51,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def update_resource(resource, params)
     @is_password_changed = resource.change_password
-    resource.updating_password = true 
-
     if resource.change_password && resource.update_with_password(params)
       true
     elsif !resource.change_password && resource.update(password: params[:password], password_confirmation: params[:password_confirmation])
@@ -70,9 +67,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def after_update_path_for(resource)
     unless @is_password_changed
       sign_out(resource)
+      edit_user_registration_path
     else  
       flash[:notice] = "password updated successfully"
-      root_path
+      new_user_session_path
     end
   end
 

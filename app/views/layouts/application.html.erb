@@ -15,7 +15,11 @@
 
   <body>
     <% if user_signed_in?  %>
-      <%= render 'layouts/sidebar' %>
+      <% unless current_user.change_password %>
+        <%= yield %>
+      <% else %>
+        <%= render 'layouts/sidebar' %>
+      <% end %>
     <% elsif user_signed_in_as_kyg? %>
       <%= yield %>
     <% else %>

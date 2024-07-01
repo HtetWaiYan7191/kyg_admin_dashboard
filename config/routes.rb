@@ -20,7 +20,12 @@ Rails.application.routes.draw do
   end
 
 
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations',
+  }
+  
   resources :users, only: [:index, :show, :new, :edit, :update, :destroy] do
     collection do
       post '/create', to: 'users#create'
