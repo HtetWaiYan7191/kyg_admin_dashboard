@@ -42,7 +42,46 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+
+  def configure_permitted_parameters 
+    devise_parameter_sanitizer.permit(:account_update, keys: [:password, :password_confirmation, :change_password])
+  end
+
+  private 
+
+  def update_resource(resource, params)
+    @is_password_changed = resource.change_password
+    resource.updating_password = true 
+
+    if resource.change_password && resource.update_with_password(params)
+      true
+    elsif !resource.change_password && resource.update(password: params[:password], password_confirmation: params[:password_confirmation])
+      resource.update(change_password: true) unless resource.change_password
+      true
+    else  
+      resource.errors.full_messages.each do |msg| 
+        flash[:alert] = msg
+      end
+      false
+    end
+  end
+
+  def after_update_path_for(resource)
+    unless @is_password_changed
+      sign_out(resource)
+    else  
+      flash[:notice] = "password updated successfully"
+      root_path
+    end
+  end
+
+
+
+
+
+  
+
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

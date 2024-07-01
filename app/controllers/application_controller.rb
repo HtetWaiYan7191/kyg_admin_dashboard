@@ -8,12 +8,33 @@ class ApplicationController < ActionController::Base
     end
 
     def after_sign_in_path_for(resource)
-      if resource.admin?
-        authenticated_root_path
+      if resource.admin?        
+        if resource.change_password 
+          authenticated_root_path
+        else  
+          edit_user_registration_path
+        end
+        # if resource.change_password
+        #   redirect_to authenticated_root_path and return
+        # else
+        #   redirect_to edit_user_registration_path and return
+        # end
       elsif resource.management?
-        management_root_path
+        if resource.change_password
+          management_root_path
+        else 
+          edit_user_registration_path
+        end
+        # if resource.change_password
+        #   redirect_to management_root_path and return
+        # else
+        #   redirect_to edit_user_registration_path and return
+        # end
+      else
+        root_path
       end
     end
+      
 
     rescue_from CanCan::AccessDenied do |exception|
       exception.default_message = "You are not authorized to perform this task"
