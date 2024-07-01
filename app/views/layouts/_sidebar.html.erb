@@ -93,8 +93,8 @@
                 <li><%= link_to current_user.name, users_path , class: 'dropdown-item bg-primary text-white' %></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><%= button_to "Logout", destroy_user_session_path, class: 'dropdown-item', method: :delete %></li>
+                <li><hr class="dropdown-divider m-0"></li>
+                <li class="overflow-hidden "><%= button_to "Logout", destroy_user_session_path, class: 'dropdown-item', method: :delete %></li>
               </ul>
             </div>
         </li>
