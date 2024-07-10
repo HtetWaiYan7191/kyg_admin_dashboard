@@ -4,7 +4,16 @@ class BrandPartnersController < ApplicationController
   before_action :check_management_access
   # GET /brand_partners or /brand_partners.json
   def index
-    @brand_partners = BrandPartner.includes(:brand_category).all.order(:name).page(params[:page]).per(4)
+    @brand_category = params[:brand_category_id].present? ? BrandCategory.find(params[:brand_category_id]) : nil
+    @brand_partners = if @brand_category
+                        @brand_category.brand_partners.order(:name).page(params[:page]).per(4)
+                      else
+                        BrandPartner.includes(:brand_category).all.order(:name).page(params[:page]).per(4)
+                      end
+     respond_to do |format|
+        format.html
+        format.turbo_stream
+      end
   end
 
   # GET /brand_partners/1 or /brand_partners/1.json

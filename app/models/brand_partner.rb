@@ -10,5 +10,5 @@ class BrandPartner < ApplicationRecord
   validates :image, attached: true, content_type: { 
     in: ['image/png', 'image/jpg', 'image/jpeg'],
     message: 'must be a PNG or JPG image'
-  }, on: :create 
+  }, on: :update 
 end
