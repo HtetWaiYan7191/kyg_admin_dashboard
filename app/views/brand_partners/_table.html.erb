@@ -7,69 +7,69 @@
       <th class="fw-bold">Actions</th>
     </tr>
   </thead>
-  <tbody>
-  <% if @brand_partners.empty? %>
-    <%= render 'shared/no_data_table' %>
-  <% else %>
-  <% @brand_partners&.each do |brand_partner| %>
-        <tr>
-            <td>
-                <div class="d-flex align-items-center">
-                <% if brand_partner.image.present? %>
-                    <%= image_tag brand_partner.image, alt: 'brand_partner', width: 45, height: 45, class: 'rounded-circle'%>
-                <% end %>
-                <div class="ms-3">
-                    <p class="fw-bold mb-1"><%= brand_partner.name %></p>
-                </div>
-                </div>
-            </td>
-            <td>
-                <p class="fw-normal mb-1"><%= brand_partner.brand_category.name %></p>
-            </td>
-            <td>
-                <p class="fw-normal mb-1"><%= brand_partner.items.count %></p>
-            </td>
-            <td class="">
-                <%= link_to brand_partner_path(brand_partner) do  %>
-                    <i class="bi bi-eye-fill" style="font-size: 1.2rem"></i>           
-                <% end %>
-            <% if current_user.management? %>
-                    <%= link_to 'Edit', edit_brand_partner_path(id: brand_partner.id), class: 'btn btn-link btn-sm btn-rounded' %>
-                    <%#= link_to 'Create', new_user_path, class: ' btn btn-link btn-sm btn-rouned' %>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" id="brandCategoryModalLabel<%= brand_partner.id %>" data-bs-target="#brandCategoryModal<%= brand_partner.id %>">
-                        Delete
-                    </button>
-                    <!-- Modal -->
-                <div class="modal fade" id="brandCategoryModal<%= brand_partner.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="brandCategoryModalLabel<%= brand_partner.id %>" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Delete <%= brand_partner.name %></h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body text-center fw-semibold">
-                            <small class="border border-warning rounded p-4 d-flex align-items-center" style="background-color: #FFF8DD">
-                                <i class="bi bi-exclamation-circle me-2 text-warning fs-5"></i>
-                                <p class="mb-0">Are you sure you want to delete <%= brand_partner.name %> ?</p>
-                            </small>
-                        </div>
-                        <div class="modal-footer">
-                            <%= button_to "Delete", brand_partner_path(brand_partner), { class: 'btn btn-danger', method: :delete } %>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <tbody>
+        <% if brand_partners.empty? %>
+            <%= render 'shared/no_data_table' %>
+        <% else %>
+        <% brand_partners&.each do |brand_partner| %>
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                        <% if brand_partner.image.present? %>
+                            <%= image_tag brand_partner.image, alt: 'brand_partner', width: 45, height: 45, class: 'rounded-circle'%>
+                        <% end %>
+                        <div class="ms-3">
+                            <p class="fw-bold mb-1"><%= brand_partner.name %></p>
                         </div>
                         </div>
-                    </div>
-                </div>
-            <% end %>
+                    </td>
+                    <td>
+                        <p class="fw-normal mb-1"><%= brand_partner.brand_category.name %></p>
+                    </td>
+                    <td>
+                        <p class="fw-normal mb-1"><%= brand_partner.items.count %></p>
+                    </td>
+                    <td class="">
+                        <%= link_to brand_partner_path(brand_partner) do  %>
+                            <i class="bi bi-eye-fill" style="font-size: 1.2rem"></i>           
+                        <% end %>
+                    <% if current_user.management? %>
+                            <%= link_to 'Edit', edit_brand_partner_path(id: brand_partner.id), class: 'btn btn-link btn-sm btn-rounded' %>
+                            <%#= link_to 'Create', new_user_path, class: ' btn btn-link btn-sm btn-rouned' %>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" id="brandCategoryModalLabel<%= brand_partner.id %>" data-bs-target="#brandCategoryModal<%= brand_partner.id %>">
+                                Delete
+                            </button>
+                            <!-- Modal -->
+                        <div class="modal fade" id="brandCategoryModal<%= brand_partner.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="brandCategoryModalLabel<%= brand_partner.id %>" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete <%= brand_partner.name %></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body text-center fw-semibold">
+                                    <small class="border border-warning rounded p-4 d-flex align-items-center" style="background-color: #FFF8DD">
+                                        <i class="bi bi-exclamation-circle me-2 text-warning fs-5"></i>
+                                        <p class="mb-0">Are you sure you want to delete <%= brand_partner.name %> ?</p>
+                                    </small>
+                                </div>
+                                <div class="modal-footer">
+                                    <%= button_to "Delete", brand_partner_path(brand_partner), { class: 'btn btn-danger', method: :delete } %>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
 
-            </td>
-        </tr>
-  <% end %>
-  <% end %>
+                    </td>
+                </tr>
+        <% end %>
+        <% end %>
 
-  </tbody>
+    </tbody>
 </table>
-<%= render 'shared/paginate_footer', locals: {items: @brand_partners} %>
+<%= render 'shared/paginate_footer', locals: {items: brand_partners} %>
 
 
 

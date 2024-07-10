@@ -1,7 +1,15 @@
 <%= render 'shared/back_button' %>
 <%= render 'shared/create_button', locals: {link: new_brand_partner_path, }%>
 
+  <%= turbo_frame_tag "brand_partner_list" do %>
 <div id="brand_partners">
-  <%= render partial: 'table' %>
+<div class="w-25">
+  <h6>Filter By Category</h6>
+  <%= form_with url: brand_partners_path, method: :get, remote: true do |f| %>
+    <%= f.collection_select :brand_category_id, BrandCategory.order(:name), :id, :name, {selected: params[:brand_category_id]}, {class: 'form-select', onchange: 'this.form.submit();'} %>
+  <% end %>
+</div>
+    <%= render partial: 'table', locals: { brand_partners: @brand_partners } %>
+  <% end %>
 </div>
 

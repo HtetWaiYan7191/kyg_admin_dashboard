@@ -4,7 +4,7 @@
   <nav id="sidebarMenu" data-controller='test' class="collapse d-lg-block sidebar collapse bg-white">
     <div class="position-sticky">
       <div class="list-group list-group-flush mx-3 mt-4 ">
-      <% unless current_user.management? %>
+      <% unless user_signed_in? && current_user.management? %>
          <%= link_to "/", class: "list-group-item list-group-item-action py-2 ripple #{dashboard_active}", "aria-current": true do %>
               <i class="fas fa-tachometer-alt fa-fw me-3"></i>
               <span>Dashboard</span>
