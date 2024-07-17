@@ -1,16 +1,29 @@
-<h2>Forgot your password?</h2>
+<%= render 'layouts/auth_layout' do %>
+    <div class="container p-4">
+<%#= render 'shared/back_button' %>
+      <h5 class="fw-semibold text-center py-3 text-primary">Forgot Your Password ? </h5>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="field">
+          <%= f.label :email, class: 'form-label' %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", require: true, class: 'form-control' %>
+        </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <div class="actions mt-3">
+          <%= f.submit "Send me reset password instructions", class: 'btn btn-primary w-100 text-center fw-semibold' %>
+        </div>
+      <% end %>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
+      <div class="my-3">
+        <%= link_to  new_user_session_path do %>
+          <i class="bi bi-arrow-left text-primary"></i>   
+          <span>Back</span>
+        <% end %>
+      </div>
+
+      <div class="d-flex align-items-center gap-2 justify-content-end">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
