@@ -40,6 +40,10 @@ module ApplicationHelper
            ( request.path == '/users/sign_in' || request.path == '/kings_yangon_users/sign_in_page') ? 'vh-100' : 'vh-75'
         end
 
+        def is_sign_in_page?
+            request.path == '/users/sign_in' || request.path ==  '/kings_yangon_users/sign_in_page' || request.path == '/users/password/new'
+        end
+
         def banner_active
             ( request.path.starts_with?(banners_path) || controller_name == 'banners' ) && action_name != 'show' ? 'active fw-bolder' : ''
         end

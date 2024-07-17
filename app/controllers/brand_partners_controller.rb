@@ -11,8 +11,8 @@ class BrandPartnersController < ApplicationController
                         BrandPartner.includes(:brand_category).all.order(:name).page(params[:page]).per(4)
                       end
      respond_to do |format|
+        format.turbo_stream 
         format.html
-        format.turbo_stream
       end
   end
 
