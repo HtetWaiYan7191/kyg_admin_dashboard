@@ -3,31 +3,34 @@ class BrandPartnersController < ApplicationController
   before_action :set_brand_partner, only: %i[ show edit update destroy ]
   before_action :check_management_access
   # GET /brand_partners or /brand_partners.json
-  def index
-    @brand_category = params[:brand_category_id].present? ? BrandCategory.find(params[:brand_category_id]) : nil
-    @brand_partners = if @brand_category
-                        @brand_category.brand_partners.order(:name).page(params[:page]).per(4)
-                      else
-                        BrandPartner.includes(:brand_category).all.order(:name).page(params[:page]).per(4)
-                      end
-     respond_to do |format|
-        format.turbo_stream 
-        format.html
+  def index 
+      if params[:query]
+       @brand_partners = BrandPartner.where("name LIKE ?", "%#{params[:query]}%").page(params[:page]).per(4)
+       return
       end
+       if params[:brand_category_id] == "all" || params[:brand_category_id].blank?
+      @brand_partners = BrandPartner.includes(:brand_category).order(:name).page(params[:page]).per(4)
+    else
+      @brand_category = BrandCategory.find(params[:brand_category_id])
+      @brand_partners = @brand_category.brand_partners.order(:name).page(params[:page]).per(4)
+    end
   end
 
   # GET /brand_partners/1 or /brand_partners/1.json
   def show
     @items = @brand_partner.items
+    @brand_partner
   end
 
   # GET /brand_partners/new
   def new
     @brand_partner = BrandPartner.new
+    @brand_partner.benefits.build
   end
 
   # GET /brand_partners/1/edit
   def edit
+    @brand_partner.benefits.build if @brand_partner.benefits.empty?
   end
 
   # POST /brand_partners or /brand_partners.json
@@ -71,11 +74,11 @@ class BrandPartnersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_brand_partner
-      @brand_partner = BrandPartner.includes(:items).find(params[:id])
+      @brand_partner = BrandPartner.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def brand_partner_params
-      params.require(:brand_partner).permit(:name, :brand_category_id, :image)
+      params.require(:brand_partner).permit(:name, :brand_category_id, :image, benefits_attributes: [:id, :content, :remark, :_destroy])
     end
 end

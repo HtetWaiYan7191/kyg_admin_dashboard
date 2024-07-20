@@ -9,6 +9,6 @@ class PageController < ApplicationController
 
   def landing
     @banners = Banner.all
-    @brand_categories = BrandCategory.includes(:brand_partners).all
+    @brand_categories = BrandCategory.includes(:brand_partners).all.order(:name)
   end
 end
