@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :banners
   resources :brand_partners do 
     resources :items
+    resources :benefits
   end
   resources :brand_categories 
   resources :kings_yangon_users do 

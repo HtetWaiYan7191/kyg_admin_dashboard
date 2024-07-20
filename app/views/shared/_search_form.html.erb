@@ -1,6 +1,6 @@
 <div class="my-2">
     <%= render 'shared/total_number', locals: {title: locals[:title] , current_data: locals[:current_data] }%>
-    <div class="form-container d-flex align-items-center w-25">
+    <div class="form-container d-flex align-items-center ">
         <%= form_with url: locals[:link], method: :get do |form| %>
             <div class="input-group">
                 <%= form.text_field :query, class: "form-control", type: "search", placeholder: "Search",  aria: { label: "Search", describedby: "search-addon" } %>
