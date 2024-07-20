@@ -30,11 +30,12 @@
                         <p class="fw-normal mb-1"><%= brand_partner.items.count %></p>
                     </td>
                     <td class="">
-                        <%= link_to brand_partner_path(brand_partner) do  %>
-                            <i class="bi bi-eye-fill" style="font-size: 1.2rem"></i>           
+                        <%= link_to brand_partner_path(brand_partner), data: {turbo: false} do  %>
+                            <i class="bi bi-eye-fill" style="font-size: 1.2rem"></i>
                         <% end %>
+
                     <% if current_user.management? %>
-                            <%= link_to 'Edit', edit_brand_partner_path(id: brand_partner.id), class: 'btn btn-link btn-sm btn-rounded' %>
+                            <%= link_to 'Edit',  edit_brand_partner_path(id: brand_partner.id), data: {turbo: false}, class: 'btn btn-link btn-sm btn-rounded' %>
                             <%#= link_to 'Create', new_user_path, class: ' btn btn-link btn-sm btn-rouned' %>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" id="brandCategoryModalLabel<%= brand_partner.id %>" data-bs-target="#brandCategoryModal<%= brand_partner.id %>">
                                 Delete

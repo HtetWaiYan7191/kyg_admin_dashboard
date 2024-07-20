@@ -6,7 +6,7 @@
         <%= render 'shared/form_title', locals:{title: 'CREATE BRAND PARTNER' }%>
     <% end %>
   <div class="p-3">
-      <%= form_with(model: brand_partner) do |form| %>
+      <%= form_with(model: brand_partner, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' } ) do |form| %>
       <div class="mb-4">
         <%= render partial: 'shared/label_with_errors', locals: {form: form, field_name: :name, record: brand_partner} %>
         <%= form.text_field :name, class: 'form-control' %>
@@ -23,6 +23,29 @@
           <%= form.hidden_field :image, value: brand_partner.image.signed_id %>
         <% end %>
         <%= form.file_field :image, class: 'form-control' %>
+      </div>
+
+      <div class="mb-4" >
+        <h4>Add Benefits</h4>
+
+          <template data-nested-form-target="template">
+            <%= form.fields_for :benefits, Benefit.new, child_index: 'NEW_RECORD' do |benefit_form| %>
+              <%= render "benefit_form", f: benefit_form %>
+            <% end %>
+          </template>
+
+            <%= form.fields_for :benefits do |benefit_form| %>
+              <%= render 'benefit_form', f: benefit_form %>
+            <% end %>
+
+        <div data-nested-form-target="target"></div>  
+
+        <div class="d-flex align-items-center justify-content-end mt-2">
+            <button type="button" data-action="nested-form#add">
+              <i class="bi bi-plus-circle" style="font-size: 20px;"></i>
+            </button>
+        </div>
+
       </div>
 
       <div class="mt-3">

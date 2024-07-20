@@ -1,15 +1,24 @@
 <%= render 'shared/back_button' %>
 <%= render 'shared/create_button', locals: {link: new_brand_partner_path, }%>
 
-  <%= turbo_frame_tag "brand_partner_list" do %>
-<div id="brand_partners">
-<div class="w-25">
-  <h6>Filter By Category</h6>
-  <%= form_with url: brand_partners_path, method: :get, remote: true do |f| %>
-    <%= f.collection_select :brand_category_id, BrandCategory.order(:name), :id, :name, {selected: params[:brand_category_id]}, {class: 'form-select', onchange: 'this.form.submit();'} %>
-  <% end %>
-</div>
-    <%= render partial: 'table', locals: { brand_partners: @brand_partners } %>
-  <% end %>
+<div id="brand_partners" >
+  <div class="d-flex align-items-center gap-4">
+      <div class="">
+        <%= render 'shared/search_form', locals: {link: brand_partners_path, title: 'Brand Partners', current_data: @brand_partners } %>
+      </div>
+      <div class="">
+        <h6>Filter By Category</h6>
+        <%= form_with url: brand_partners_path, method: :get, remote: true do |f| %>
+        <%= f.collection_select :brand_category_id, 
+                [["All", "all"]] + BrandCategory.order(:name).pluck(:name, :id), 
+                :last, :first, 
+                { selected: params[:brand_category_id].present? ? params[:brand_category_id] : "all" },
+                { class: 'form-select', onchange: 'this.form.submit();' } %>
+        <% end %>
+      </div>
+  </div>
+
+
+<%= render partial: 'table', locals: { brand_partners: @brand_partners } %>
 </div>
 

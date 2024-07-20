@@ -3,10 +3,12 @@
   <%= render  'shared/detail/content_container' do %>
       <%= render 'shared/detail/content_body_container' do %>
         <p class="row" >
-          <small class="col-lg-4">Brand image</small>
-            <small class="col-lg-8 fw-bold">
-              <%= image_tag @brand_partner.image, style: 'width: 100px; height: 100px; object-fit: cover;', alt: 'banner' %>
-            </small>
+              <% if @brand_partner.image.present? %>
+                <small class="col-lg-4">Brand image</small>
+                <small class="col-lg-8 fw-bold">
+                  <%= image_tag @brand_partner.image, style: 'width: 100px; height: 100px; object-fit: cover;', alt: 'banner' %>
+              </small>
+              <% end %>
         </p>
 
         <p class="row" >
@@ -18,6 +20,17 @@
           <small class="col-lg-4">Category</small>
           <small class="col-lg-8 fw-bold"><%= @brand_partner.brand_category.name %></small>
         </p>
+
+          <% unless  @brand_partner.benefits.empty? %>
+            <p class="row">
+                <small class="col-lg-4">Benefits</small>
+                    <small class=" col-lg-8 list-group">
+                      <% @brand_partner.benefits.each do |benefit| %>
+                        <small class=" fw-bold list-group-item"><%= benefit.content %></small>
+                      <% end %>
+                    </small>
+            </p>
+          <% end %>
 
         <p class="row">
           <small class="col-lg-4">Created At</small>
