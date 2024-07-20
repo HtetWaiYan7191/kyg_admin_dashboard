@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import RailsNestedForm from '@stimulus-components/rails-nested-form'
+application.register("nested-form", RailsNestedForm);
+
 import Notification from '@stimulus-components/notification'
 application.register('notification', Notification)
 
