@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params_create)
+    @user = User.create_with_default_password(user_params_create)
     if @user.save 
       redirect_to users_path, notice: 'User created successfully'
     else
@@ -41,7 +41,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    puts 'this is destroy method working'
     if @user.destroy 
       redirect_to users_path, notice: "User deleted successfully"
     else 
@@ -51,7 +50,7 @@ class UsersController < ApplicationController
 
   private
   def set_user
-    @user = User.find(params[:id])
+    @user = User.select('id, email, name, department, title, position, role, created_at, updated_at').find(params[:id])
   end
 
   def user_params 
@@ -59,6 +58,6 @@ class UsersController < ApplicationController
   end
 
   def user_params_create
-    params.require(:user).permit(:name, :email, :password, :department, :title, :position, :role)
+    params.require(:user).permit(:name, :email, :department, :title, :position, :role)
   end
-end
+end 

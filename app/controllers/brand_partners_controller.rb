@@ -9,11 +9,11 @@ class BrandPartnersController < ApplicationController
        return
       end
        if params[:brand_category_id] == "all" || params[:brand_category_id].blank?
-      @brand_partners = BrandPartner.includes(:brand_category).order(:name).page(params[:page]).per(4)
-    else
-      @brand_category = BrandCategory.find(params[:brand_category_id])
-      @brand_partners = @brand_category.brand_partners.order(:name).page(params[:page]).per(4)
-    end
+        @brand_partners = BrandPartner.includes(:brand_category).order(:name).page(params[:page]).per(4)
+      else
+        @brand_category = BrandCategory.find(params[:brand_category_id])
+        @brand_partners = @brand_category.brand_partners.order(:name).page(params[:page]).per(4)
+      end
   end
 
   # GET /brand_partners/1 or /brand_partners/1.json

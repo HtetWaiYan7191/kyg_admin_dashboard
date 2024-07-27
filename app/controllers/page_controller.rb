@@ -4,7 +4,7 @@ class PageController < ApplicationController
   before_action :authenticate_kyg_user!, except: [:welcome]
   
   def welcome
-    puts 'welcome method from controller'
+    
   end
 
   def landing

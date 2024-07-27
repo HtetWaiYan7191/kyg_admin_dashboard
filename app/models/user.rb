@@ -12,4 +12,14 @@ class User < ApplicationRecord
   validates :title, presence: true
   validates :position, presence: true, length: { in: 4..30 }
   validates :role, allow_blank: true, inclusion: { in: roles.keys }
+
+  def self.create_with_default_password(attr={}) 
+    default_password = 'password'
+    self.create(attr.merge(password: default_password, password_confirmation: default_password))
+  end
+
+  def change_password?
+    self.change_password
+  end
+  private
 end
