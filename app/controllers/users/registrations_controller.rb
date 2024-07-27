@@ -50,9 +50,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private 
 
   def update_resource(resource, params)
-    @is_password_changed = resource.change_password
+    @is_password_changed = resource.change_password 
+    # if change_password true means user already changed the password and now need to 
+    # add the current_password to change password again
     if resource.change_password && resource.update_with_password(params)
       true
+    # user did not change the default password sceniro 
+    # user does not need to add the current password 
     elsif !resource.change_password && resource.update(password: params[:password], password_confirmation: params[:password_confirmation])
       resource.update(change_password: true) unless resource.change_password
       true
@@ -65,12 +69,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    unless @is_password_changed
+    unless resource.change_password
       sign_out(resource)
       edit_user_registration_path
     else  
       flash[:notice] = "password updated successfully"
-      new_user_session_path
+      user_path(resource)
     end
   end
 
