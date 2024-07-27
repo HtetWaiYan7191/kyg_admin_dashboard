@@ -15,10 +15,12 @@
 
   <body>
     <% if user_signed_in?  %>
-      <% unless current_user.change_password %>
-        <%= yield %>
-      <% else %>
+      <% if current_user.change_password? %>
         <%= render 'layouts/sidebar' %>
+      <% elsif request.path != '/users/edit' %>
+        <%= render 'layouts/change_password_page' %>
+      <% else %>
+        <%= yield %>
       <% end %>
     <% elsif user_signed_in_as_kyg? %>
       <%= yield %>

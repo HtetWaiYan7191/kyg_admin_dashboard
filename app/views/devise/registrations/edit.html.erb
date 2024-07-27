@@ -8,6 +8,13 @@
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
 
+        <% if resource.change_password %>
+          <div class="field mt-3">
+            <%= f.label :current_password, class: 'form-label' %>
+            <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
+          </div>
+        <% end %>
+        
         <div class="field mt-3">
           <%= f.label :password, class: 'form-label' %>
           <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
@@ -18,12 +25,6 @@
           <%= f.label :password_confirmation, class: 'form-label' %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
         </div>
-        <% if resource.change_password %>
-          <div class="field mt-3">
-            <%= f.label :current_password, class: 'form-label' %>
-            <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
-          </div>
-        <% end %>
 
         <div class="actions mt-3">
           <%= f.submit "Update", class: 'btn btn-primary w-100 text-center fw-semibold' %>

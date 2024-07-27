@@ -1,0 +1,23 @@
+<div class="detail-container px-5">
+      <%= render partial: 'shared/detail/header', locals: {title: "#{current_user.name.capitalize} Account"} %>
+      <%= render 'shared/detail/content_container' do %>
+        <%= render 'shared/detail/content_body_container' do %>
+            <% @user.attributes.each do |column_name, value| %>
+                <% if column_name == 'created_at' || column_name == 'updated_at' %>
+                    <p class="row" >
+                        <small class="col-lg-4"><%= column_name.capitalize %></small>
+                        <small class="col-lg-8 fw-bold"><%= format_date(value) %></small>
+                    </p>
+                <% next %>
+                <% end %>
+                <p class="row" >
+                    <small class="col-lg-4"><%= column_name.capitalize %></small>
+                    <small class="col-lg-8 fw-bold"><%= value %></small>
+                </p>
+            <% end %>
+        <% end %>
+      <%= render partial: 'shared/detail/footer', locals: {return_path: users_path , edit_path: edit_user_path(current_user) ,
+     destroy_path: user_path(current_user), record: current_user.name} %>
+      <% end %>
+
+</div>
