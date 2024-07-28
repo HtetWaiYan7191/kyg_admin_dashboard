@@ -90,5 +90,11 @@ Rails.application.configure do
   # to add background images 
 # config.serve_static_assets = false  
 # config.assets.compress = true
-# config.assets.compile = false
+  # config.assets.compile = false
+
+  # Do not fallback to assets pipeline if a precompiled asset is missed
+  config.assets.unknown_asset_fallback = true
+  config.assets.debug = true
+  config.assets.digest = false
+
 end
