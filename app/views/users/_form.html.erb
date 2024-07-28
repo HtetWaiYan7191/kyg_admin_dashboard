@@ -39,7 +39,7 @@
                 <!-- Role input -->
             <div class="form-outline mb-4">
               <%= form.label :role, "Role", class: 'form-label' %>
-              <%= form.select :role,  User.roles.keys.map { |role| [role.capitalize, role] }, { selected: @user.role, prompt: "Select User Role" },  { class: 'form-select', name: 'user[role]' } %>
+              <%= form.select :role,  User.roles.keys.map { |role| [role.capitalize, role] }, { selected: @user.role, prompt: "Select User Role" },  { class: 'form-select', name: 'user[role]', disabled: !current_user.admin? } %>
             </div>
       
 

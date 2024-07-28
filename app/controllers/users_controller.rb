@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :check_admin_access
+  # before_action :check_admin_access
 
   def index  
     unless params[:query]

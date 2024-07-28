@@ -1,7 +1,7 @@
 class BrandCategoriesController < ApplicationController
   load_and_authorize_resource
   before_action :set_brand_category, only: %i[ show edit update destroy ]
-  before_action :check_management_access
+  # before_action :check_management_access
   # GET /brand_categories or /brand_categories.json
   def index
     @brand_categories = BrandCategory.all.order(:name).page(params[:page]).per(4)

@@ -1,18 +1,11 @@
-@import 'bootstrap-icons/font/bootstrap-icons';
-@import 'custom_fonts';
 @import 'variables';
-@import url('https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css');
-@import 'swiper/swiper-bundle.min.css';
-
-$theme_colors: (
-  "pink": $pink,
-  "light-green": $green,
-  "dark-grey": $darkGrey,
-  "light-blue": $blue,
-  "purple": $purple,
-);
- 
 @import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+@import "css/mdb.min";
+@import 'custom_fonts';
+@import url('https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css');
+// @import 'swiper/swiper-bundle.min.css';
+
 @import url('https://cdn.jsdelivr.net/gh/alumuko/vanilla-datetimerange-picker@latest/dist/vanilla-datetimerange-picker.css');
 
 * {
@@ -28,8 +21,6 @@ $theme_colors: (
   height: 300px;
 }
 
-
-
 button {
   all: unset;
 }
@@ -40,6 +31,9 @@ button {
     }
   }
 
+  .bg-dark-grey {
+    background-color: $darkGrey
+  }
   // colors
   .bg-warning-yellow{
      background-color: #FFC700 !important;
@@ -61,7 +55,7 @@ button {
     left: 0;
     padding: 58px 0 0; /* Height of navbar */
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
-    width: 240px;
+    // width: 240px;
     z-index: 600;
   }
   

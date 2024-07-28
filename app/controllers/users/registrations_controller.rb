@@ -74,7 +74,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       edit_user_registration_path
     else  
       flash[:notice] = "password updated successfully"
-      user_path(resource)
+      user_path(resource) if resource.admin?
+      root_path if resource.management?
     end
   end
 

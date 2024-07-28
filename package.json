@@ -12,6 +12,7 @@
     "autoprefixer": "^10.4.19",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "concurrently": "^8.2.2",
     "css-loader": "^7.1.2",
     "daterangepicker": "^3.1.0",
     "esbuild": "^0.20.2",
@@ -29,17 +30,14 @@
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4"
   },
-  "scripts": {
-    "build": "webpack --config webpack.config.js",
+    "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
     "build:css:compile": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
     "build:css:prefix": "postcss ./app/assets/builds/application.css --use=autoprefixer --output=./app/assets/builds/application.css",
     "build:css": "yarn build:css:compile && yarn build:css:prefix",
     "watch:css": "nodemon --watch ./app/assets/stylesheets/ --ext scss --exec \"yarn build:css\""
   },
-  "browserslist": [
+    "browserslist": [
     "defaults"
-  ],
-  "devDependencies": {
-    "webpack-dev-server": "^5.0.4"
-  }
+  ]
 }

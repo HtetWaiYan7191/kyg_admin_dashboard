@@ -10,7 +10,7 @@ class Ability
     elsif user.management? 
       can :manage, [BrandPartner, BrandCategory, Item, KingsYangonUser, Banner]
     else  
-      can :read, :all 
+      can :read, :all
       can [:sign_in_page, :sign_in, :log_out], KingsYangonUser unless user.admin?
     end 
 
