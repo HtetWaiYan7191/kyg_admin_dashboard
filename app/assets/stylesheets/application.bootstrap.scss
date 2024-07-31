@@ -316,6 +316,32 @@ input:-webkit-autofill:active {
   transform: translateY(0);
 }
 
+.form-control:focus {
+  border-color: inherit;
+  box-shadow: none;
+}
+
+.tracking-wide {
+  letter-spacing: 0.2rem;
+}
+
+.object-fit-cover {
+    object-fit: cover;
+}
+
+.preview-image-container {
+  margin: 5px;
+  display: flex;
+  overflow: auto;
+}
+
+.preview-image {
+  object-fit: cover;
+  width: 25%;
+}
+
+
+
 @media screen and (min-width: 768px) {
   .brand-image {
     width: 100px;
@@ -324,3 +350,4 @@ input:-webkit-autofill:active {
 }
 
 
+@import 'actiontext.css';

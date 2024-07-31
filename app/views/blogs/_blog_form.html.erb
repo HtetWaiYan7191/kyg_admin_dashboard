@@ -1,0 +1,46 @@
+<div class="w-75 p-4">
+    <%= form_with(model: @blog) do |form| %>
+    <!-- Other fields here -->
+        <div class="mb-4">
+        <div>
+        <% blog.images.each do |image| %>
+            <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
+        <% end %>
+        <% blog.videos.each do |video| %>
+            <%= form.hidden_field :videos, multiple: true, value: video.signed_id %>
+        <% end %>
+        </div>
+    </div>
+
+        <div class="mb-2" data-controller="image-preview">
+            <%= form.label :images %>
+            <%= form.file_field :images, multiple: true, class: '', data: { action: 'change->image-preview#preview', image_preview_target: 'input' } %>
+            <div id="image-preview" data-image-preview-target="preview" class="preview-image-container"></div>
+        </div>
+
+
+    <% if @blog.errors.any? %>
+        <%= render partial: 'error_message', locals: {record: @blog, field_name: :title} %>
+    <% end %>
+    <%= form.text_field :title, class: 'form-control border-0 fs-1 px-1 tracking-wide mb-2', placeholder: 'Title' %>
+
+    <div class="mb-3">
+        <% if @blog.errors.any? %>
+            <%= render partial: 'error_message', locals: {record: @blog, field_name: :category_id} %>
+        <% end %>
+        <%= form.collection_select :category_id, Category.order(:name), :id, :name, {prompt: "Select a category"}, {class: 'form-select'} %>
+    </div>
+
+    <div class="mb-3">
+        <% if @blog.errors.any? %>
+            <%= render partial: 'error_message', locals: {record: @blog, field_name: :content} %>
+        <% end %>
+        <%= form.rich_text_area :content, placeholder: 'Add content...' %>
+    </div>
+
+    <div class='btn-container mt-3'>
+        <%= form.submit "publish", class: 'btn btn-primary' %>
+    </div>
+
+    <% end %>
+</div>

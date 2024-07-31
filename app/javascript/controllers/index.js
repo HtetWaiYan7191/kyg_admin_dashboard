@@ -7,6 +7,9 @@ import { application } from "./application"
 import RailsNestedForm from '@stimulus-components/rails-nested-form'
 application.register("nested-form", RailsNestedForm);
 
+import ImagePreviewController from './image_preview_controller'
+application.register("image-preview", ImagePreviewController)
+
 import Notification from '@stimulus-components/notification'
 application.register('notification', Notification)
 

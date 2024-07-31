@@ -1,4 +1,6 @@
 module ApplicationHelper
+    include ActionView::Helpers::TextHelper
+
         def dashboard_active
             request.path == "/" ? " active fw-bolder" : ""
         end
@@ -60,4 +62,15 @@ module ApplicationHelper
             date.strftime('%Y-%m-%d')
         end
 
+        def calculate_minutes(word_count)
+            words_per_minute = 200 # Adjust this value based on the average reading speed
+            minutes = (word_count.to_f / words_per_minute).ceil
+            minutes
+        end
+
+        def get_word_count(blog_content)
+        words = blog_content.split
+        word_count = words.size
+        word_count
+        end
 end

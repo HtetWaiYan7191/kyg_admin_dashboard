@@ -17,5 +17,5 @@ window.jQuery = $
 import 'daterangepicker'
 import 'daterangepicker/daterangepicker.css'
 
-
-
+import "trix"
+import "@rails/actiontext"

@@ -3,37 +3,32 @@
 <%= render  'shared/detail/content_container' do %>
   <h5 class="border p-4">Blog detail</h5>
   <%= render 'shared/detail/content_body_container' do %>
-      <div class='blog-carousel mb-4'>
-        <%= render partial: 'shared/stimulus_carousel', locals: {images: (blog.images + blog.videos)}%>
-      </div>
-      <p class="row" >
-          <small class="col-lg-4">Title</small>
-          <small class="col-lg-8 fw-bold"><%= blog.title %></small>
-      </p>
-      <p class="row" >
-          <small class="col-lg-4">Category</small>
-          <small class="col-lg-8 fw-bold"><%= blog.category.name %></small>
-      </p>
-      <p class="row" >
-          <small class="col-lg-4">Content</small>
-          <small class="col-lg-8 fw-bold"><%= blog.content %></small>
-      </p>
-      <p class="row" >
-          <small class="col-lg-4">Status</small>
-          <small class="col-lg-8 fw-bold"><%= blog.blog_status %></small>
-      </p>
-      <p class="row" >
-          <small class="col-lg-4">Created At </small>
-          <small class="col-lg-8 fw-bold"><%= format_date(blog.created_at) %></small>
-      </p>
-      </p>
-      <p class="row" >
-          <small class="col-lg-4">Updated At </small>
-          <small class="col-lg-8 fw-bold"><%= format_date(blog.updated_at) %></small>
-      </p>
+    <% if blog.images.present? || blog.videos.present? %>
+        <div class='blog-carousel mb-4'>
+            <%= render partial: 'shared/stimulus_carousel', locals: {images: (blog.images + blog.videos)}%>
+        </div>
+    <% end %>
+
+     <div class="d-flex justify-content-between align-items-center">
+      <h1 class="fw-bold text-black mb-2"><%= blog.title %></h1>
+        <small class="d-flex flex-column">
+        <span class="text-muted">(<%= time_ago_in_words(blog.created_at) %> ago)</span>
+        <span class="text-muted"><%= calculate_minutes(get_word_count(blog.content.to_plain_text)) %> minutes</span>
+        </small>
+     </div>
+        <div class="p-0" >
+            <figure class="d-flex justify-content-center">
+                <% if blog.content.embeds.any? %>
+                    <% blog.content.embeds.each do |embed| %>
+                        <%= image_tag url_for(embed), size: '300x200', class: 'object-fit-cover' %>
+                    <% end %>
+                <% end %>
+            </figure>
+            <%= blog.content %>
+        </div>
   <% end %>
     <%= render partial: 'shared/detail/footer', locals: {return_path: blogs_path , edit_path: edit_blog_path(blog),
        destroy_path: blog_path(blog), record: blog.title} %>
-<% end %>
+    <% end %>
 </div>
 
