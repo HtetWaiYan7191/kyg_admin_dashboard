@@ -10,7 +10,7 @@ class Blog < ApplicationRecord
   validates :views_count, numericality: { integer: true}
   validates :blog_status, presence: true, inclusion: { in: %w(pending approve deny) }
   validates :delete_flg, inclusion: { in: [true, false] }
-  validates :title, presence: true, length: { maximum: 50 }
+  validates :title, presence: true, length: { maximum: 100 }
 
   enum blog_status: { pending: 0, approve: 1, deny: 2 }
 
