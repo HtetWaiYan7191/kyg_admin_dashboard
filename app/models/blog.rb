@@ -1,7 +1,6 @@
 class Blog < ApplicationRecord
   belongs_to :category
-  has_many_attached :images
-  has_many_attached :videos  
+  has_one_attached :image  
   has_rich_text :content
   
   paginates_per 4 
@@ -11,7 +10,7 @@ class Blog < ApplicationRecord
   validates :views_count, numericality: { integer: true}
   validates :blog_status, presence: true, inclusion: { in: %w(pending approve deny) }
   validates :delete_flg, inclusion: { in: [true, false] }
-  validates :title, presence: true, length: { maximum: 255 }
+  validates :title, presence: true, length: { maximum: 50 }
 
   enum blog_status: { pending: 0, approve: 1, deny: 2 }
 

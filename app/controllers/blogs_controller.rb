@@ -37,8 +37,6 @@ class BlogsController < ApplicationController
 
   # GET /blogs/1/edit
   def edit
-    @existing_images = @blog.images if @blog.images.attached?
-    @existing_videos = @blog.videos if @blog.videos.attached?
   end
 
   # POST /blogs or /blogs.json
@@ -100,6 +98,6 @@ class BlogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def blog_params
-      params.require(:blog).permit(:user_id, :category_id, :content, :views_count, :status, :delete_flg, :title, images: [], videos: [])
+      params.require(:blog).permit(:user_id, :category_id, :content, :views_count, :status, :delete_flg, :title, :image)
     end
 end

@@ -1,20 +1,18 @@
 <div class="w-75 p-4">
     <%= form_with(model: @blog) do |form| %>
-    <!-- Other fields here -->
-        <div class="mb-4">
-        <div>
-        <% blog.images.each do |image| %>
-            <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
+
+        <% if @blog.image.present?%>
+            <figure class="d-flex justify-content-center">
+                <%= image_tag url_for(@blog.image) %>
+            </figure>
+            <%= form.hidden_field :image,  value: @blog.image.signed_id %>
         <% end %>
-        <% blog.videos.each do |video| %>
-            <%= form.hidden_field :videos, multiple: true, value: video.signed_id %>
-        <% end %>
-        </div>
-    </div>
 
         <div class="mb-2" data-controller="image-preview">
-            <%= form.label :images %>
-            <%= form.file_field :images, multiple: true, class: '', data: { action: 'change->image-preview#preview', image_preview_target: 'input' } %>
+            <%= form.label :image do %>
+                <i class="bi bi-card-image fs-2 ps-2"></i>
+            <% end %>
+            <%= form.file_field :image,  class: 'd-none', data: { action: 'change->image-preview#preview', image_preview_target: 'input' } %>
             <div id="image-preview" data-image-preview-target="preview" class="preview-image-container"></div>
         </div>
 

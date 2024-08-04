@@ -18,7 +18,9 @@
           <td class="">
             <div class="d-flex align-items-center">
             <div>
-              <%= image_tag url_for(blog.images.first), size: '45x45', class:'rounded-circle'%>
+              <% if blog.image.present?%>
+                <%= image_tag url_for(blog.image), size: '45x45', class:'rounded-circle'%>
+              <% end %>
             </div>
               <div class="ms-3">
                 <p class="fw-bold mb-1"><%= blog.category.name %> </p>

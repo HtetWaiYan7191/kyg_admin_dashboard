@@ -3,27 +3,19 @@
 <%= render  'shared/detail/content_container' do %>
   <h5 class="border p-4">Blog detail</h5>
   <%= render 'shared/detail/content_body_container' do %>
-    <% if blog.images.present? || blog.videos.present? %>
-        <div class='blog-carousel mb-4'>
-            <%= render partial: 'shared/stimulus_carousel', locals: {images: (blog.images + blog.videos)}%>
-        </div>
-    <% end %>
-
      <div class="d-flex justify-content-between align-items-center">
       <h1 class="fw-bold text-black mb-2"><%= blog.title %></h1>
         <small class="d-flex flex-column">
         <span class="text-muted">(<%= time_ago_in_words(blog.created_at) %> ago)</span>
-        <span class="text-muted"><%= calculate_minutes(get_word_count(blog.content.to_plain_text)) %> minutes</span>
+        <span class="text-muted"><%= calculate_minutes(get_word_count(blog.content.to_plain_text)) %> minutes to read</span>
         </small>
      </div>
-        <div class="p-0" >
-            <figure class="d-flex justify-content-center">
-                <% if blog.content.embeds.any? %>
-                    <% blog.content.embeds.each do |embed| %>
-                        <%= image_tag url_for(embed), size: '300x200', class: 'object-fit-cover' %>
-                    <% end %>
-                <% end %>
+        <% if blog.image.attached?%>
+            <figure class="d-flex justify-content-center align-items-center w-100 overflow-hidden">
+            <%= image_tag url_for(blog.image), class:'object-fit-cover w-50' %>
             </figure>
+        <% end %>
+        <div class="p-0">
             <%= blog.content %>
         </div>
   <% end %>
