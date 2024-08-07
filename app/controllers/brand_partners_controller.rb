@@ -5,7 +5,7 @@ class BrandPartnersController < ApplicationController
   # GET /brand_partners or /brand_partners.json
   def index 
       if params[:query]
-       @brand_partners = BrandPartner.where("name LIKE ?", "%#{params[:query]}%").page(params[:page]).per(4)
+       @brand_partners = BrandPartner.where("LOWER(name) LIKE ?", "%#{params[:query]}%").page(params[:page]).per(4)
        return
       end
        if params[:brand_category_id] == "all" || params[:brand_category_id].blank?

@@ -51,11 +51,11 @@ class KingsYangonUsersController < ApplicationController
 
   def sign_in 
     @user = KingsYangonUser.find_by(school_id: params[:school_id])
-    if @user && @user.authenticate(params[:password])
+    if @user
       session[:user_id] = @user.id 
       redirect_to landing_page_index_path
     else  
-      redirect_to sign_in_page_kings_yangon_users_path, alert: 'Invalid School ID or password'
+      redirect_to sign_in_page_kings_yangon_users_path, alert: 'Invalid School ID '
     end
   end
 
@@ -70,6 +70,6 @@ class KingsYangonUsersController < ApplicationController
   end
 
   def kings_yangon_user_params
-    params.require(:kings_yangon_user).permit(:school_id, :password)
+    params.require(:kings_yangon_user).permit(:school_id)
   end
 end
