@@ -47,6 +47,10 @@ button {
     font-family: 'BmDarius' !important;
   }
 
+  .field_with_errors {
+    width: 100%  !important;
+  }
+
   /* Sidebar */
   .sidebar {
     position: fixed;
@@ -275,7 +279,7 @@ button {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/assets/hero-igcse.jpg');
+  background-image: url('/assets/9.jpg');
   background-size: cover;
   background-position: center;
   filter: blur(5px); /* Adjust the blur level here */

@@ -12,13 +12,6 @@
                 <%= form.text_field :school_id, required: true, class: 'form-control border border-1' %>
             </div>
 
-    
-                <!-- Password input -->
-                <div data-mdb-input-init class="form-outline mb-4">
-                <%= render partial: 'shared/label_with_errors', locals: {field_name: :password , record: kings_yangon_user , form: form} %>
-                    <%= form.password_field :password, class: 'form-control border border-1'%>
-                </div>
-
             <!-- Submit button -->
                 <div class="actions mb-3">
                     <% unless kings_yangon_user.persisted? %>

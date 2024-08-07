@@ -4,9 +4,12 @@
     <%= f.text_field :content, class: 'form-control' %>
 
     <button type="button" data-action="nested-form#remove">
-            <i class="bi bi-x-circle" style="font-size: 20px;"></i>
+        <i class="bi bi-x-circle" style="font-size: 20px;"></i>
     </button>
   </div>
-
   <%= f.hidden_field :_destroy %>
 </div>
+
+<% if f.object.errors.any? %>
+  <small class="text-danger d-block"><%=  f.object.errors.full_messages.join(', ')%></small>
+<% end %>

@@ -3,7 +3,7 @@
     <tr>
       <th class="fw-bold">Name</th>
       <th class="fw-bold">Category</th>
-      <th class="fw-bold">Items</th>
+      <th class="fw-bold">Benefits</th>
       <th class="fw-bold">Actions</th>
     </tr>
   </thead>
@@ -27,7 +27,7 @@
                         <p class="fw-normal mb-1"><%= brand_partner.brand_category.name %></p>
                     </td>
                     <td>
-                        <p class="fw-normal mb-1"><%= brand_partner.items.count %></p>
+                        <p class="fw-normal mb-1"><%= brand_partner.benefits.count %></p>
                     </td>
                     <td class="">
                         <%= link_to brand_partner_path(brand_partner), data: {turbo: false} do  %>
