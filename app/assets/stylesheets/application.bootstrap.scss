@@ -25,6 +25,23 @@ button {
   all: unset;
 }
 
+.form-control {
+  padding: 8px !important;
+  font-weight: 700 !important;
+  border-radius: 8px !important;
+  background-color: $inputBg;
+}
+
+table {
+  margin: 1.3rem 0.6rem;
+}
+
+.form-title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1rem ;
+}
+
   @media (min-width: 991.98px) {
     main {
       padding-left: 240px;
@@ -323,6 +340,13 @@ input:-webkit-autofill:active {
 .form-control:focus {
   border-color: inherit;
   box-shadow: none;
+}
+
+.form-container {
+  background-color: $white;
+  padding: 20px;
+  overflow: hidden;
+  border-radius: 12px;
 }
 
 .tracking-wide {
