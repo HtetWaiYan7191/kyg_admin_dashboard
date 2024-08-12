@@ -1,11 +1,12 @@
 <%= render 'shared/back_button' %>
 <%= render 'layouts/auth_layout' do %>
-    <% if @brand_partner.persisted?%>
-      <%= render 'shared/form_title', locals:{title: 'UPDATE BRAND PARTNER' }%>
-    <% else %>
-        <%= render 'shared/form_title', locals:{title: 'CREATE BRAND PARTNER' }%>
-    <% end %>
-  <div class="p-3">
+
+  <% if @brand_partner.persisted? %>
+    <h2 class="form-title">Update Brand Partner</h2>
+  <% else %>
+    <h2 class="form-title">Create Brand Partner</h2>
+  <% end %>
+  <div class="form-container">
       <%= form_with(model: brand_partner, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' } ) do |form| %>
       <div class="mb-4">
         <%= render partial: 'shared/label_with_errors', locals: {form: form, field_name: :name, record: brand_partner} %>
@@ -27,8 +28,7 @@
       </div>
 
       <div class="mb-4" >
-        <h4>Add Benefits</h4>
-
+        <%= render partial: 'shared/label_with_errors', locals: {form: form, field_name: :benefits, record: brand_partner} %>
           <template data-nested-form-target="template">
             <%= form.fields_for :benefits, Benefit.new, child_index: 'NEW_RECORD' do |benefit_form| %>
               <%= render "benefit_form", f: benefit_form %>

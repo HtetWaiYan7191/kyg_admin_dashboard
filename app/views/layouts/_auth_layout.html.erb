@@ -3,8 +3,8 @@
         <%= render 'shared/noti' %>
     </div>
 <% end %>
-<section class="container-fluid  p-4 d-flex justify-content-center  align-items-center min-vh-75 <%= sign_in_page? %>">
-    <div class="border " style="width: 500px">
+<section class="container-fluid  p-4 d-flex   align-items-center min-vh-75 <%= center_auth_layout %> ">
+    <div class=" <%= is_sign_in_page? ? 'border p-2': ''%>" style="width: 60%">
         <%= yield %>
     </div>
 </section>

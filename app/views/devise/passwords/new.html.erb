@@ -1,7 +1,7 @@
 <%= render 'layouts/auth_layout' do %>
-    <div class="container p-4">
+    <div class="form-container">
 <%#= render 'shared/back_button' %>
-      <h5 class="fw-semibold text-center py-3 text-primary">Forgot Your Password ? </h5>
+      <h5 class="form-title text-center">Forgot Your Password ? </h5>
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 

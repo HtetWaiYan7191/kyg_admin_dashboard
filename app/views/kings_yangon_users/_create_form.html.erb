@@ -5,7 +5,7 @@
       <%= render 'shared/form_title', locals: {title: 'Create Kings Yangon User'} %>
     <% end %>
 
-    <div class="p-5">
+    <div class="form-container">
         <%= form_with model: @kings_yangon_user do |form| %>
             <div data-mdb-input-init class="form-outline mb-4">
                 <%= render partial: 'shared/label_with_errors', locals: {field_name: :school_id , record: kings_yangon_user , form: form} %>
