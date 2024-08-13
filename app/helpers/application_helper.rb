@@ -38,8 +38,8 @@ module ApplicationHelper
             (request.path.starts_with?(kings_yangon_users_path) || controller_name == 'kings_yangon_users') && action_name != 'show' ? 'active fw-bolder' : ''
         end
 
-        def sign_in_page?
-           ( request.path == '/users/sign_in' || request.path == '/kings_yangon_users/sign_in_page') ? 'vh-100' : 'vh-75'
+        def center_auth_layout
+           ( request.path == '/users/sign_in' || request.path == '/kings_yangon_users/sign_in_page' || request.path == '/users/password/new') ? 'vh-100 justify-content-center w-75' : 'vh-75'
         end
 
         def is_sign_in_page?

@@ -32,8 +32,14 @@ button {
   background-color: $inputBg;
 }
 
-table {
+.table {
+  width: 95% !important;
   margin: 1.3rem 0.6rem;
+}
+
+.table thead th {
+  font-size: 1rem !important;
+  font-weight: bold !important;
 }
 
 .form-title {
