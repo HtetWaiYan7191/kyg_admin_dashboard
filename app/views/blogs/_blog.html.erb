@@ -3,8 +3,8 @@
 <%= render  'shared/detail/content_container' do %>
   <h5 class="border p-4">Blog detail</h5>
   <%= render 'shared/detail/content_body_container' do %>
-     <div class="d-flex justify-content-between align-items-center">
-      <h1 class="fw-bold text-black mb-2"><%= blog.title %></h1>
+     <div class="d-flex justify-content-between gap-3 mb-4">
+      <h1 class="fw-bold text-black mb-2 " style="max-width: 75%"><%= blog.title %></h1>
         <small class="d-flex flex-column">
         <span class="text-muted">(<%= time_ago_in_words(blog.created_at) %> ago)</span>
         <span class="text-muted"><%= calculate_minutes(get_word_count(blog.content.to_plain_text)) %> minutes to read</span>

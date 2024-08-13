@@ -1,10 +1,5 @@
 module ApplicationHelper
     include ActionView::Helpers::TextHelper
-
-        def dashboard_active
-            request.path == "/" ? " active fw-bolder" : ""
-        end
-    
         def blog_active
             (request.path.starts_with?(blogs_path) || controller_name == 'blogs') && action_name != 'show' ? "active fw-bolder" : ""
         end

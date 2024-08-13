@@ -1,11 +1,11 @@
 <%= render 'layouts/auth_layout' do %>
     <% if @user.persisted?%>
-      <%= render 'shared/form_title', locals:{title: 'UPDATE USER' }%>
+      <%= render 'shared/form_title', locals:{title: 'Update User ' }%>
     <% else %>
-        <%= render 'shared/form_title', locals:{title: 'CREATE USER' }%>
+        <%= render 'shared/form_title', locals:{title: 'Create User' }%>
     <% end %>
 
-    <div class="p-4">
+    <div class="p-4 form-container">
         <%= form_with model: @user.persisted? ? @user : nil, url: @user.persisted? ? user_path(@user) : create_users_path, method: @user.persisted? ? :patch : :post do |form| %>
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4">

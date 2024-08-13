@@ -1,10 +1,10 @@
 <%= render 'layouts/auth_layout' do %>
     <% if category.persisted?%>
-      <%= render 'shared/form_title', locals:{title: 'UPDATE CATEGORY' }%>
+      <%= render 'shared/form_title', locals:{title: 'Update Category' }%>
     <% else %>
-        <%= render 'shared/form_title', locals:{title: 'CREATE CATEGORY' }%>
+        <%= render 'shared/form_title', locals:{title: 'Create Category' }%>
     <% end %>
-  <div class="p-3">
+  <div class="form-container">
       <%= form_with(model: category) do |form| %>
         <div> 
           <%= form.label :name, class: 'form-label' %>

@@ -7,6 +7,7 @@
 // @import 'swiper/swiper-bundle.min.css';
 
 @import url('https://cdn.jsdelivr.net/gh/alumuko/vanilla-datetimerange-picker@latest/dist/vanilla-datetimerange-picker.css');
+@import 'actiontext.css';
 
 * {
   box-sizing: border-box;
@@ -33,8 +34,12 @@ button {
 }
 
 .table {
-  width: 95% !important;
+  width: 97% !important;
   margin: 1.3rem 0.6rem;
+}
+
+.table-title {
+  max-width: 110px;
 }
 
 .table thead th {
@@ -46,6 +51,16 @@ button {
   font-weight: 700;
   font-size: 1.5rem;
   margin-bottom: 1rem ;
+}
+
+trix-editor {
+  padding: 16px;
+  font-weight: 700;
+  border-radius: 8px;
+  background-color: $inputBg;
+  border: 1px solid #bbb;
+  min-height: 12em;
+  outline: none;
 }
 
   @media (min-width: 991.98px) {
@@ -384,4 +399,3 @@ input:-webkit-autofill:active {
 }
 
 
-@import 'actiontext.css';
