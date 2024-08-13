@@ -33,6 +33,21 @@ button {
   background-color: $inputBg;
 }
 
+.category-text {
+  font-size: 14px;
+  font-weight: 600;  
+}
+
+.category-container .active {
+  border-bottom: 1px solid black;
+  background: none;
+}
+
+.tab-content .active {
+  background: none;
+}
+
+
 .table {
   width: 97% !important;
   margin: 1.3rem 0.6rem;
@@ -51,6 +66,20 @@ button {
   font-weight: 700;
   font-size: 1.5rem;
   margin-bottom: 1rem ;
+}
+
+.detail-header {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.modal-button {
+  border-radius: 16px;
+  padding: 8px 16px;
+  width: 100%;
+  color: white;
+  background: $pink;
+  text-align: center;
 }
 
 trix-editor {
@@ -216,11 +245,19 @@ trix-editor {
   opacity: 80%;
 }
 
+.brand-card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .brand-card {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  gap: 2rem;
   align-items: center;
+  min-width: 390px;
+  border-radius: 16px;
+  border: 1px solid $borderColor;
 }
 
 .brand-card p {
@@ -230,14 +267,12 @@ trix-editor {
 .brand-image {
   width: 70px;
   height: 70px;
+  border-radius: 50%;
   object-fit: cover;
   transition: all 0.4s ease;
 }
 
-.brand-image:hover {
-  transform: scale(0.95);
-  transition: all 0.4s ease;
-}
+
 
 
 .welcome-section {
@@ -389,13 +424,18 @@ input:-webkit-autofill:active {
   width: 25%;
 }
 
-
+.modal-logo-image {
+    width: 50px;
+    height: 50px;
+  }
 
 @media screen and (min-width: 768px) {
   .brand-image {
     width: 100px;
     height: 100px;
   }
+
+
 }
 
 
