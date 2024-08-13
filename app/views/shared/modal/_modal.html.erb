@@ -1,0 +1,31 @@
+<div class="modal fade" id="<%= modal_id %>" data-bs-keyboard="false" tabindex="-1" aria-labelledby="<%= modal_id %>" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header justify-content-start gap-3 align-items-center">
+                <% if image.present? %>
+                    <figure>
+                        <%= image_tag image, class: 'modal-logo-image' if image.attached? %>
+                    </figure>
+                <% end %>
+                <div class='d-flex flex-column align-items-start'>
+                    <h5 class="modal-title fw-bold text-black" style="font-size: 1rem;">Benefits For <%= modal_title%></h5>
+                    <small><%= category %></small>
+                </div>
+            </div>
+            <ul class="modal-body">
+                <% benefits.each do |benefit| %> 
+                <li class="d-flex  my-4 gap-3">
+                    <i class="bi bi-check-circle-fill text-pink " style="font-size: '10px;"></i>   
+                    <small class="fw-semibold text-black" style="font-size: '12px;"><%= benefit.content %></small>
+                </li>
+                <% end %>
+            </ul>
+            <div class="modal-footer">
+                <button type="button" class="modal-button" data-bs-dismiss="modal" aria-label="Close">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

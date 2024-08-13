@@ -3,26 +3,52 @@
     <%= render partial: 'page/landing/carousel', locals: {banners: @banners} %>
 </div>
 <%#= render partial: 'page/landing/banner_carousel', locals: {banners: @banners} %>
-<section class="partner-section mt-4" >
-    <div class="partner-container row gap-x-10">
-        <%# <h2 class="text-center text-pink fw-semibold custom-font">Our Partners</h2> %>
-        <% @brand_categories&.each do |brand_category| %>
-        <% unless brand_category.brand_partners.empty? %>
-                <div class="partner-name">
-                <h4 class="text-center text-pink custom-font"><%= brand_category.name %> <h4>
-                <div class=' row brand-card-container '>
-                    <% brand_category.brand_partners.order(:name).each do |brand_partner| %>
-                        <div class=" col-6 col-md-3 brand-card bg-white border border-1 shadow  p-4 my-3  ">
+<section class="partner-section pt-5" style="background-color:#f9fafc;" >
+        <h1 class="text-center fw-bold text-black custom-font">Our Partners</h1>
+        <ul class="category-container p-4 d-flex gap-4 align-items-center ms-5 mt-4" id="pills-tab" role="tablist">
+            <% @brand_categories.each_with_index do |brand_category, index| %>
+                <li class="" role="presentation">
+                    <button 
+                        class="category-text <%= 'active' if index == 0 %>" 
+                        id="pills-tab<%= brand_category.id %>" 
+                        data-bs-toggle="pill" 
+                        data-bs-target="#pills<%= brand_category.id %>" 
+                        type="button" 
+                        role="tab" 
+                        aria-controls="pills<%= brand_category.id %>" 
+                        aria-selected="<%= index == 0 %>">
+                        <%= brand_category.name %>
+                    </button>
+                </li>
+            <% end %>
+        </ul>
+
+        <%# tab content  %>
+        <div class="tab-content" id="pills-tabContent">
+            <% @brand_categories.each_with_index do |brand_category, index| %>
+                <% unless brand_category.brand_partners.empty? %>
+                    <div 
+                        class="tab-pane fade p-5 75vh <%= 'show active' if index == 0 %>" 
+                        style="min-height: 70vh;"
+                        id="pills<%= brand_category.id %>" 
+                        role="tabpanel" 
+                        aria-labelledby="pills-tab<%= brand_category.id %>">
+                        <div class=' brand-card-container gap-5 ' >
+                        <% brand_category.brand_partners.order(:name).each do |brand_partner| %>
+                            <button class="brand-card bg-white px-4 py-2" type="button"
+                                    data-bs-toggle="modal" data-bs-target="#brandPartnerModal<%= brand_partner.id %>">
                                 <%= image_tag brand_partner.image, class: 'brand-image' if brand_partner.image.attached? %>
                                 <p class="fw-semibold text-pink mt-2 mb-0"><%= brand_partner.name %></p>
-                                <small class='text-muted pt-0 text-center px-4 text-truncate' style="max-width: 300px;">short description</small>
-                        </div>         
-                    <% end %>
-                </div>
-            </div>
-        <% end %>
-        <% end %>
-    </div>
+                            </button>
+                            <%= render partial: 'shared/modal/modal', locals: {modal_id: "brandPartnerModal#{brand_partner.id}",
+                             modal_title: brand_partner.name, category: brand_partner.brand_category.name, benefits: brand_partner.benefits, 
+                             image: brand_partner.image } %>
+                        <% end %>
+                        </div> 
+                    </div>    
+                <% end %>
+            <% end %>
+        </div>
 </section>
 <div id="footer-section">
     <%= render 'page/landing/footer' %>
