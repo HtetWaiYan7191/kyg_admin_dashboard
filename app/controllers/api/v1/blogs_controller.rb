@@ -1,19 +1,34 @@
-class Api::V1::BlogsController < ApplicationController 
-  before_action :set_blog, only: [:show]
+class Api::V1::BlogsController < ApiController 
+  before_action :set_blog, only: [:show, :blogs_filter_category, :increment_view_count]
+  skip_before_action :verify_authenticity_token, only: [:increment_view_count]
+
   include SerializerResource
   def index 
-    @blogs = Blog.all.where(delete_flg: false)
+    @blogs = Blog.all.where(delete_flg: false).page(params[:page]).per(12)
 render json: {
   data: serialize_resource(@blogs, BlogSerializer),
   message: 'blogs list'
 }
   end
 
+  def blogs_filter_category
+    @category = Category.includes(:blogs).find(@blog.category_id).page(params[:page]).per(4)
+    @blogs = @category.blogs.where(delete_flg: false)
+    render json: {
+      data: serialize_resource(@blogs, BlogSerializer),
+      message: 'blog list filter by category'
+    }
+  end
+
   def show 
     if @blog 
-      puts @blog.present?
       render json: {message: 'blog detail', data: serialize_resource(@blog, BlogSerializer)}
     end
+  end
+
+  def increment_view_count 
+    @blog.increase_view_count
+    render json: { message: 'View count incremented' }
   end
 
   private 

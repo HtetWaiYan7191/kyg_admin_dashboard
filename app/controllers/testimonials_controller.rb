@@ -48,6 +48,7 @@ class TestimonialsController < ApplicationController
 
   # PATCH/PUT /testimonials/1 or /testimonials/1.json
   def update
+    puts testimonial_params
     respond_to do |format|
       if @testimonial.update(testimonial_params)
         format.html { redirect_to testimonials_path, notice: "Testimonial was successfully updated." }
