@@ -33,8 +33,7 @@ Rails.application.routes.draw do
     end
   end
   # resources :users, only: [:index, :show]
-  get 'contacts/index', as: :contacts
-  get 'contacts/:id', to: 'contacts#show', as: :contact
+  resources :contacts, except: [:new, :create]
 
   resources :blogs do 
     collection do 
@@ -44,12 +43,6 @@ Rails.application.routes.draw do
 
   resources :categories
   resources :testimonials
-
-  namespace :api do
-    namespace :v1 do
-      resources :contacts
-    end
-  end
 
   authenticated :user, ->(user) {user.management?} do
     root to: 'brand_categories#index', as: :management_root
@@ -71,7 +64,13 @@ Rails.application.routes.draw do
 
   namespace :api do 
     namespace :v1 do 
-      resources :blogs, only: [:index, :show]
+      resources :blogs, only: [:index, :show] do 
+        member do 
+          get 'blogs_filter_category', to: 'blogs#blogs_filter_category'
+          post :increment_view_count
+        end
+      end
+      resources :contacts
     end
   end
 end

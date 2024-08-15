@@ -14,4 +14,9 @@ class Blog < ApplicationRecord
 
   enum blog_status: { pending: 0, approve: 1, deny: 2 }
 
+  def increase_view_count
+    increment!(:views_count)
+  end
+  private 
+
 end

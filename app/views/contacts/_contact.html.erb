@@ -1,8 +1,8 @@
 <div class="detail-container px-5">
-<%= render partial: 'shared/detail/header', locals: {title: 'Testimonial'} %>
-<%= render  'shared/detail/content_container' do %>
-  <%= render 'shared/detail/content_body_container' do %>
-            <% @testimonial.attributes.each do |column_name, value| %>
+      <%= render partial: 'shared/detail/header', locals: {title: "Contact Detail"} %>
+      <%= render 'shared/detail/content_container' do %>
+        <%= render 'shared/detail/content_body_container' do %>
+            <% @contact.attributes.each do |column_name, value| %>
                 <% if column_name == 'created_at' || column_name == 'updated_at' %>
                     <p class="row" >
                         <small class="col-lg-4"><%= column_name.capitalize %></small>
@@ -15,8 +15,9 @@
                     <small class="col-lg-8 fw-bold"><%= value %></small>
                 </p>
             <% end %>
-  <% end %>
-        <%= render partial: 'shared/detail/footer', locals: {return_path: testimonials_path , edit_path: edit_testimonial_path(@testimonial) ,
-     destroy_path: testimonial_path(@testimonial), record: testimonial.name} %>
+        <% end %>
+      <%= render partial: 'shared/detail/footer', locals: {return_path: contacts_path , edit_path: edit_contact_path(@contact) ,
+     destroy_path: contact_path(@contact), record: @contact.student_name} %>
       <% end %>
+
 </div>
