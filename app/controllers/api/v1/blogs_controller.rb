@@ -12,8 +12,8 @@ render json: {
   end
 
   def blogs_filter_category
-    @category = Category.includes(:blogs).find(@blog.category_id)
-    @blogs = @category.blogs.where(delete_flg: false).where.not(id: @blog.id).page(params[:page]).per(4)
+    @blogs = Blog.where(delete_flg: false)
+              .where.not(id: @blog.id).page(params[:page]).per(4)
 
     render json: {
       data: serialize_resource(@blogs, BlogSerializer),
