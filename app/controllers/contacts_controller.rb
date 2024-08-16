@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
   # before_action :check_admin_access
 
   def index
-    @contacts = Contact.all.page(params[:page]).per(4)
+    @contacts = Contact.all.order(created_at: :desc).page(params[:page]).per(4)
   end
 
   def show

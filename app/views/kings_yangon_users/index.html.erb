@@ -1,5 +1,21 @@
 <%= render 'shared/back_button' %>
 <%= render 'shared/create_button', locals: {link: new_kings_yangon_user_path, }%>
+<div class="d-flex align-items-center gap-4">
+    <div class="">
+        <%= render 'shared/search_form', locals: {link: kings_yangon_users_path, title: 'Kings Yangon Users', current_data: @kings_yangon_users } %>
+      </div>
+      <div class="">
+        <h6>Filter By User Type</h6>
+        <%= form_with url: kings_yangon_users_path, method: :get, remote: true do |f| %>
+        <%= f.collection_select :user_type, 
+                KingsYangonUser.user_types, 
+                :last, :first, 
+                { selected: params[:user_type].present? ? params[:user_type] : "all" },
+                { class: 'form-select', onchange: 'this.form.submit();' } %>
+        <% end %>
+      </div>
+
+</div>
 
 <div id="kings_yangon_user">
     <%= render partial: 'table', locals: {kings_yangon_users: @kings_yangon_users } %>

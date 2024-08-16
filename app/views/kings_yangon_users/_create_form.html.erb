@@ -12,6 +12,14 @@
                 <%= form.text_field :school_id, required: true, class: 'form-control border border-1' %>
             </div>
 
+            <div class="mb-3">
+                <%= render partial: 'shared/label_with_errors', locals: {field_name: :user_type , record: kings_yangon_user , form: form} %>
+                <%= form.select :user_type, 
+                    KingsYangonUser.user_types.keys.map { |role| [role, role] }, 
+                    { prompt: 'Select User Type' }, 
+                    { class: 'form-select' } %>
+            </div>
+
             <!-- Submit button -->
                 <div class="actions mb-3">
                     <% unless kings_yangon_user.persisted? %>

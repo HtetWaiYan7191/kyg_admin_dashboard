@@ -5,7 +5,16 @@ class KingsYangonUsersController < ApplicationController
   load_and_authorize_resource
 
   def index 
-    @kings_yangon_users = KingsYangonUser.all.page(params[:page]).per(4)
+    if params[:query]
+      @kings_yangon_users = KingsYangonUser.where("LOWER(school_id) LIKE ?", "%#{params[:query]}%").page(params[:page]).per(4)
+       return
+    end
+
+    if params[:user_type] == 'all' || params[:user_type].blank?
+      @kings_yangon_users = KingsYangonUser.all.page(params[:page]).per(4)
+    else 
+      @kings_yangon_users = KingsYangonUser.where(user_type: params[:user_type]).page(params[:page]).per(4)
+    end
   end
 
   def show 
@@ -70,6 +79,6 @@ class KingsYangonUsersController < ApplicationController
   end
 
   def kings_yangon_user_params
-    params.require(:kings_yangon_user).permit(:school_id)
+    params.require(:kings_yangon_user).permit(:school_id, :user_type)
   end
 end
