@@ -52,10 +52,6 @@ development:
 #
 production:
   <<: *default
-  database: <%= Rails.application.credentials.DATABASE_NAME %>
-  username: <%= Rails.application.credentials.USERNAME %>
-  password: <%= Rails.application.credentials.DATABASE_PASSWORD %>
-  host: <%= Rails.application.credentials.DATABASE_URL %>
-  port: <%= Rails.application.credentials.DATABASE_PORT || 5432 %>
+  url: <%= Rails.application.credentials.DATABASE_URL %>
   sslmode: require
  
