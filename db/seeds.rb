@@ -13,7 +13,7 @@ admin = User.create(email: 'htet@gmail.com', name:'htet', department: 'IT', pass
 puts "admin created"
 management = User.create(email: 'yan@gmail.com', name:'yan', department: 'management', title: 'software developer', password: 'password', position: 'senior', role: :management)
 puts 'management created'
-kyg_user = KingsYangonUser.create(school_id: 'kyg123', password: 'password')
+kyg_user = KingsYangonUser.create(school_id: 'kyg123')
 puts 'kyg user created'
 
 accessories = BrandCategory.create(name: 'Accessories', description: 'type of business accessories')
