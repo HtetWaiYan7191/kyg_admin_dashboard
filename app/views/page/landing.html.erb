@@ -35,7 +35,7 @@
                         aria-labelledby="pills-tab<%= brand_category.id %>">
                         <div class=' brand-card-container gap-5 ' >
                         <% brand_category.brand_partners.order(:name).each do |brand_partner| %>
-                            <button class="brand-card bg-white px-4 py-2" type="button"
+                            <button class="brand-card px-4 py-2" type="button"
                                     data-bs-toggle="modal" data-bs-target="#brandPartnerModal<%= brand_partner.id %>">
                                 <%= image_tag brand_partner.image, class: 'brand-image' if brand_partner.image.attached? %>
                                 <p class="fw-semibold text-pink mt-2 mb-0"><%= brand_partner.name %></p>

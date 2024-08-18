@@ -253,11 +253,11 @@ trix-editor {
 
 .brand-card {
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 1rem;
   min-width: 390px;
-  border-radius: 16px;
-  border: 1px solid $borderColor;
 }
 
 .brand-card p {
