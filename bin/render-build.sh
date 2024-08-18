@@ -11,4 +11,3 @@ bundle exec rails assets:clean
 # Uncomment the following line:
 
 ./bin/rails db:migrate
-./bin/rails server
