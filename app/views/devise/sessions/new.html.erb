@@ -3,9 +3,11 @@
         <h2 class="form-title text-center mb-4">Sign In</h2>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="field mb-3">
-            <%= f.email_field :email, placeholder: 'Email' , class:'form-control', autofocus: true, autocomplete: "email" %>
+            <%= f.label :email, class: 'form-label' %>
+            <%= f.email_field :email, class:'form-control', autofocus: true, autocomplete: "email" %>
           </div>
               <!-- Password input -->
+              <%= f.label :password, class: 'form-label'%>
               <div data-controller="password-visibility" data-mdb-input-init class="form-outline mb-4 position-relative ">
                   <%= f.password_field :password, autocomplete: 'off', data: { "password-visibility-target": "input" }, spellcheck: false, class: 'form-control border border-1 bg-transparent mb-3 ' %>
                   <button type="button" data-action="password-visibility#toggle" class="btn p-0 shadow-none fs-3 position-absolute top-50 end-0 translate-middle-y px-4">
