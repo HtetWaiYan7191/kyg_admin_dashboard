@@ -1,8 +1,21 @@
-#!/bin/bash -e
+#!/bin/bash
 
-# If running the rails server then create or migrate existing database
-if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
-  ./bin/rails db:prepare
+echo 'In docker entrypoint'
+echo "${*}"
+
+# If running the rails server, create or migrate the database
+if [[ "${*}" == *"rails server"* ]]; then
+  echo 'Running database setup...'
+  ./bin/rails db:create
+  ./bin/rails db:migrate
+  ./bin/rails db:seed:users
+  ./bin/rails db:seed:kings_yangon_users
+  ./bin/rails db:seed:brand_categories
+  ./bin/rails db:seed
 fi
 
+# Remove the server PID file if it exists to avoid errors when restarting the server
+rm -f tmp/pids/server.pid
+
+# Execute the passed command
 exec "${@}"

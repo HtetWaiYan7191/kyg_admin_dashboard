@@ -1,0 +1,28 @@
+version: '3.9'
+services:
+  # Rails app service
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bin/rails server -b 0.0.0.0 -p 3000"
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgres://postgres:root@db:5432/kings_yangon_admin_dashboard_production
+    depends_on:
+      - db
+
+  # PostgreSQL database service
+  db:
+    image: postgres:14
+    environment:
+      - POSTGRES_DB=kings_yangon_admin_dashboard_production  # Ensure this matches
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+# Persist PostgreSQL data between container restarts
+volumes:
+  postgres_data:

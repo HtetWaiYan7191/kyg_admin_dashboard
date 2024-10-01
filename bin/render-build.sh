@@ -13,5 +13,5 @@ bundle exec rails assets:clean
 bundle exec rails db:migrate:reset && rails db:seed:users &&
  rails db:seed:kings_yangon_users &&
   rails db:seed:kings_yangon_office_users 
-  && rails db:seed:brand_categories && rails db:seed:brand_partners
+  && rails db:seed:brand_categories
    && rails db:seed 
