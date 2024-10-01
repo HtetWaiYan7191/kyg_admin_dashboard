@@ -10,6 +10,7 @@ if [[ "${*}" == *"rails server"* ]]; then
   ./bin/rails db:migrate
   ./bin/rails db:seed:users
   ./bin/rails db:seed:kings_yangon_users
+  ./bin/rails db:seed:kings_yangon_office_users
   ./bin/rails db:seed:brand_categories
   ./bin/rails db:seed
 fi
