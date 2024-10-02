@@ -1,8 +1,5 @@
 #!/bin/bash
 
-echo 'In docker entrypoint'
-echo "${*}"
-
 # If running the rails server, create or migrate the database
 if [[ "${*}" == *"rails server"* ]]; then
   echo 'Running database setup...'
